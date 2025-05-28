@@ -1,0 +1,67 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "GearXEngine::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "GearXStarter::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "box2d::@d7ab02409ba516617fcd"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "SDL3_gfx_Static::@f8ec973215ca77f621d1"
+		},
+		{
+			"id" : "lua54::@d841f5b5141cb16ffda1"
+		},
+		{
+			"id" : "rttr_core::@eccc578538e7b8b5073e"
+		},
+		{
+			"id" : "Engine::@fb0c09e198214fcff051"
+		},
+		{
+			"id" : "Starter::@fb0c09e198214fcff051"
+		},
+		{
+			"id" : "imgui::@48967f588d7e82536b8f"
+		},
+		{
+			"id" : "runtime::@48967f588d7e82536b8f"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "CMakePredefinedTargets"
+	},
+	"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+	"isGeneratorProvided" : true,
+	"name" : "ALL_BUILD",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

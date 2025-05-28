@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\event\event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\event\object_event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\component\component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\component\rigidbody\rigidbody_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\component\script\script_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\component\texture\texture_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\component\transform\transform_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\level\level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\object\object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\world\world.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\global\global.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\system\audio\audio_system.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\system\physics\physics_system.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\system\render\render_system.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\system\script\script_system.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\ui\editor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\ui\imgui_style.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\ui\ui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\utils\object_wrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\utils\render_axis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\utils\render_shape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\utils\thread_pool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\resources\asset_manager\asset_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\resources\loader\font_loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\resources\loader\script_loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\resources\loader\sound_loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\resources\loader\texture_loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\event\event.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\event\object_event.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\component\component.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\component\rigidbody\rigidbody_component.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\component\script\script_component.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\component\texture\texture_component.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\component\transform\transform_component.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\level\level.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\object\object.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\framework\world\world.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\global\global.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\system\audio\audio_system.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\system\physics\physics_system.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\system\render\render_system.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\system\script\script_system.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\system\system.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\ui\editor.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\ui\imgui_style.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\ui\ui.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\utils\object_wrapper.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\utils\render_axis.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\utils\render_shape.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\core\utils\thread_pool.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\depencies.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\resources\asset_manager\asset.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\resources\asset_manager\asset_manager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\resources\loader\font_loader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\resources\loader\script_loader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\resources\loader\sound_loader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\resources\loader\texture_loader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\runtime\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8A0BE760-2F4B-3B9E-8F78-C1AAF16F0E4F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{BB9711B2-F2FD-3A3E-9206-315725D66723}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

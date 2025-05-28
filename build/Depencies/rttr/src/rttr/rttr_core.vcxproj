@@ -1,0 +1,924 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{35685292-3F21-3C10-AAD2-A6B0120DCAB0}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>rttr_core</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\Android_Project\CppAndroidApplication\GearX_dev\build\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">rttr_core.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">rttr_core_d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\Android_Project\CppAndroidApplication\GearX_dev\build\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">rttr_core.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">rttr_core</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\Android_Project\CppAndroidApplication\GearX_dev\build\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">rttr_core.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">rttr_core</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\Android_Project\CppAndroidApplication\GearX_dev\build\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">rttr_core.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">rttr_core</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\SDL3\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\sol2\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui\backends;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies;G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\..;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;RTTR_DLL_EXPORTS;RTTR_DLL;CMAKE_INTDIR="Debug";rttr_core_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;RTTR_DLL_EXPORTS;RTTR_DLL;CMAKE_INTDIR=\"Debug\";rttr_core_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\SDL3\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\sol2\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui\backends;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies;G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\..;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\SDL3\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\sol2\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui\backends;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies;G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\..;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/SDL3/lib/x64;G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/SDL3/lib/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>G:/Android_Project/CppAndroidApplication/GearX_dev/build/Depencies/rttr/src/rttr/Debug/rttr_core_d.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/Android_Project/CppAndroidApplication/GearX_dev/build/Debug/rttr_core_d.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\SDL3\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\sol2\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui\backends;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies;G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\..;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;RTTR_DLL_EXPORTS;RTTR_DLL;CMAKE_INTDIR="Release";rttr_core_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;RTTR_DLL_EXPORTS;RTTR_DLL;CMAKE_INTDIR=\"Release\";rttr_core_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\SDL3\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\sol2\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui\backends;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies;G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\..;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\SDL3\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\sol2\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui\backends;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies;G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\..;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/SDL3/lib/x64;G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/SDL3/lib/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>G:/Android_Project/CppAndroidApplication/GearX_dev/build/Depencies/rttr/src/rttr/Release/rttr_core.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/Android_Project/CppAndroidApplication/GearX_dev/build/Release/rttr_core.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\SDL3\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\sol2\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui\backends;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies;G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\..;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;RTTR_DLL_EXPORTS;RTTR_DLL;CMAKE_INTDIR="MinSizeRel";rttr_core_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;RTTR_DLL_EXPORTS;RTTR_DLL;CMAKE_INTDIR=\"MinSizeRel\";rttr_core_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\SDL3\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\sol2\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui\backends;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies;G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\..;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\SDL3\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\sol2\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui\backends;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies;G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\..;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/SDL3/lib/x64;G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/SDL3/lib/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>G:/Android_Project/CppAndroidApplication/GearX_dev/build/Depencies/rttr/src/rttr/MinSizeRel/rttr_core.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/Android_Project/CppAndroidApplication/GearX_dev/build/MinSizeRel/rttr_core.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\SDL3\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\sol2\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui\backends;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies;G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\..;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;EBUG;RTTR_DLL_EXPORTS;RTTR_DLL;CMAKE_INTDIR="RelWithDebInfo";rttr_core_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;EBUG;RTTR_DLL_EXPORTS;RTTR_DLL;CMAKE_INTDIR=\"RelWithDebInfo\";rttr_core_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\SDL3\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\sol2\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui\backends;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies;G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\..;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\SDL3\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\sol2\include;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\imgui\backends;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies;G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\..;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/SDL3/lib/x64;G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/SDL3/lib/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>G:/Android_Project/CppAndroidApplication/GearX_dev/build/Depencies/rttr/src/rttr/RelWithDebInfo/rttr_core.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/Android_Project/CppAndroidApplication/GearX_dev/build/RelWithDebInfo/rttr_core.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SG:/Android_Project/CppAndroidApplication/GearX_dev -BG:/Android_Project/CppAndroidApplication/GearX_dev/build --check-stamp-file G:/Android_Project/CppAndroidApplication/GearX_dev/build/Depencies/rttr/src/rttr/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\base\version.h.in;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\base\version.rc.in;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\rttr.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SG:/Android_Project/CppAndroidApplication/GearX_dev -BG:/Android_Project/CppAndroidApplication/GearX_dev/build --check-stamp-file G:/Android_Project/CppAndroidApplication/GearX_dev/build/Depencies/rttr/src/rttr/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\base\version.h.in;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\base\version.rc.in;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\rttr.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SG:/Android_Project/CppAndroidApplication/GearX_dev -BG:/Android_Project/CppAndroidApplication/GearX_dev/build --check-stamp-file G:/Android_Project/CppAndroidApplication/GearX_dev/build/Depencies/rttr/src/rttr/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\base\version.h.in;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\base\version.rc.in;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\rttr.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SG:/Android_Project/CppAndroidApplication/GearX_dev -BG:/Android_Project/CppAndroidApplication/GearX_dev/build --check-stamp-file G:/Android_Project/CppAndroidApplication/GearX_dev/build/Depencies/rttr/src/rttr/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\base\version.h.in;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\base\version.rc.in;G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\rttr.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\base\pch.h" />
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\constructor.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\destructor.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\enumeration.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\method.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\parameter_info.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\policy.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\property.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\registration.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\type.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\variant.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\variant_array_view.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\compare_equal.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\compare_less.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\standard_types.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\conversion\std_conversion_functions.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\constructor\constructor_wrapper_base.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\destructor\destructor_wrapper_base.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\enumeration\enumeration_helper.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\enumeration\enumeration_wrapper_base.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\method\method_wrapper_base.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\parameter_info\parameter_info_wrapper_base.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper_base.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\registration\registration_executer.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_database.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_register.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant\variant_compare_less.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:/Android_Project/CppAndroidApplication/GearX_dev/Depencies/rttr/src/rttr/detail/base/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(IntDir)/pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\detail\base\version.h" />
+    <ResourceCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\detail\base\version.rc" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\access_levels.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\argument.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\array_mapper.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\constructor.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\destructor.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\enumeration.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\instance.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\method.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\policy.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\property.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\parameter_info.h" />
+    <None Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\registration">
+    </None>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\registration.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\rttr_cast.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\rttr_enable.h" />
+    <None Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\type">
+    </None>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\type.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\variant.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\variant_array_view.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\wrapper_mapper.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\array\array_accessor.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\array\array_accessor_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\array\array_mapper_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\array\array_wrapper.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\array\array_wrapper_base.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\base\core_prerequisites.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\constructor\constructor_invoker.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\constructor\constructor_wrapper.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\constructor\constructor_wrapper_defaults.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\constructor\constructor_wrapper_base.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\conversion\std_conversion_functions.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\conversion\number_conversion.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\default_arguments\default_arguments.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\default_arguments\invoke_with_defaults.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\destructor\destructor_wrapper.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\destructor\destructor_wrapper_base.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\enumeration\enumeration_helper.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\enumeration\enumeration_wrapper.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\enumeration\enumeration_wrapper_base.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\enumeration\enum_data.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\impl\argument_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\impl\instance_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\impl\rttr_cast_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\impl\wrapper_mapper_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\metadata\metadata.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\metadata\metadata_handler.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\method\method_accessor.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\method\method_invoker.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\method\method_wrapper.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\method\method_wrapper_base.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\argument_wrapper.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\argument_extractor.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\compare_equal.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\compare_equal_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\compare_less.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\compare_less_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\data_address_container.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\function_traits.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\misc_type_traits.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\std_type_traits.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\utility.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\parameter_info\parameter_infos.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\parameter_info\parameter_names.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\parameter_info\parameter_info_wrapper_base.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\parameter_info\parameter_info_wrapper.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\policies\prop_policies.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\policies\meth_policies.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\policies\ctor_policies.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_accessor.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper_base.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper_func.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper_member_func.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper_member_object.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper_object.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\registration\bind_types.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\registration\bind_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\registration\registration_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\registration\registration_executer.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\accessor_type.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\base_classes.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\get_create_variant_func.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\get_derived_info_func.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_converter.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_comparator.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_database_p.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_register.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant\variant_compare_less.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant\variant_data.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant\variant_data_converter.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant\variant_data_policy.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant\variant_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant_array_view\variant_array_view_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant_array_view\variant_array_view_creator.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant_array_view\variant_array_view_creator_impl.h" />
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant_array_view\variant_array_view_traits.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="G:\Android_Project\CppAndroidApplication\GearX_dev\build\ZERO_CHECK.vcxproj">
+      <Project>{1149F191-3551-3505-BA62-626F88CCF895}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\pch.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\constructor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\destructor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\enumeration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\method.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\parameter_info.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\policy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\property.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\registration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\type.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\variant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\variant_array_view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\compare_equal.cpp">
+      <Filter>detail\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\compare_less.cpp">
+      <Filter>detail\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\standard_types.cpp">
+      <Filter>detail\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\conversion\std_conversion_functions.cpp">
+      <Filter>detail\conversion</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\constructor\constructor_wrapper_base.cpp">
+      <Filter>detail\constructor</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\destructor\destructor_wrapper_base.cpp">
+      <Filter>detail\destructor</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\enumeration\enumeration_helper.cpp">
+      <Filter>detail\enumeration</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\enumeration\enumeration_wrapper_base.cpp">
+      <Filter>detail\enumeration</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\method\method_wrapper_base.cpp">
+      <Filter>detail\method</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\parameter_info\parameter_info_wrapper_base.cpp">
+      <Filter>detail\parameter_info</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper_base.cpp">
+      <Filter>detail\property</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\registration\registration_executer.cpp">
+      <Filter>detail\registration</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_database.cpp">
+      <Filter>detail\type</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_register.cpp">
+      <Filter>detail\type</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant\variant_compare_less.cpp">
+      <Filter>detail\variant</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\base\pch.h">
+      <Filter>detail\base</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\detail\base\version.h">
+      <Filter>detail\base</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\access_levels.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\argument.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\array_mapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\constructor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\destructor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\enumeration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\instance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\method.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\policy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\property.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\parameter_info.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\registration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\rttr_cast.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\rttr_enable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\variant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\variant_array_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\wrapper_mapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\array\array_accessor.h">
+      <Filter>detail\array</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\array\array_accessor_impl.h">
+      <Filter>detail\array</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\array\array_mapper_impl.h">
+      <Filter>detail\array</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\array\array_wrapper.h">
+      <Filter>detail\array</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\array\array_wrapper_base.h">
+      <Filter>detail\array</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\base\core_prerequisites.h">
+      <Filter>detail\base</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\constructor\constructor_invoker.h">
+      <Filter>detail\constructor</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\constructor\constructor_wrapper.h">
+      <Filter>detail\constructor</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\constructor\constructor_wrapper_defaults.h">
+      <Filter>detail\constructor</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\constructor\constructor_wrapper_base.h">
+      <Filter>detail\constructor</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\conversion\std_conversion_functions.h">
+      <Filter>detail\conversion</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\conversion\number_conversion.h">
+      <Filter>detail\conversion</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\default_arguments\default_arguments.h">
+      <Filter>detail\default_arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\default_arguments\invoke_with_defaults.h">
+      <Filter>detail\default_arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\destructor\destructor_wrapper.h">
+      <Filter>detail\destructor</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\destructor\destructor_wrapper_base.h">
+      <Filter>detail\destructor</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\enumeration\enumeration_helper.h">
+      <Filter>detail\enumeration</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\enumeration\enumeration_wrapper.h">
+      <Filter>detail\enumeration</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\enumeration\enumeration_wrapper_base.h">
+      <Filter>detail\enumeration</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\enumeration\enum_data.h">
+      <Filter>detail\enumeration</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\impl\argument_impl.h">
+      <Filter>detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\impl\instance_impl.h">
+      <Filter>detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\impl\rttr_cast_impl.h">
+      <Filter>detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\impl\wrapper_mapper_impl.h">
+      <Filter>detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\metadata\metadata.h">
+      <Filter>detail\metadata</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\metadata\metadata_handler.h">
+      <Filter>detail\metadata</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\method\method_accessor.h">
+      <Filter>detail\method</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\method\method_invoker.h">
+      <Filter>detail\method</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\method\method_wrapper.h">
+      <Filter>detail\method</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\method\method_wrapper_base.h">
+      <Filter>detail\method</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\argument_wrapper.h">
+      <Filter>detail\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\argument_extractor.h">
+      <Filter>detail\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\compare_equal.h">
+      <Filter>detail\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\compare_equal_impl.h">
+      <Filter>detail\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\compare_less.h">
+      <Filter>detail\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\compare_less_impl.h">
+      <Filter>detail\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\data_address_container.h">
+      <Filter>detail\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\function_traits.h">
+      <Filter>detail\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\misc_type_traits.h">
+      <Filter>detail\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\std_type_traits.h">
+      <Filter>detail\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\misc\utility.h">
+      <Filter>detail\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\parameter_info\parameter_infos.h">
+      <Filter>detail\parameter_info</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\parameter_info\parameter_names.h">
+      <Filter>detail\parameter_info</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\parameter_info\parameter_info_wrapper_base.h">
+      <Filter>detail\parameter_info</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\parameter_info\parameter_info_wrapper.h">
+      <Filter>detail\parameter_info</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\policies\prop_policies.h">
+      <Filter>detail\policies</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\policies\meth_policies.h">
+      <Filter>detail\policies</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\policies\ctor_policies.h">
+      <Filter>detail\policies</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_accessor.h">
+      <Filter>detail\property</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper.h">
+      <Filter>detail\property</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper_base.h">
+      <Filter>detail\property</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper_func.h">
+      <Filter>detail\property</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper_member_func.h">
+      <Filter>detail\property</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper_member_object.h">
+      <Filter>detail\property</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\property\property_wrapper_object.h">
+      <Filter>detail\property</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\registration\bind_types.h">
+      <Filter>detail\registration</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\registration\bind_impl.h">
+      <Filter>detail\registration</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\registration\registration_impl.h">
+      <Filter>detail\registration</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\registration\registration_executer.h">
+      <Filter>detail\registration</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\accessor_type.h">
+      <Filter>detail\type</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\base_classes.h">
+      <Filter>detail\type</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\get_create_variant_func.h">
+      <Filter>detail\type</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\get_derived_info_func.h">
+      <Filter>detail\type</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_converter.h">
+      <Filter>detail\type</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_comparator.h">
+      <Filter>detail\type</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_database_p.h">
+      <Filter>detail\type</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_register.h">
+      <Filter>detail\type</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\type\type_impl.h">
+      <Filter>detail\type</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant\variant_compare_less.h">
+      <Filter>detail\variant</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant\variant_data.h">
+      <Filter>detail\variant</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant\variant_data_converter.h">
+      <Filter>detail\variant</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant\variant_data_policy.h">
+      <Filter>detail\variant</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant\variant_impl.h">
+      <Filter>detail\variant</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant_array_view\variant_array_view_impl.h">
+      <Filter>detail\variant_array_view</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant_array_view\variant_array_view_creator.h">
+      <Filter>detail\variant_array_view</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant_array_view\variant_array_view_creator_impl.h">
+      <Filter>detail\variant_array_view</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\detail\variant_array_view\variant_array_view_traits.h">
+      <Filter>detail\variant_array_view</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\registration" />
+    <None Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\rttr\src\rttr\type" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\build\Depencies\rttr\src\rttr\detail\base\version.rc">
+      <Filter>Generated Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{EE6D558E-52E5-3A1A-B26D-10EC320CEC0B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8A0BE760-2F4B-3B9E-8F78-C1AAF16F0E4F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{BB9711B2-F2FD-3A3E-9206-315725D66723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail">
+      <UniqueIdentifier>{4B4CA23F-A82C-36DD-ACB2-F0E2067C4A47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\array">
+      <UniqueIdentifier>{1FE2D1C8-7A7F-3F4D-9ED6-D3E82917BA24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\base">
+      <UniqueIdentifier>{E7B51B2E-2FEF-3489-AA66-2EEF3A442CEE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\constructor">
+      <UniqueIdentifier>{AB1EE79D-BEB2-3765-AFB1-1D6F47D66DCC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\conversion">
+      <UniqueIdentifier>{B70AC638-19D1-3E11-866D-24E09564480A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\default_arguments">
+      <UniqueIdentifier>{57EE5DBB-1649-391B-805C-781275693615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\destructor">
+      <UniqueIdentifier>{C4775F32-7292-342B-A60F-43E2074F9FBF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\enumeration">
+      <UniqueIdentifier>{476FA7FF-56AF-3F55-97A1-879D8022A29E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\impl">
+      <UniqueIdentifier>{F079AAD2-91DE-381A-842D-CB8B106ABDA6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\metadata">
+      <UniqueIdentifier>{558495BE-8199-320A-9F60-70AEAA3F531D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\method">
+      <UniqueIdentifier>{93DF2286-6256-3447-9F18-08E03D5454A3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\misc">
+      <UniqueIdentifier>{8DA8BBA1-F016-3ED5-B3BD-09F39BB158BE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\parameter_info">
+      <UniqueIdentifier>{922B15DF-1B0C-3B24-AEF5-48A6A08A099D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\policies">
+      <UniqueIdentifier>{ED5BC7B5-9DE9-3774-AB2F-62DA10122D50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\property">
+      <UniqueIdentifier>{6E29A966-B29E-3E77-A7C8-4FAE47D34399}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\registration">
+      <UniqueIdentifier>{62BDF002-7A0B-32C1-8D4C-EC70E71C1722}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\type">
+      <UniqueIdentifier>{EEAEEF50-B525-3940-BAE4-919112C8219F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\variant">
+      <UniqueIdentifier>{A4C57957-825C-3A88-A80B-9580F5BDFDE1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="detail\variant_array_view">
+      <UniqueIdentifier>{6F420B64-5764-3E56-860E-C8EFFAF7F763}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
