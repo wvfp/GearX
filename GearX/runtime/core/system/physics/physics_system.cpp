@@ -23,7 +23,7 @@ namespace GearX {
 		// 等待所有任务完成
 		RuntimeGlobalContext::threadPool->waitForCompletion();
 	}
-	static void UpdateTransforWithThreadPool(GearX::LevelObjectMap& objs) {
+	static void UpdateTransformWithThreadPool(GearX::LevelObjectMap& objs) {
 		// 提交所有对象的处理任务
 		std::vector<std::future<void>> futures;
 		futures.reserve(objs.size());
@@ -42,11 +42,14 @@ namespace GearX {
 							texture_com->getDstRect()[1] });
 						transform_com->setRotation(texture_com->angle);
 					}
-					if (rigidbody_com && rigidbody_com->isDirty()) {
+					if (rigidbody_com && rigidbody_com->isDirty() && !transform_com->isDirty()) {
 						transform_com->setPosition({ rigidbody_com->getPosition()[0] * PPM - texture_com->getDstRect()[2] / 2.0f,
 							rigidbody_com->getPosition()[1] * PPM - texture_com->getDstRect()[3] / 2.0f });
 						transform_com->setRotation(360 * rigidbody_com->getAngle() / (2 * M_PI));
 						rigidbody_com->setDirty(false);
+					}
+					else if (rigidbody_com && transform_com->isDirty() && rigidbody_com->isDirty()) {
+							
 					}
 					if (transform_com->isDirty()) {
 						if (texture_com) {
@@ -114,7 +117,7 @@ void GearX::PhysicsSystem::updateTransform() {
 	else {
 		auto& objs = RuntimeGlobalContext::world.getCurrentLevel()->getAllObject();
 		//线程池处理所有对象的更新
-		UpdateTransforWithThreadPool(objs);
+		UpdateTransformWithThreadPool(objs);
 	}
 }
 

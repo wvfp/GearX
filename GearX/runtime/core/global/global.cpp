@@ -9,7 +9,7 @@
 namespace GearX {
 	std::array<int, 2> DefaultWindowSize = { 2400, 1280 };
 	std::string DefaultWindowTitle = "GearXEngine";
-	std::string DefaultWindiwIcon = "./asset/default/icon.jpeg";
+	std::string DefaultWindiwIcon = "./asset/default/icon_round.png";
 	SDL_Surface* WindowIcon = nullptr;
 	SDL_context RuntimeGlobalContext::SDL_CONTEXT = {};
 	AssetManager RuntimeGlobalContext::assetManager = AssetManager();

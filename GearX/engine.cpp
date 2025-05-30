@@ -74,8 +74,8 @@ namespace GearX {
 			}
 			// delta_time 更新到lua
 			RuntimeGlobalContext::lua["DeltaTime"] = delta_time;
-			RuntimeGlobalContext::scriptSystem.tick(delta_time);
 			RuntimeGlobalContext::physicsSystem.tick(delta_time);
+			RuntimeGlobalContext::scriptSystem.tick(delta_time);
 		}
 		else {
 			RuntimeGlobalContext::scriptSystem.reset();

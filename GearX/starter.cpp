@@ -44,8 +44,8 @@ void GearX::Starter::logicTick(float deltaTime){
 	// delta_time ¸üÐÂµ½lua
 	RuntimeGlobalContext::lua["DeltaTime"] = deltaTime;
 	RuntimeGlobalContext::physicsSystem.tick(deltaTime);
-	RuntimeGlobalContext::physicsSystem.updateTransform();
 	RuntimeGlobalContext::scriptSystem.tick(deltaTime);
+	RuntimeGlobalContext::physicsSystem.updateTransform();
 
 }
 
