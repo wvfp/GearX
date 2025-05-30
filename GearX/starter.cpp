@@ -7,10 +7,12 @@ GearX::Starter::~Starter(){
 	RuntimeGlobalContext::shutdown();
 }
 
-void GearX::Starter::startGame(std::string woldUrl, Uint8 Framerate,std::array<int, 2> windowSize){
+void GearX::Starter::startGame(std::string worldUrl, Uint8 Framerate,std::array<int, 2> windowSize){
+	namespace fs = std::filesystem;
 	GearX::DefaultWindowSize = windowSize;
 	RuntimeGlobalContext::init();
-	RuntimeGlobalContext::world.loadWorld(woldUrl);
+	RuntimeGlobalContext::current_path = fs::absolute(worldUrl).parent_path();
+	RuntimeGlobalContext::world.loadWorld(worldUrl);
 	framerate = Framerate;
 	isGameRunnig = true;
 	timeStep = 1.0f / framerate;
