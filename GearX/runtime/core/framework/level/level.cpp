@@ -6,6 +6,7 @@ namespace GearX {
 		rttr::registration::class_<Level>("Level")
 		.property(u8"关卡路径",&Level::getLevelUrlRelative,&Level::setLevelUrlRelative)
 		.property(u8"关卡名称",&Level::getLevelName,&Level::setLevelName)
+		.property(u8"窗口大小",&Level::getWindowSize,&Level::setWindowSize)
 		.property(u8"渲染纹理大小",&Level::getTargetTextureSize,&Level::setTargetTextureSize)
 		.property(u8"渲染区域",&Level::getRenderRect,&Level::setRenderRect)
 		.property(u8"重力",&Level::getGravity,&Level::setGravity)
@@ -16,12 +17,20 @@ namespace GearX {
 	void Level::setLevelURL(const std::string url) {
 		if (!url.empty()) {
 			namespace fs = std::filesystem;
-			if (m_level_url.empty()) {
-				//移除之前的level文件
-				fs::remove(m_level_url);
+			if (!m_level_url.empty()) {
+				//之前的level文件
+				save();
+				fs::copy(m_level_url, m_level_url + ".bak");
+			}
+			if (fs::exists(url)) {
+				static const std::regex jsonRegex(R"(\.(json)$)");
+				if (std::regex_search(url, jsonRegex)) {
+					load(url, true);
+				} else{
+					load(url, false);
+				}
 			}
 			m_level_url = url;
-			save();
 		}
 	}
 	void GearX::Level::setLevelUrlRelative(const std::string url) {
@@ -127,6 +136,17 @@ namespace GearX {
 	bool Level::getAllowSleep() {
 		return world.GetAllowSleeping();
 	}
+	void GearX::Level::initWindowSize(){
+			
+		SDL_SetWindowSize(RuntimeGlobalContext::SDL_CONTEXT.window, window_size[0], window_size[1]);
+	}
+	std::array<float, 2> GearX::Level::getWindowSize(){
+		int w, h;
+		SDL_GetWindowSize(RuntimeGlobalContext::SDL_CONTEXT.window, &w, &h);
+		window_size[0] = w;
+		window_size[1] = h;
+		return window_size;
+	}
 	std::array<float, 2> GearX::Level::getTargetTextureSize() const
 	{
 		return tex_size;
@@ -146,6 +166,7 @@ namespace GearX {
 		SDL_SetTextureScaleMode(texture, SDL_ScaleMode::SDL_SCALEMODE_LINEAR);
 		std::swap(RuntimeGlobalContext::SDL_CONTEXT.texture, texture);
 		SDL_DestroyTexture(texture);
+
 	}
 
 	// 添加对象

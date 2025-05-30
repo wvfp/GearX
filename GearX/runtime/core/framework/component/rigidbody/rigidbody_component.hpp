@@ -31,6 +31,17 @@ namespace GearX {
 	class Component;
 	class GObject;
 	float clamp(float value, float min, float max);
+	//碰撞箱类型
+	enum class BoxType{
+		Rectangle,
+		circle
+	};
+	//碰撞箱设定模式
+	enum class BoxMode {
+		Auto,//自动设置碰撞箱大小，根据TextureComponent忽略透明像素
+		Inherit,//继承TextureComponent的大小
+		Custom //自定义大小
+	};
 	class RigidBodyComponent : public Component {
 	public:
 		RigidBodyComponent() {
@@ -221,7 +232,7 @@ namespace GearX {
 				make_nvp("fixture.isSensor", m_fixtureDef.isSensor),
 				make_nvp("fixture.restitutionThreshold", m_fixtureDef.restitutionThreshold)
 			);
-
+			
 			m_bodyDef.type = (b2BodyType)(type);
 		}
 	private:

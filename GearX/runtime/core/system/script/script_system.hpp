@@ -22,17 +22,18 @@ namespace GearX {
 		using ObjectWrapperMap = std::map<GObjectID, std::shared_ptr<GObjectWrapper>>;
 		ScriptSystem();
 		~ScriptSystem();
-		void initialize(sol::state& lua);
 		void tick(float deltaTime) override;
 		void reset() { isInitialize = false; }
 		void RegisterTables();
 		void RegisterObjectAsSelf(GObjectID id);
 		void RegisterCurrentLevelFuncToLua();
 		void RegisterEmptyLevelFuncToLua();
+		sol::environment& getLuaEnv() { return *env; }
 		sol::state& getLuaState() { return lua_state; }
 	private:
 		bool isInitialize = false;
 		sol::state& lua_state;
+		std::unique_ptr<sol::environment> env;
 		ObjectDataTable tables;
 		ObjectWrapperMap wrappers;
 		std::map<std::string, sol::table> LevelFuncTables;

@@ -16,6 +16,8 @@ namespace GearX {
 			while (SDL_PollEvent(&event)) {
 				ImGui_ImplSDL3_ProcessEvent(&event);
 				if (eventFilter(&event)) {
+					// 跟新事件(SDL_Event)到lua
+					GearX::Event::registerEventToLua(RuntimeGlobalContext::lua);
 					if (callbackMap.count(static_cast<SDL_EventType>(event.type)) > 0) {
 						for (auto& callback : callbackMap[static_cast<SDL_EventType>(event.type)])
 							callback(event);

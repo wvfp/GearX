@@ -28,9 +28,12 @@ void GearX::GObject_Select(const SDL_Event& event) {
 		float b_x = event.button.x * rect[2] / (float)w;
 		float b_y = event.button.y * rect[3] / (float)h;
 		b_x += rect[0], b_y += rect[1];
-		for (auto& obj : objs) {
-			if (obj.second) {
-				auto com = obj.second->getComponentByTypeName(
+		auto& layers = RuntimeGlobalContext::world.getCurrentLevel()->getLayers();
+		for (auto layer = layers.rbegin(); layer!= layers.rend(); ++layer) {
+			for (auto id_it = layer->rbegin(); id_it!= layer->rend(); ++id_it) {
+				auto id = *id_it;
+				auto obj = objs[id];
+				auto com = obj->getComponentByTypeName(
 					rttr::type::get<TransformComponent>().get_name());
 				std::shared_ptr<TransformComponent> transformCom;
 				std::shared_ptr<TextureComponent> textureCom;
@@ -38,7 +41,7 @@ void GearX::GObject_Select(const SDL_Event& event) {
 					transformCom = std::dynamic_pointer_cast<TransformComponent>(com);
 				else
 					continue;
-				com = obj.second->getComponentByTypeName(
+				com = obj->getComponentByTypeName(
 					rttr::type::get<TextureComponent>().get_name());
 				if (com)
 					textureCom = std::dynamic_pointer_cast<TextureComponent>(com);
@@ -49,30 +52,35 @@ void GearX::GObject_Select(const SDL_Event& event) {
 				// 判断按下位置是否与目标矩形相交
 				if (isPointInRectRotate({ b_x,b_y },
 					rect, transformCom->getOrigin(), transformCom->getRotation())) {
-					if (objs.count(SelectedObj) != 0) {
+					if (SelectedObj!= obj->getID() && objs.count(SelectedObj) != 0) {
 						objs[SelectedObj]->setDrawAxis(false);
+						SelectedObj = 0;
+						SDL_Event u_event;
+						u_event.type = EVENT_GOBJECT_ONUNSELECTED;
+						u_event.user.type = EVENT_GOBJECT_ONUNSELECTED;
+						u_event.user.code = SelectedObj;
+						SDL_PushEvent(&u_event);
 					}
-					SelectedObj = obj.first;
-					obj.second->setDrawAxis(true);
+					SelectedObj = obj->getID();
+					obj->setDrawAxis(true);
 					SDL_Event u_event;
 					u_event.type = EVENT_GOBJECT_ONSELECTED;
 					u_event.user.type = EVENT_GOBJECT_ONSELECTED;
 					u_event.user.code = SelectedObj;
 					SDL_PushEvent(&u_event);
+					return;
 				}
-				else {
-					if (obj.second && SelectedObj == obj.first) {
-						objs[SelectedObj]->setDrawAxis(false);
-					}
-					else
-						continue;
-					SDL_Event u_event;
-					u_event.type = EVENT_GOBJECT_ONUNSELECTED;
-					u_event.user.type = EVENT_GOBJECT_ONUNSELECTED;
-					u_event.user.code = SelectedObj;
-					SelectedObj = 0;
-				}
+			
 			}
+		}
+		if (SelectedObj) {
+			objs[SelectedObj]->setDrawAxis(false);
+			SelectedObj = 0;
+			SDL_Event u_event;
+			u_event.type = EVENT_GOBJECT_ONUNSELECTED;
+			u_event.user.type = EVENT_GOBJECT_ONUNSELECTED;
+			u_event.user.code = SelectedObj;
+			SDL_PushEvent(&u_event);
 		}
 	}
 }
@@ -292,9 +300,12 @@ void GearX::GObject_MouseOver(const SDL_Event& event){
 		float b_x = event.button.x * rect[2] / (float)w;
 		float b_y = event.button.y * rect[3] / (float)h;
 		b_x += rect[0], b_y += rect[1];
-		for (auto& obj : objs) {
-			if (obj.second) {
-				auto com = obj.second->getComponentByTypeName(
+		auto& layers = RuntimeGlobalContext::world.getCurrentLevel()->getLayers();
+		for (auto layer = layers.rbegin(); layer != layers.rend(); ++layer) {
+			for (auto id_it = layer->rbegin(); id_it != layer->rend(); ++id_it) {
+				auto id = *id_it;
+				auto obj = objs[id];
+				auto com = obj->getComponentByTypeName(
 					rttr::type::get<TransformComponent>().get_name());
 				std::shared_ptr<TransformComponent> transformCom;
 				std::shared_ptr<TextureComponent> textureCom;
@@ -302,7 +313,7 @@ void GearX::GObject_MouseOver(const SDL_Event& event){
 					transformCom = std::dynamic_pointer_cast<TransformComponent>(com);
 				else
 					continue;
-				com = obj.second->getComponentByTypeName(
+				com = obj->getComponentByTypeName(
 					rttr::type::get<TextureComponent>().get_name());
 				if (com)
 					textureCom = std::dynamic_pointer_cast<TextureComponent>(com);
@@ -316,7 +327,7 @@ void GearX::GObject_MouseOver(const SDL_Event& event){
 					SDL_Event u_event;
 					u_event.type = EVENT_GOBJECT_ONMOUSEOVER;
 					u_event.user.type = EVENT_GOBJECT_ONMOUSEOVER;
-					u_event.user.code = obj.first;
+					u_event.user.code = obj->getID();
 					SDL_PushEvent(&u_event);
 				}
 			}

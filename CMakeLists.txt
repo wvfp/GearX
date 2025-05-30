@@ -2,10 +2,13 @@ cmake_minimum_required(VERSION 3.22)
 
 project(GearX)
 
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(GEARX_BIN_DIR ${CMAKE_BINARY_DIR})
-
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(CMAKE_CXX_FLAGS "/Ox")
+endif()
 set(DEPENCIES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Depencies)
 set(SDL3_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Depencies/SDL3/cmake")
 include(Depencies/SDL3/cmake/SDL3Config.cmake)
@@ -57,3 +60,5 @@ file(COPY Depencies/SDL3/lib/x64/ DESTINATION ${GEARX_BIN_DIR}
     PATTERN "*.pdb" EXCLUDE
     PATTERN "*.lib" EXCLUDE
   )
+
+ 

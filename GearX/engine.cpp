@@ -3,7 +3,7 @@
 #include "runtime/core/system/render/render_system.hpp"
 #include "runtime/core/system/physics/physics_system.hpp"
 #include "runtime/core/system/script/script_system.hpp"
-#define DEFAULT_FPS 60
+#define DEFAULT_FPS 30
 namespace GearX {
 	class RuntimeGlobalContext;
 	void GearXEngine::startEngine()
@@ -50,9 +50,10 @@ namespace GearX {
 		logicalTick(m_delta_time);
 		rendererTick(m_delta_time);
 	}
-
 	void GearXEngine::logicalTick(float delta_time) {
 		static bool cached = false;
+		static std::thread cached_thread = std::thread();
+		static std::shared_ptr<Level> cached_level;
 		if (RuntimeGlobalContext::isGameMode) {
 			if (cached == false) {
 				cached = true;
@@ -60,22 +61,30 @@ namespace GearX {
 				std::thread([&]()->void {
 					world.getCurrentLevel()->save();
 					}).join();
+				cached_thread = std::move(std::thread([&]()->void {
+					cached_level = std::make_shared<Level>();
+					static const std::regex jsonRegex(R"(\.(json)$)");
+					if (std::regex_search(world.getCurrentLevelUrl(), jsonRegex)) {
+						cached_level->load(world.getCurrentLevelUrl(), true);
+					}
+					else {
+						cached_level->load(world.getCurrentLevelUrl(), false);
+					}
+					}));
 			}
 			// delta_time 更新到lua
 			RuntimeGlobalContext::lua["DeltaTime"] = delta_time;
-			// 跟新事件(SDL_Event)到lua
-			GearX::Event::registerEventToLua(RuntimeGlobalContext::lua);
 			RuntimeGlobalContext::scriptSystem.tick(delta_time);
 			RuntimeGlobalContext::physicsSystem.tick(delta_time);
 		}
 		else {
-			RuntimeGlobalContext::physicsSystem.destroy();
 			RuntimeGlobalContext::scriptSystem.reset();
+			RuntimeGlobalContext::physicsSystem.destroy();
 			if (cached) {
 				cached = false;
-				std::thread([&]()->void {
-				RuntimeGlobalContext::world.reloadCurrentLevel();
-				}).detach();
+				// 等待缓存线程结束
+				cached_thread.join();
+				RuntimeGlobalContext::world.setCurrentLevel(cached_level);
 			}
 		}
 		RuntimeGlobalContext::physicsSystem.updateTransform();

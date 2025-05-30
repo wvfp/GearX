@@ -1,6 +1,8 @@
 #include "rigidbody_component.hpp"
+#include "../../../utils/points_of_texture.hpp"
 #include "../texture/texture_component.hpp"
 #include "../transform/transform_component.hpp"
+
 namespace GearX {
 	RTTR_REGISTRATION
 	{
@@ -48,7 +50,6 @@ namespace GearX {
 		}
 		return value;
 	}
-
 	void RigidBodyComponent::init() {
 		if (!m_body) {
 			auto obj = this->getParentObject();
@@ -71,7 +72,13 @@ namespace GearX {
 				}
 				else if (texture_com->getShape() == TextureComponent::Shape::Rect) {
 					b2PolygonShape polygonShape;
-					polygonShape.SetAsBox((texture_com->getDstRect()[2] / PPM) / 2.0f, (texture_com->getDstRect()[3] / PPM) / 2.0f);
+					auto asset = texture_com->getTextureAsset();
+					SDL_Texture* texture = static_cast<SDL_Texture*>(asset.data);
+					auto points = getPointsFromTexture(texture);
+					//if(points.empty())
+						polygonShape.SetAsBox((texture_com->getDstRect()[2] / PPM) / 2.0f, (texture_com->getDstRect()[3] / PPM) / 2.0f);
+					//else
+						//polygonShape.Set(points.data(), points.size());
 					m_fixtureDef.shape = &polygonShape;
 					m_fixture = m_body->CreateFixture(&m_fixtureDef);
 				}

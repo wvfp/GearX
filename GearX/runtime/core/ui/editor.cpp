@@ -447,6 +447,9 @@ namespace GearX {
 		}
 	}
 	static void showScriptComponent(std::shared_ptr<ScriptComponent> com) {
+		if (ImGui::Button(u8"刷新脚本")) {
+			com->reloadScripts();
+		}
 		auto obj = com->getParentObject();
 		static int selectBlock = 0;
 		static std::vector<std::string> block = {
@@ -696,12 +699,12 @@ namespace GearX {
 			if (!fs::exists(fs::path(url).parent_path().generic_string() + "/Levels")) {
 				fs::create_directory(fs::path(url).parent_path().generic_string() + "/Levels");
 			}
-			std::thread([&]() {
+			//std::thread([&]() {
 				World tmp = World();
 				tmp.loadWorld(url);
 				world.clear();
 				world = tmp;
-				}).join();
+				//}).join();
 			InitFileBrowser(filebrowserstate);
 			isBroswerInit = true;
 		}

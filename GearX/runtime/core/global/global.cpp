@@ -29,8 +29,8 @@ namespace GearX {
 		// Initialize the global context
 		if (!isInitialize) {
 			// Initialize SDL All
-			SDL_InitFlags initFlags = SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS
-				| SDL_INIT_GAMEPAD | SDL_INIT_HAPTIC | SDL_INIT_SENSOR | SDL_INIT_JOYSTICK;
+			SDL_InitFlags initFlags = SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS|
+			 SDL_INIT_HAPTIC | SDL_INIT_SENSOR ;
 			if (SDL_Init(initFlags) == false) {
 				SDL_LogError(SDL_LOG_CATEGORY_SYSTEM, "Failed to initialize SDL: %s", SDL_GetError());
 				exit(1);
@@ -80,7 +80,7 @@ namespace GearX {
 			//ImGui::DockSpaceOverViewport();
 			SetImGuiWhiteStyle();
 			//Initialize Window Background Color
-			SDL_SetRenderDrawColor(SDL_CONTEXT.renderer, 0x78, 0x44, 0x45, 255);
+			SDL_SetRenderDrawColor(SDL_CONTEXT.renderer, 0x55, 0x55, 0x55, 0x55);
 			SDL_RenderClear(SDL_CONTEXT.renderer);
 			SDL_RenderPresent(SDL_CONTEXT.renderer);
 			isInitialize = true;

@@ -69,13 +69,13 @@ GearX::Asset GearX::AssetManager::loadAsset(const std::string& file) {
 GearX::Asset GearX::AssetManager::loadAssetTexture(const std::string& file) {
 	if (DefaultTexture == nullptr) {
 		DefaultTexture = loadTexture("./asset/default/DefaultTexture.png");
+		SDL_Log("Loaded : DefaultTexture");
 	}
 	Asset asset{ AssetType::Texture, file,(void*)DefaultTexture };
 	if (m_AssetMap.count(file) == 0 || m_AssetMap[file].data) {
 		asset = { AssetType::Texture, file,(void*)loadTexture(file) };
 		if (asset.data == nullptr) {
 			asset.data = (void*)DefaultTexture;
-			SDL_Log("Loaded : DefaultTexture");
 		}
 	}
 	m_AssetMap[file] = asset;

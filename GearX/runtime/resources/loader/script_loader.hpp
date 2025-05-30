@@ -3,16 +3,19 @@
 namespace GearX {
 	class ScriptHolder {
 	private:
-		sol::load_result _script;
+		std::string _code;
+		bool isValid{ false };
 		sol::state& lua;
 	public:
 		ScriptHolder(sol::state& _lua, const std::string& path) :lua(_lua) {
-			_script = lua.load_file(path);
-			sol::load_status s= _script.status();
+			isValid = false;
+			_code = loadFile(path);
+			sol::load_result r= lua.load(_code);
+			sol::load_status s= r.status();
 			switch (s)
 			{
 			case sol::load_status::ok:
-				std::cout << "Load OK : " << path<<std::endl;
+				isValid = true;
 				break;
 			case sol::load_status::syntax:
 				std::cout << "Syntax Error : " << path<<std::endl;
@@ -31,22 +34,21 @@ namespace GearX {
 			}
 		}
 		~ScriptHolder() {
-			_script.~load_result();
 		}
-		template<typename... Args>
-		void execute(Args&&... args) {
+		void execute(sol::environment& env) {
 	    // 包装，调用
-			if (_script.valid()) {
-				_script.call(std::forward<Args>(args)...);
+			if (isValid) {
+				lua.script(_code, env);
 			}
 		}
 		void reload(const std::string& path) {
-			_script = lua.load_file(path);
-			sol::load_status s = _script.status();
+			isValid = false;
+			_code = loadFile(path);
+			sol::load_status s = lua.load_buffer(_code.data(), _code.size()).status();
 			switch (s)
 			{
 			case sol::load_status::ok:
-				std::cout << "Load OK : " << path << std::endl;
+				isValid = true;
 				break;
 			case sol::load_status::syntax:
 				std::cout << "Syntax Error : " << path << std::endl;
@@ -63,6 +65,11 @@ namespace GearX {
 			default:
 				break;
 			}
+		}
+		std::string loadFile(const std::string& path) {
+			std::ifstream file(path);
+			std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+			return content;
 		}
 		sol::state& getLuaState() { return lua; };
 		bool isRegister{ false };

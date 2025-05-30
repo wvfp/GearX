@@ -41,8 +41,6 @@ void GearX::Starter::logicTick(float deltaTime){
 	GearX::Event::tick();
 	// delta_time 更新到lua
 	RuntimeGlobalContext::lua["DeltaTime"] = deltaTime;
-	// 跟新事件(SDL_Event)到lua
-	GearX::Event::registerEventToLua(RuntimeGlobalContext::lua);
 	RuntimeGlobalContext::physicsSystem.tick(deltaTime);
 	RuntimeGlobalContext::physicsSystem.updateTransform();
 	RuntimeGlobalContext::scriptSystem.tick(deltaTime);

@@ -10,7 +10,6 @@ set_source_files_properties(
     ${CMAKE_CURRENT_SOURCE_DIR}/core/utils/object_wrapper.cpp
     PROPERTIES COMPILE_FLAGS "/bigobj"
 )
-
 set(
 	IMGUI_SOURCE
 	"${DEPENCIES_DIR}/imgui/imgui.cpp"
@@ -29,6 +28,10 @@ add_library(
 	runtime STATIC
 	${GearX_SOURCES}
 )
+target_precompile_headers(runtime PUBLIC 
+	"${CMAKE_CURRENT_SOURCE_DIR}/depencies.hpp"
+)
+
 target_include_directories(
 	runtime PUBLIC 
 	"./"

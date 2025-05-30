@@ -119,7 +119,6 @@ rttr::registration::enumeration<TextureComponent::BlendMode>(u8"BlendMode")
 		if (m_texture_asset.data) {
 			SDL_GetTextureSize(static_cast<SDL_Texture*>(m_texture_asset.data),
 				&texture_size.first, &texture_size.second);
-			SDL_Log("Load Ok: %s,%f x %f", m_texture_asset.asset_url.c_str(), texture_size.first, texture_size.second);
 		}
 		else {
 			texture_size.first = 0;

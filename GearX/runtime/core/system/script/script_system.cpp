@@ -13,6 +13,7 @@
 #include "../../utils/object_wrapper.hpp"
 #include "../../event/event.hpp"
 namespace GearX {
+	static sol::table GlobalContextTable;
 	/// Called when two fixtures begin to touch.
 	void  ContactListener::BeginContact(b2Contact* contact) {
 		auto& script_system = GearX::RuntimeGlobalContext::scriptSystem;
@@ -29,7 +30,7 @@ namespace GearX {
 				if (script.data) {
 					script_system.RegisterObjectAsSelf(obj_A->getID());
 					
-					static_cast<ScriptHolder*>(script.data)->execute();
+					static_cast<ScriptHolder*>(script.data)->execute(script_system.getLuaEnv());
 				}
 			}
 		}
@@ -40,7 +41,7 @@ namespace GearX {
 			for (auto& script : scripts) {
 				if (script.data) {
 					script_system.RegisterObjectAsSelf(obj_B->getID());
-					static_cast<ScriptHolder*>(script.data)->execute();
+					static_cast<ScriptHolder*>(script.data)->execute(script_system.getLuaEnv());
 				}
 			}
 		}
@@ -61,7 +62,7 @@ namespace GearX {
 			for (auto& script : scripts) {
 				if (script.data) {
 					script_system.RegisterObjectAsSelf(obj_A->getID());
-					static_cast<ScriptHolder*>(script.data)->execute();
+					static_cast<ScriptHolder*>(script.data)->execute(script_system.getLuaEnv());
 				}
 			}
 		}
@@ -72,7 +73,7 @@ namespace GearX {
 			for (auto& script : scripts) {
 				if (script.data) {
 					script_system.RegisterObjectAsSelf(obj_B->getID());
-					static_cast<ScriptHolder*>(script.data)->execute();
+					static_cast<ScriptHolder*>(script.data)->execute(script_system.getLuaEnv());
 				}
 			}
 		}
@@ -127,6 +128,12 @@ GearX::ScriptSystem::ScriptSystem() :lua_state(RuntimeGlobalContext::lua) {
 		sol::lib::string, sol::lib::math,
 		sol::lib::table, sol::lib::coroutine,
 		sol::lib::debug, sol::lib::bit32);
+	GlobalContextTable = lua_state.create_table();
+	env = std::make_unique<sol::environment>();
+	lua_state["GlobalContext"] = GlobalContextTable;
+	lua_state["getCurrentDir"] = [&]() -> std::string {
+		return RuntimeGlobalContext::current_path.generic_string();
+	};
 	lua_state["KeyState"] = sol::nil;
 	lua_state["KeyStateSize"] = sol::nil;
 	//注册获取对象的函数
@@ -144,19 +151,17 @@ GearX::ScriptSystem::ScriptSystem() :lua_state(RuntimeGlobalContext::lua) {
 }
 
 GearX::ScriptSystem::~ScriptSystem() {
-	//因为（scriptAsser里）load_result这个类型与ScriptSystem中的lua有关联，
-	//必须先析构load_result才可以析构lua,所以在这个析构函数中提前析构，防止出错
 	auto& assets = GearX::RuntimeGlobalContext::assetManager.getAllAsset();
 	for (auto& script : assets) {
 		if (script.second.type == AssetType::Script) {
 			GearX::RuntimeGlobalContext::assetManager.releaseAsset(script.first);
 		}
-	}
+	}	
 	tables.clear();
 	TableOfObjects.clear();
 	wrappers.clear();
+	env.reset();
 }
-
 
 void GearX::ScriptSystem::tick(float deltaTime) {
 
@@ -165,20 +170,22 @@ void GearX::ScriptSystem::tick(float deltaTime) {
 		if (!isInitialize) {
 			level->getWorld().SetContactListener(&listener);
 			RegisterTables();
+			// 创建一个新的环境
+			*env = sol::environment(lua_state, sol::create,lua_state.globals());
 			isInitialize = true;
 		}
 		auto& objs = level->getAllObject();
 		for (auto& obj : objs) {
 			auto& com = obj.second->getComponentByTypeName(rttr::type::get<ScriptComponent>().get_name());
 			if (com) {
+				RegisterObjectAsSelf(obj.first);
 				//遍历脚本
 				auto& script_com = std::dynamic_pointer_cast<ScriptComponent>(com);
 				auto& scripts = script_com->getScript();
 				for (auto& script : scripts) {
 					if (script.data) {
-						// 执行脚本
-						RegisterObjectAsSelf(obj.first);
-						static_cast<ScriptHolder*>(script.data)->execute();
+						// 执行脚本, 传入环境
+						static_cast<ScriptHolder*>(script.data)->execute(*env);
 					}
 				}
 			}
@@ -260,7 +267,7 @@ void GearX::ScriptSystem::RegisterTables(){
 		});
 }
 
-void GearX::ScriptSystem::RegisterObjectAsSelf(GObjectID id){
+void GearX::ScriptSystem::RegisterObjectAsSelf(GObjectID id) {
 	// 注册self为当前对象的表,便于脚本中直接使用self来访问对象属性和方法
 	lua_state["Self"] = tables[id];
 }

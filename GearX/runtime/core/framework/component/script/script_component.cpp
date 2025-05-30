@@ -2,6 +2,7 @@
 #include "../rigidbody/rigidbody_component.hpp"
 #include "../texture/texture_component.hpp"
 #include "../transform/transform_component.hpp"
+#include "../../../../resources/loader/script_loader.hpp"
 
 namespace GearX {
     RTTR_REGISTRATION{
@@ -89,6 +90,24 @@ void GearX::ScriptComponent::addScriptToEndContact(std::string& url){
         }
     }
     script_end_contact.push_back(RuntimeGlobalContext::assetManager.loadAssetScript(url));
+}
+
+void GearX::ScriptComponent::reloadScripts(){
+    for (auto i : script_assets) {
+        if (!i.asset_url.empty() || i.data) {
+            static_cast<ScriptHolder*>(i.data)->reload(i.asset_url);
+        }
+    }
+    for (auto& i : script_begin_contact) {
+        if (!i.asset_url.empty() || i.data) {
+            static_cast<ScriptHolder*>(i.data)->reload(i.asset_url);
+        }
+    }
+    for (auto& i : script_end_contact) {
+        if (!i.asset_url.empty() || i.data) {
+            static_cast<ScriptHolder*>(i.data)->reload(i.asset_url);
+        }
+    }
 }
 
 void GearX::ScriptComponent::loadScript(){

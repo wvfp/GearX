@@ -36,6 +36,9 @@ namespace GearX {
 			ar(
 				cereal::make_nvp("Object_Component", m_components)
 			);
+			ar(
+				cereal::make_nvp("Object_ID", m_id)
+			);
 			if (typeid(Archive) == typeid(cereal::JSONInputArchive) ||
 				typeid(Archive) == typeid(cereal::PortableBinaryInputArchive)) {
 				for (auto& com : m_components) {

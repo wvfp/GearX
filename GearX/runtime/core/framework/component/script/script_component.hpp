@@ -24,7 +24,7 @@ namespace GearX {
 		void addScriptToBeginContact(std::string& url);
 		void removeScriptFromEndContect(std::string& url);
 		void addScriptToEndContact(std::string& url);
-
+		void reloadScripts();
 		void clear();
 		void loadScript();
 		std::vector<Asset>& getScript() {

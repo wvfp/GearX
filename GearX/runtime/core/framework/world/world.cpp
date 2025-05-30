@@ -47,13 +47,8 @@ namespace GearX {
 
 	// 设置当前关卡
 	void World::setCurrentLevel(std::shared_ptr<Level> level) {
-		if (levels.find(level->getLevelURL()) != levels.end()) {
-			current_level_url = level->getLevelURL();
-		}
-		else {
-			levels[level->getLevelURL()] = level;
-			current_level_url = level->getLevelURL();
-		}
+		levels[level->getLevelURL()] = level;
+		current_level_url = level->getLevelURL();
 	}
 	void GearX::World::setCurrentLevel(std::string url) {
 		if (levels.find(url) != levels.end()) {
