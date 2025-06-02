@@ -8,7 +8,7 @@ GearX 是一个开源的 2D 游戏引擎。
 ---
 ## 前言
 ###  起源
-高考后的暑假，我在B站上看了[GAMES 104](https://games104.boomingtech.com/sc/)课程，从那时起我就心里有了一个Idea，就是自己写一个游戏引擎，但那时自己的编程能力还不熟练，所以一直没开始。然后我开始学习相关的技术，提升自己的能力。而在一个月前，我开始了引擎的编写。目前引擎已经基本完成（应该），并且已经可以运行，因为时间原因(才弄了一个月)，这个游戏引擎的功能还很简单，以后有时间引擎会进行升级。
+高考后的暑假，我在B站上看了[GAMES 104](https://games104.boomingtech.com/sc/)课程，从那时起我就心里有了一个Idea，就是自己写一个游戏引擎，但那时自己的编程能力还不熟练，所以一直没开始。然后我开始学习相关的技术，提升自己的能力。而在一个月前，我开始了引擎的编写。目前引擎已经基本完成（应该），并且已经可以运行，因为时间原因(才弄了一个月)，这个游戏引擎的功能还很简单，以后有时间引擎会进行升级。同时也在这里求点个Star，拜托了，这对我很重要。
 ### GearX 介绍
 
 GearX 是一个2D游戏引擎，使用C++编写，Cmake构建，基于SDL3 开发。
@@ -166,15 +166,7 @@ cmake --build .
 ---
 
 如需详细文档、API 说明和教程，请参考 `GearX/` 目录和各模块源码注释(目前注释还不完善，感觉也没多少人会看，如果你想看的话，建议把代码喂给AI,让它解释一下)。
-```
-
-auto texture = RuntimeGlobalContext::assetManager.loadAssetTexture("asset/icon.png");
-
-// 添加脚本组件
-auto scriptCom = std::make_shared<ScriptComponent>();
-scriptCom->addScript("scripts/player.lua");
-object->addComponent(scriptCom);
-```
+或者QQ联系我，点个Star，要是感兴趣的人多的话我录个视频讲解一下我的代码，记得点个Star再走！
 
 ---
 
