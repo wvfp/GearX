@@ -179,4 +179,4 @@ cmake --build .
 如需详细文档、API 说明和教程，请参考 `GearX/` 目录和各模块源码注释,
 同时Lua脚本API请查看 `GearX/asset/GeraX.d.lua`
 
-```
+---
