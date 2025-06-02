@@ -1,0 +1,9 @@
+{
+    "value0": {
+        "world_url": "example/world.json",
+        "current_level_url": "example/Levels/Level.json",
+        "level_urls": [
+            "example/Levels/Level.json"
+        ]
+    }
+}

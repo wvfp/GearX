@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\test\GearX\CMakeFiles\Starter.dir\cmake_pch.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\starter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\starter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\test\GearX\CMakeFiles\Starter.dir\Debug\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\test\GearX\CMakeFiles\Starter.dir\Release\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\test\GearX\CMakeFiles\Starter.dir\MinSizeRel\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Android_Project\CppAndroidApplication\GearX_dev\test\GearX\CMakeFiles\Starter.dir\RelWithDebInfo\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="G:\Android_Project\CppAndroidApplication\GearX_dev\GearX\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{6FDE749A-52F4-3ED3-9339-F83775585F07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Precompile Header File">
+      <UniqueIdentifier>{7C96C998-84C7-3BF6-B0B2-6E32FBA357AE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{FE207A57-B990-392B-A72A-49ED6C309927}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

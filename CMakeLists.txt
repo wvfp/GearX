@@ -54,7 +54,6 @@ target_link_directories(
     Depencies/SDL3/lib/x64
 )
 
-# 复制运行时库到输出目录
 file(COPY Depencies/SDL3/lib/x64/ DESTINATION ${GEARX_BIN_DIR} 
     PATTERN "*.dll"
     PATTERN "*.pdb" EXCLUDE

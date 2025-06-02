@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lapi.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lauxlib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lbaselib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lcode.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lcorolib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lctype.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\ldblib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\ldebug.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\ldo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\ldump.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lfunc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lgc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\linit.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\liolib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\llex.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lmathlib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lmem.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\loadlib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lobject.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lopcodes.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\loslib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lparser.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lstate.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lstring.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lstrlib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\ltable.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\ltablib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\ltm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lundump.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lutf8lib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lvm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\src\lzio.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="G:\Android_Project\CppAndroidApplication\GearX_dev\Depencies\lua\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{FE207A57-B990-392B-A72A-49ED6C309927}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

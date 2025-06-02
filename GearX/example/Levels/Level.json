@@ -1,0 +1,2584 @@
+{
+    "value0": {
+        "level_url": "example/Levels/Level.json",
+        "level_name": "Example_Level",
+        "window_size": {
+            "value0": 2043.0,
+            "value1": 1071.0
+        },
+        "tex_size": {
+            "value0": 640.0,
+            "value1": 480.0
+        },
+        "render_rect_size": {
+            "value0": 0.0,
+            "value1": 0.0,
+            "value2": 640.0,
+            "value3": 480.0
+        },
+        "objects": [
+            {
+                "key": 1,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483649,
+                        "data": {
+                            "Object_Name": "Background",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 2147483649,
+                                    "polymorphic_name": "GearX::TransformComponent",
+                                    "ptr_wrapper": {
+                                        "id": 2147483650,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": -0.5218100547790527,
+                                            "y": 0.0,
+                                            "rotation": 0.0,
+                                            "scaleX": 1.0,
+                                            "scaleY": 1.0,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2147483650,
+                                    "polymorphic_name": "GearX::TextureComponent",
+                                    "ptr_wrapper": {
+                                        "id": 2147483651,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/bg.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 1.0,
+                                            "green_mod": 1.0,
+                                            "blue_mod": 1.0,
+                                            "scale_mod": 0,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 2624.0,
+                                            "src_rect.h": 1472.0,
+                                            "dst_rect.x": -0.5218100547790527,
+                                            "dst_rect.y": 0.0,
+                                            "dst_rect.w": 640.0,
+                                            "dst_rect.h": 480.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2147483651,
+                                    "polymorphic_name": "GearX::ScriptComponent",
+                                    "ptr_wrapper": {
+                                        "id": 2147483652,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/game_init.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 1
+                        }
+                    }
+                }
+            },
+            {
+                "key": 2,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483653,
+                        "data": {
+                            "Object_Name": "ground",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483654,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": -51.49993896484375,
+                                            "y": 427.96221923828127,
+                                            "rotation": 0.0,
+                                            "scaleX": 1.1499998569488526,
+                                            "scaleY": 1.1499998569488526,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483655,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "./asset/default/DefaultTexture.png"
+                                            },
+                                            "alpha_mod": 0.0,
+                                            "red_mod": 1.0,
+                                            "green_mod": 1.0,
+                                            "blue_mod": 1.0,
+                                            "scale_mod": 1,
+                                            "blend_mode": 1,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": -51.49993896484375,
+                                            "dst_rect.y": 427.96221923828127,
+                                            "dst_rect.w": 640.0,
+                                            "dst_rect.h": 10.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2147483652,
+                                    "polymorphic_name": "GearX::RigidBodyComponent",
+                                    "ptr_wrapper": {
+                                        "id": 2147483656,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.0,
+                                            "bodyDef.angularDamping": 0.0,
+                                            "bodyDef.angularVelocity": 0.0,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": true,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 0.0,
+                                            "bodyDef.position.x": 10.550000190734864,
+                                            "bodyDef.position.y": 14.457074165344239,
+                                            "bodyDef.type": 0,
+                                            "fixture.density": 0.0,
+                                            "fixture.friction": 1.0,
+                                            "fixture.restitution": 0.10000000149011612,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483657,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/register_ground.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 2
+                        }
+                    }
+                }
+            },
+            {
+                "key": 3,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483658,
+                        "data": {
+                            "Object_Name": "Player",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483659,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 60.46919250488281,
+                                            "y": 98.55288696289063,
+                                            "rotation": 0.0,
+                                            "scaleX": 0.08000058680772782,
+                                            "scaleY": 0.08000058680772782,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483660,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/sprite/Adventurer/Individual Sprites/adventurer-idle-01.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 1.0,
+                                            "green_mod": 1.0,
+                                            "blue_mod": 1.0,
+                                            "scale_mod": 0,
+                                            "blend_mode": 1,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 13.0,
+                                            "src_rect.y": 6.0,
+                                            "src_rect.w": 28.0,
+                                            "src_rect.h": 37.0,
+                                            "dst_rect.x": 60.46919250488281,
+                                            "dst_rect.y": 98.55288696289063,
+                                            "dst_rect.w": 199.99853515625,
+                                            "dst_rect.h": 387.4971618652344
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483661,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.0,
+                                            "bodyDef.angularDamping": 0.0,
+                                            "bodyDef.angularVelocity": 0.0,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": true,
+                                            "bodyDef.gravityScale": 1.2000000476837159,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 0.0,
+                                            "bodyDef.position.x": 2.282306432723999,
+                                            "bodyDef.position.y": 3.801762819290161,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 1.0,
+                                            "fixture.friction": 0.25999999046325686,
+                                            "fixture.restitution": 0.10000000149011612,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483662,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/controler.lua"
+                                                }
+                                            ],
+                                            "value1": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/contact.lua"
+                                                }
+                                            ],
+                                            "value2": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/endcontact.lua"
+                                                }
+                                            ],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/register_input_callbacks.lua"
+                                                },
+                                                {
+                                                    "AssetUrl": "example/Scripts/register_player.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 3
+                        }
+                    }
+                }
+            },
+            {
+                "key": 4,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483663,
+                        "data": {
+                            "Object_Name": "wall_right",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483664,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 633.8748168945313,
+                                            "y": 9.052337646484375,
+                                            "rotation": 0.0,
+                                            "scaleX": 1.0,
+                                            "scaleY": 1.0,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483665,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "./asset/default/DefaultTexture.png"
+                                            },
+                                            "alpha_mod": 0.0,
+                                            "red_mod": 0.7635009288787842,
+                                            "green_mod": 0.6355398893356323,
+                                            "blue_mod": 0.6355398893356323,
+                                            "scale_mod": 1,
+                                            "blend_mode": 1,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 633.8748168945313,
+                                            "dst_rect.y": 9.052337646484375,
+                                            "dst_rect.w": 10.0,
+                                            "dst_rect.h": 480.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483666,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.0,
+                                            "bodyDef.angularDamping": 0.0,
+                                            "bodyDef.angularVelocity": 0.0,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": true,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 0.0,
+                                            "bodyDef.position.x": 21.295827865600587,
+                                            "bodyDef.position.y": 8.30174446105957,
+                                            "bodyDef.type": 0,
+                                            "fixture.density": 0.0,
+                                            "fixture.friction": 0.20000000298023225,
+                                            "fixture.restitution": 0.0,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 4
+                        }
+                    }
+                }
+            },
+            {
+                "key": 5,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483667,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483668,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 487.7083740234375,
+                                            "y": 140.71844482421876,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483669,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 1.0,
+                                            "green_mod": 1.0,
+                                            "blue_mod": 1.0,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 1,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 487.7083740234375,
+                                            "dst_rect.y": 140.71844482421876,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483670,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.20000000298023225,
+                                            "bodyDef.angularVelocity": 1.8248441219329835,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 16.66720199584961,
+                                            "bodyDef.position.y": 5.100870609283447,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.27000001072883608,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 5
+                        }
+                    }
+                }
+            },
+            {
+                "key": 6,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483671,
+                        "data": {
+                            "Object_Name": "wall_left",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483672,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": -2.791670083999634,
+                                            "y": 1.767333984375,
+                                            "rotation": 0.0,
+                                            "scaleX": 1.0,
+                                            "scaleY": 1.0,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483673,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "./asset/default/DefaultTexture.png"
+                                            },
+                                            "alpha_mod": 0.0,
+                                            "red_mod": 0.7635009288787842,
+                                            "green_mod": 0.6355398893356323,
+                                            "blue_mod": 0.6355398893356323,
+                                            "scale_mod": 1,
+                                            "blend_mode": 1,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": -2.791670083999634,
+                                            "dst_rect.y": 1.767333984375,
+                                            "dst_rect.w": 10.0,
+                                            "dst_rect.h": 480.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483674,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.0,
+                                            "bodyDef.angularDamping": 0.0,
+                                            "bodyDef.angularVelocity": 0.0,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": true,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 0.0,
+                                            "bodyDef.position.x": 0.07361099869012833,
+                                            "bodyDef.position.y": 8.058911323547364,
+                                            "bodyDef.type": 0,
+                                            "fixture.density": 0.0,
+                                            "fixture.friction": 0.20000000298023225,
+                                            "fixture.restitution": 0.0,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 6
+                        }
+                    }
+                }
+            },
+            {
+                "key": 7,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483675,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483676,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 376.25006103515627,
+                                            "y": 251.07241821289063,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483677,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 1.0,
+                                            "green_mod": 1.0,
+                                            "blue_mod": 1.0,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 1,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 376.25006103515627,
+                                            "dst_rect.y": 251.07241821289063,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483678,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.20000000298023225,
+                                            "bodyDef.angularVelocity": 1.8248441219329835,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 12.951924324035645,
+                                            "bodyDef.position.y": 8.779336929321289,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.27000001072883608,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 7
+                        }
+                    }
+                }
+            },
+            {
+                "key": 8,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483679,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483680,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 417.8397521972656,
+                                            "y": 59.15196228027344,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483681,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 1.0,
+                                            "green_mod": 1.0,
+                                            "blue_mod": 1.0,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 1,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 417.8397521972656,
+                                            "dst_rect.y": 59.15196228027344,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483682,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.20000000298023225,
+                                            "bodyDef.angularVelocity": 1.8248441219329835,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 14.338247299194336,
+                                            "bodyDef.position.y": 2.381988286972046,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.15000000596046449,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483683,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/mouse_tracer.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 8
+                        }
+                    }
+                }
+            },
+            {
+                "key": 9,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483684,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483685,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 440.4519958496094,
+                                            "y": 157.5819854736328,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483686,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 1.0,
+                                            "green_mod": 1.0,
+                                            "blue_mod": 1.0,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 1,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 440.4519958496094,
+                                            "dst_rect.y": 157.5819854736328,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483687,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.20000000298023225,
+                                            "bodyDef.angularVelocity": 1.8248441219329835,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": -6.370935068389372e-8,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 15.091989517211914,
+                                            "bodyDef.position.y": 5.662988662719727,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.27000001072883608,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 9
+                        }
+                    }
+                }
+            },
+            {
+                "key": 10,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483688,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483689,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 371.25,
+                                            "y": 144.49563598632813,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483690,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 1.0,
+                                            "green_mod": 1.0,
+                                            "blue_mod": 1.0,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 1,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 371.25,
+                                            "dst_rect.y": 144.49563598632813,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483691,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.20000000298023225,
+                                            "bodyDef.angularVelocity": 1.8248441219329835,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 12.785256385803223,
+                                            "bodyDef.position.y": 5.226777076721191,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.27000001072883608,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 10
+                        }
+                    }
+                }
+            },
+            {
+                "key": 11,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483692,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483693,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 170.83328247070313,
+                                            "y": 129.65589904785157,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483694,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 0.9441340565681458,
+                                            "green_mod": 0.558123767375946,
+                                            "blue_mod": 0.02285611256957054,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 1,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 170.83328247070313,
+                                            "dst_rect.y": 129.65589904785157,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483695,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.20000000298023225,
+                                            "bodyDef.angularVelocity": 1.8248441219329835,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 6.104698657989502,
+                                            "bodyDef.position.y": 4.732119083404541,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.27000001072883608,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483696,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/mouse_controler.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 11
+                        }
+                    }
+                }
+            },
+            {
+                "key": 12,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483697,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483698,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 84.16666412353516,
+                                            "y": 204.66432189941407,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483699,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 1.0,
+                                            "green_mod": 1.0,
+                                            "blue_mod": 1.0,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 1,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 84.16666412353516,
+                                            "dst_rect.y": 204.66432189941407,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483700,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.20000000298023225,
+                                            "bodyDef.angularVelocity": 1.8248441219329835,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 3.2158117294311525,
+                                            "bodyDef.position.y": 7.232399940490723,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.27000001072883608,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 12
+                        }
+                    }
+                }
+            },
+            {
+                "key": 13,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483701,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483702,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 520.1586303710938,
+                                            "y": 370.8633728027344,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483703,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 1.0,
+                                            "green_mod": 1.0,
+                                            "blue_mod": 1.0,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 1,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 520.1586303710938,
+                                            "dst_rect.y": 370.8633728027344,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483704,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.20000000298023225,
+                                            "bodyDef.angularVelocity": 1.8248441219329835,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 17.748876571655275,
+                                            "bodyDef.position.y": 12.772368431091309,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.27000001072883608,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 13
+                        }
+                    }
+                }
+            },
+            {
+                "key": 14,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483705,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483706,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 461.83978271484377,
+                                            "y": 169.45326232910157,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483707,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 1.0,
+                                            "green_mod": 1.0,
+                                            "blue_mod": 1.0,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 1,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 461.83978271484377,
+                                            "dst_rect.y": 169.45326232910157,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483708,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.20000000298023225,
+                                            "bodyDef.angularVelocity": 1.8248441219329835,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 6.370935068389372e-8,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 15.804915428161621,
+                                            "bodyDef.position.y": 6.0586981773376469,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.27000001072883608,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 14
+                        }
+                    }
+                }
+            },
+            {
+                "key": 15,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483709,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483710,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 101.04167938232422,
+                                            "y": 63.821128845214847,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483711,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 0.8466875553131104,
+                                            "green_mod": 0.9385474920272827,
+                                            "blue_mod": 0.15555067360401154,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 101.04167938232422,
+                                            "dst_rect.y": 63.821128845214847,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483712,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.0,
+                                            "bodyDef.angularVelocity": 2.940000057220459,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 3.7783122062683107,
+                                            "bodyDef.position.y": 2.5376272201538088,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.27000001072883608,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483713,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/mouse_controler.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 15
+                        }
+                    }
+                }
+            },
+            {
+                "key": 16,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483714,
+                        "data": {
+                            "Object_Name": "None",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483715,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 434.7396545410156,
+                                            "y": 285.1108093261719,
+                                            "rotation": 116.31043243408203,
+                                            "scaleX": 0.18000049889087678,
+                                            "scaleY": 0.18000049889087678,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483716,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "./asset/default/DefaultTexture.png"
+                                            },
+                                            "alpha_mod": 0.7960000038146973,
+                                            "red_mod": 0.8230912685394287,
+                                            "green_mod": 0.749518871307373,
+                                            "blue_mod": 0.749518871307373,
+                                            "scale_mod": 1,
+                                            "blend_mode": 1,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 434.7396545410156,
+                                            "dst_rect.y": 285.1108093261719,
+                                            "dst_rect.w": 769.2291259765625,
+                                            "dst_rect.h": 76.92291259765625
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483717,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 2.0299999713897707,
+                                            "bodyDef.angularDamping": 0.0,
+                                            "bodyDef.angularVelocity": 0.0,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 0.0,
+                                            "bodyDef.position.x": 16.799015045166017,
+                                            "bodyDef.position.y": 9.734463691711426,
+                                            "bodyDef.type": 0,
+                                            "fixture.density": 1.0,
+                                            "fixture.friction": 0.800000011920929,
+                                            "fixture.restitution": 0.699999988079071,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483718,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/register_ground.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 16
+                        }
+                    }
+                }
+            },
+            {
+                "key": 17,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483719,
+                        "data": {
+                            "Object_Name": "top",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483720,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 1.93548583984375,
+                                            "y": -4.816053867340088,
+                                            "rotation": 0.0,
+                                            "scaleX": 0.130000501871109,
+                                            "scaleY": 0.130000501871109,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483721,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "./asset/default/DefaultTexture.png"
+                                            },
+                                            "alpha_mod": 0.0,
+                                            "red_mod": 0.8230912685394287,
+                                            "green_mod": 0.749518871307373,
+                                            "blue_mod": 0.749518871307373,
+                                            "scale_mod": 1,
+                                            "blend_mode": 1,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 1.93548583984375,
+                                            "dst_rect.y": -4.816053867340088,
+                                            "dst_rect.w": 4923.05810546875,
+                                            "dst_rect.h": 76.92291259765625
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483722,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.0,
+                                            "bodyDef.angularDamping": 0.0,
+                                            "bodyDef.angularVelocity": 0.0,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 0.0,
+                                            "bodyDef.position.x": 10.731183052062989,
+                                            "bodyDef.position.y": 0.006131823640316725,
+                                            "bodyDef.type": 0,
+                                            "fixture.density": 1.0,
+                                            "fixture.friction": 0.800000011920929,
+                                            "fixture.restitution": 0.0,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 17
+                        }
+                    }
+                }
+            },
+            {
+                "key": 18,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483723,
+                        "data": {
+                            "Object_Name": "None",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483724,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 176.65875244140626,
+                                            "y": 379.45703125,
+                                            "rotation": 0.0,
+                                            "scaleX": 0.18000049889087678,
+                                            "scaleY": 0.18000049889087678,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483725,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "./asset/default/DefaultTexture.png"
+                                            },
+                                            "alpha_mod": 0.7960000038146973,
+                                            "red_mod": 0.8230912685394287,
+                                            "green_mod": 0.749518871307373,
+                                            "blue_mod": 0.749518871307373,
+                                            "scale_mod": 1,
+                                            "blend_mode": 1,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 176.65875244140626,
+                                            "dst_rect.y": 379.45703125,
+                                            "dst_rect.w": 769.2291259765625,
+                                            "dst_rect.h": 76.92291259765625
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483726,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.0,
+                                            "bodyDef.angularDamping": 0.0,
+                                            "bodyDef.angularVelocity": 0.0,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 0.0,
+                                            "bodyDef.position.x": 8.196318626403809,
+                                            "bodyDef.position.y": 12.879337310791016,
+                                            "bodyDef.type": 0,
+                                            "fixture.density": 1.0,
+                                            "fixture.friction": 0.800000011920929,
+                                            "fixture.restitution": 0.7200000286102295,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483727,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/register_ground.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 18
+                        }
+                    }
+                }
+            },
+            {
+                "key": 19,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483728,
+                        "data": {
+                            "Object_Name": "None",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483729,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 221.79470825195313,
+                                            "y": 225.56961059570313,
+                                            "rotation": 0.0,
+                                            "scaleX": 0.18000049889087678,
+                                            "scaleY": 0.18000049889087678,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483730,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "./asset/default/DefaultTexture.png"
+                                            },
+                                            "alpha_mod": 0.7960000038146973,
+                                            "red_mod": 0.8230912685394287,
+                                            "green_mod": 0.749518871307373,
+                                            "blue_mod": 0.749518871307373,
+                                            "scale_mod": 1,
+                                            "blend_mode": 1,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 221.79470825195313,
+                                            "dst_rect.y": 225.56961059570313,
+                                            "dst_rect.w": 769.2291259765625,
+                                            "dst_rect.h": 76.92291259765625
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483731,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.0,
+                                            "bodyDef.angularDamping": 0.0,
+                                            "bodyDef.angularVelocity": 0.0,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 0.0,
+                                            "bodyDef.position.x": 9.700850486755371,
+                                            "bodyDef.position.y": 7.749756336212158,
+                                            "bodyDef.type": 0,
+                                            "fixture.density": 1.0,
+                                            "fixture.friction": 0.27000001072883608,
+                                            "fixture.restitution": 0.4000000059604645,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483732,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/register_ground.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 19
+                        }
+                    }
+                }
+            },
+            {
+                "key": 20,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483733,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483734,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 258.75,
+                                            "y": 81.35906219482422,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483735,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 0.5851190686225891,
+                                            "green_mod": 0.8491619825363159,
+                                            "blue_mod": 0.46490436792373659,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 1,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 258.75,
+                                            "dst_rect.y": 81.35906219482422,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483736,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.20000000298023225,
+                                            "bodyDef.angularVelocity": 1.8248441219329835,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 9.035256385803223,
+                                            "bodyDef.position.y": 3.122225046157837,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.27000001072883608,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483737,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/mouse_controler.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 20
+                        }
+                    }
+                }
+            },
+            {
+                "key": 21,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483738,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483739,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 497.7082214355469,
+                                            "y": 43.315216064453128,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483740,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 0.37764114141464236,
+                                            "green_mod": 0.6399621367454529,
+                                            "blue_mod": 0.8379888534545898,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 1,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 497.7082214355469,
+                                            "dst_rect.y": 43.315216064453128,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483741,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.20000000298023225,
+                                            "bodyDef.angularVelocity": 1.8248441219329835,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 17.000530242919923,
+                                            "bodyDef.position.y": 1.85409677028656,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.27000001072883608,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483742,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/mouse_controler.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 21
+                        }
+                    }
+                }
+            },
+            {
+                "key": 22,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483743,
+                        "data": {
+                            "Object_Name": "None",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483744,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 320.5445251464844,
+                                            "y": 343.7483215332031,
+                                            "rotation": 0.0,
+                                            "scaleX": 0.18000049889087678,
+                                            "scaleY": 0.18000049889087678,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483745,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "./asset/default/DefaultTexture.png"
+                                            },
+                                            "alpha_mod": 0.7960000038146973,
+                                            "red_mod": 0.8230912685394287,
+                                            "green_mod": 0.749518871307373,
+                                            "blue_mod": 0.749518871307373,
+                                            "scale_mod": 1,
+                                            "blend_mode": 1,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 320.5445251464844,
+                                            "dst_rect.y": 343.7483215332031,
+                                            "dst_rect.w": 769.2291259765625,
+                                            "dst_rect.h": 76.92291259765625
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483746,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.0,
+                                            "bodyDef.angularDamping": 0.0,
+                                            "bodyDef.angularVelocity": 0.0,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 0.0,
+                                            "bodyDef.position.x": 12.992510795593262,
+                                            "bodyDef.position.y": 11.689046859741211,
+                                            "bodyDef.type": 0,
+                                            "fixture.density": 1.0,
+                                            "fixture.friction": 0.27000001072883608,
+                                            "fixture.restitution": 0.4000000059604645,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483747,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/register_ground.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 22
+                        }
+                    }
+                }
+            },
+            {
+                "key": 23,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483748,
+                        "data": {
+                            "Object_Name": "None",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483749,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 2.6278839111328127,
+                                            "y": 140.8478240966797,
+                                            "rotation": 0.0,
+                                            "scaleX": 0.18000049889087678,
+                                            "scaleY": 0.18000049889087678,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483750,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "./asset/default/DefaultTexture.png"
+                                            },
+                                            "alpha_mod": 0.7960000038146973,
+                                            "red_mod": 0.8230912685394287,
+                                            "green_mod": 0.749518871307373,
+                                            "blue_mod": 0.749518871307373,
+                                            "scale_mod": 1,
+                                            "blend_mode": 1,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 2.6278839111328127,
+                                            "dst_rect.y": 140.8478240966797,
+                                            "dst_rect.w": 769.2291259765625,
+                                            "dst_rect.h": 76.92291259765625
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483751,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.0,
+                                            "bodyDef.angularDamping": 0.0,
+                                            "bodyDef.angularVelocity": 0.0,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 0.0,
+                                            "bodyDef.position.x": 2.395289897918701,
+                                            "bodyDef.position.y": 4.925696849822998,
+                                            "bodyDef.type": 0,
+                                            "fixture.density": 1.0,
+                                            "fixture.friction": 0.27000001072883608,
+                                            "fixture.restitution": 0.4000000059604645,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483752,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/register_ground.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 23
+                        }
+                    }
+                }
+            },
+            {
+                "key": 24,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483753,
+                        "data": {
+                            "Object_Name": "None",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483754,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 480.3362731933594,
+                                            "y": 96.05862426757813,
+                                            "rotation": 0.0,
+                                            "scaleX": 0.18000049889087678,
+                                            "scaleY": 0.18000049889087678,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483755,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "./asset/default/DefaultTexture.png"
+                                            },
+                                            "alpha_mod": 0.7960000038146973,
+                                            "red_mod": 0.8230912685394287,
+                                            "green_mod": 0.749518871307373,
+                                            "blue_mod": 0.749518871307373,
+                                            "scale_mod": 1,
+                                            "blend_mode": 1,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 480.3362731933594,
+                                            "dst_rect.y": 96.05862426757813,
+                                            "dst_rect.w": 769.2291259765625,
+                                            "dst_rect.h": 76.92291259765625
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483756,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.0,
+                                            "bodyDef.angularDamping": 0.0,
+                                            "bodyDef.angularVelocity": 0.0,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 0.0,
+                                            "bodyDef.position.x": 18.31890296936035,
+                                            "bodyDef.position.y": 3.4327235221862795,
+                                            "bodyDef.type": 0,
+                                            "fixture.density": 1.0,
+                                            "fixture.friction": 0.27000001072883608,
+                                            "fixture.restitution": 0.4000000059604645,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483757,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/register_ground.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 24
+                        }
+                    }
+                }
+            },
+            {
+                "key": 25,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483758,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483759,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 345.0000305175781,
+                                            "y": 65.97966003417969,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483760,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 0.9832402467727661,
+                                            "green_mod": 0.28746503591537478,
+                                            "blue_mod": 0.28746503591537478,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 1,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 345.0000305175781,
+                                            "dst_rect.y": 65.97966003417969,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483761,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.20000000298023225,
+                                            "bodyDef.angularVelocity": 1.8248441219329835,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 11.910257339477539,
+                                            "bodyDef.position.y": 2.6095781326293947,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.27000001072883608,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483762,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/mouse_controler.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 25
+                        }
+                    }
+                }
+            },
+            {
+                "key": 26,
+                "value": {
+                    "ptr_wrapper": {
+                        "id": 2147483763,
+                        "data": {
+                            "Object_Name": "icon",
+                            "Object_Component": [
+                                {
+                                    "polymorphic_id": 1,
+                                    "ptr_wrapper": {
+                                        "id": 2147483764,
+                                        "data": {
+                                            "TypeName": "TransformComponent",
+                                            "x": 201.0417022705078,
+                                            "y": 34.95099639892578,
+                                            "rotation": 20.775222778320314,
+                                            "scaleX": 0.1600004881620407,
+                                            "scaleY": 0.1600004881620407,
+                                            "originX": 0.0,
+                                            "originY": 0.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 2,
+                                    "ptr_wrapper": {
+                                        "id": 2147483765,
+                                        "data": {
+                                            "TypeName": "TextureComponent",
+                                            "texture_asset": {
+                                                "AssetUrl": "example/textures/icon.png"
+                                            },
+                                            "alpha_mod": 1.0,
+                                            "red_mod": 0.7443495988845825,
+                                            "green_mod": 0.44797810912132265,
+                                            "blue_mod": 0.832402229309082,
+                                            "scale_mod": 1,
+                                            "blend_mode": 0,
+                                            "flip_mode": 0,
+                                            "shape": 0,
+                                            "vertices": [],
+                                            "src_rect.x": 0.0,
+                                            "src_rect.y": 0.0,
+                                            "src_rect.w": 512.0,
+                                            "src_rect.h": 512.0,
+                                            "dst_rect.x": 201.0417022705078,
+                                            "dst_rect.y": 34.95099639892578,
+                                            "dst_rect.w": 153.84559631347657,
+                                            "dst_rect.h": 153.84559631347657
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 4,
+                                    "ptr_wrapper": {
+                                        "id": 2147483766,
+                                        "data": {
+                                            "TypeName": "RigidBodyComponent",
+                                            "bodyDef.allowSleep": true,
+                                            "bodyDef.angle": 0.3625960350036621,
+                                            "bodyDef.angularDamping": 0.20000000298023225,
+                                            "bodyDef.angularVelocity": 1.8248441219329835,
+                                            "bodyDef.awake": true,
+                                            "bodyDef.bullet": false,
+                                            "bodyDef.fixedRotation": false,
+                                            "bodyDef.gravityScale": 1.0,
+                                            "bodyDef.linearDamping": 0.0,
+                                            "bodyDef.linearVelocity.x": 0.0,
+                                            "bodyDef.linearVelocity.y": 3.756667137145996,
+                                            "bodyDef.position.x": 7.1116461753845219,
+                                            "bodyDef.position.y": 1.5752893686294556,
+                                            "bodyDef.type": 2,
+                                            "fixture.density": 0.27000001072883608,
+                                            "fixture.friction": 0.25,
+                                            "fixture.restitution": 0.3700000047683716,
+                                            "fixture.isSensor": false,
+                                            "fixture.restitutionThreshold": 1.0
+                                        }
+                                    }
+                                },
+                                {
+                                    "polymorphic_id": 3,
+                                    "ptr_wrapper": {
+                                        "id": 2147483767,
+                                        "data": {
+                                            "TypeName": "ScriptComponent",
+                                            "value0": [],
+                                            "value1": [],
+                                            "value2": [],
+                                            "value3": [
+                                                {
+                                                    "AssetUrl": "example/Scripts/mouse_controler.lua"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "Object_ID": 26
+                        }
+                    }
+                }
+            }
+        ],
+        "layers": [
+            [
+                1,
+                2,
+                4,
+                6,
+                7,
+                5,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26
+            ],
+            [
+                3
+            ]
+        ],
+        "gravity_x": 0.0,
+        "gravity_y": 9.800000190734864,
+        "subStep": false,
+        "warmStart": true,
+        "allowSleep": true
+    }
+}
