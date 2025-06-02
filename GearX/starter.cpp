@@ -1,9 +1,11 @@
 #include "starter.hpp"
 #include "runtime/core/system/render/render_system.hpp"
 #include "runtime/core/system/physics/physics_system.hpp"
+#include "runtime/core/system/audio/audio_system.hpp"
 #include "runtime/core/system/script/script_system.hpp"
 #include "runtime/core/event/event.hpp"
 GearX::Starter::~Starter(){
+	RuntimeGlobalContext::audioSystem.Destory();
 	RuntimeGlobalContext::shutdown();
 }
 
@@ -13,6 +15,7 @@ void GearX::Starter::startGame(std::string worldUrl, Uint8 Framerate,std::array<
 	RuntimeGlobalContext::init();
 	RuntimeGlobalContext::current_path = fs::absolute(worldUrl).parent_path();
 	RuntimeGlobalContext::world.loadWorld(worldUrl);
+	RuntimeGlobalContext::isGameMode = true;
 	framerate = Framerate;
 	isGameRunnig = true;
 	timeStep = 1.0f / framerate;
@@ -20,6 +23,7 @@ void GearX::Starter::startGame(std::string worldUrl, Uint8 Framerate,std::array<
 	GearX::Event::registerCallback(SDL_EVENT_QUIT, [&](const SDL_Event&)->void {
 			isGameRunnig = false;
 		});
+	RuntimeGlobalContext::audioSystem.Start();
 }
 
 void GearX::Starter::tick(){

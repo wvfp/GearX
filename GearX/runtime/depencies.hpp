@@ -52,4 +52,6 @@
 #include <box2d/b2_polygon_shape.h>
 #include <box2d/b2_circle_shape.h>
 #include <box2d/b2_contact.h>
+// ÏñËØ/Ã×±ÈÀı£¨30ÏñËØ=1Ã×£©
+constexpr float PPM = 30.0f;
 

@@ -26,6 +26,7 @@ namespace GearX {
 		void reset() { isInitialize = false; }
 		void RegisterTables();
 		void RegisterObjectAsSelf(GObjectID id);
+		void RegisterObjectAsSelf(GObjectID id, sol::environment& env);
 		void RegisterCurrentLevelFuncToLua();
 		void RegisterEmptyLevelFuncToLua();
 		sol::environment& getLuaEnv() { return *env; }

@@ -74,38 +74,40 @@ namespace GearX {
 					b2PolygonShape polygonShape;
 					auto asset = texture_com->getTextureAsset();
 					SDL_Texture* texture = static_cast<SDL_Texture*>(asset.data);
-					auto points = getPointsFromTexture(texture);
-					//if(points.empty())
-						polygonShape.SetAsBox((texture_com->getDstRect()[2] / PPM) / 2.0f, (texture_com->getDstRect()[3] / PPM) / 2.0f);
-					//else
-						//polygonShape.Set(points.data(), points.size());
+					auto src = texture_com->getSrcRect();
+					SDL_Rect srcRect = { (int)src[0],(int)src[1],(int)src[2],(int)src[3] };
+					SDL_Rect rect = getBoxRect(RuntimeGlobalContext::SDL_CONTEXT.renderer, texture,srcRect);
+					auto dstRect = texture_com->getDstRect();
+					float scaleX = texture_com->getDstRect()[2] / srcRect.w;
+					float scaleY = texture_com->getDstRect()[3] / srcRect.h;
+					rect.x *= scaleX;
+					rect.y *= scaleY;
+					rect.w *= scaleX;
+					rect.h *= scaleY;
+					int w = SDL_min(rect.x,dstRect[2] - rect.w - rect.x);
+					int h = SDL_min(rect.y,dstRect[3] - rect.h - rect.y);
+					rect.x = dstRect[0] + w;
+					rect.y = dstRect[1] + h;
+					rect.w = dstRect[2] - w*2;
+					rect.h = dstRect[3] - h*2;
+					//polygonShape.SetAsBox((texture_com->getDstRect()[2] / PPM) / 2.0f, (texture_com->getDstRect()[3] / PPM) / 2.0f);
+					polygonShape.SetAsBox((rect.w / PPM) / 2.0f, (rect.h / PPM) / 2.0f);
 					m_fixtureDef.shape = &polygonShape;
 					m_fixture = m_body->CreateFixture(&m_fixtureDef);
 				}
 			}
 		}
 	}
+
 	void GearX::RigidBodyComponent::destroy() {
 		m_body = nullptr;
 		m_fixture = nullptr;
 	}
 	void GearX::RigidBodyComponent::updateTransform() {
-		auto com = getParentObject()->getComponentByTypeName(rttr::type::get<TransformComponent>().get_name());
-		auto com2 = getParentObject()->getComponentByTypeName(rttr::type::get<TextureComponent>().get_name());
-		if (com && com2) {
-			auto transform = std::dynamic_pointer_cast<TransformComponent>(com);
-			auto texture_com = std::dynamic_pointer_cast<TextureComponent>(com2);
-			if (texture_com)
-				transform->setPosition(std::array<float, 2>({ m_body->GetPosition().x * PPM - texture_com->getDstRect()[2] / 2.0f, m_body->GetPosition().y * PPM - texture_com->getDstRect()[3] / 2.0f }));
-			else
-				transform->setPosition(std::array<float, 2>({ m_body->GetPosition().x * PPM , m_body->GetPosition().y * PPM }));
-
-			transform->setRotation(360 * m_body->GetAngle() / (2 * M_PI));
-			m_bodyDef.linearVelocity = m_body->GetLinearVelocity();
-			m_body->GetWorldPoint(m_bodyDef.position);
-			m_bodyDef.angle = m_body->GetAngle();
-			m_bodyDef.angularVelocity = m_body->GetAngularVelocity();
-		}
+		m_bodyDef.linearVelocity = m_body->GetLinearVelocity();
+		m_bodyDef.position.Set(m_body->GetPosition().x, m_body->GetPosition().y);
+		m_bodyDef.angle = m_body->GetAngle();
+		m_bodyDef.angularVelocity = m_body->GetAngularVelocity();
 	}
 	std::shared_ptr<Component> GearX::RigidBodyComponent::copy() {
 		auto com = std::make_shared<RigidBodyComponent>();
@@ -114,6 +116,8 @@ namespace GearX {
 		com->m_fixture = nullptr;
 		com->m_parentObject.reset();
 		return com;
+	}
+	void GearX::RigidBodyComponent::updateBox(){
 	}
 	void RigidBodyComponent::addComponentTo(std::shared_ptr<GObject> obj) {
 		if (obj) {

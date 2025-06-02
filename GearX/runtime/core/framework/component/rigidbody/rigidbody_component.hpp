@@ -24,8 +24,6 @@ constexpr float MAX_GRAVITY_SCALE = 10.0f;
 // 弹性阈值限制
 constexpr float MIN_RESTITUTION_THRESHOLD = 0.0f;
 constexpr float MAX_RESTITUTION_THRESHOLD = 10.0f;
-// 像素/米比例（100像素=1米）
-constexpr float PPM = 100;
 
 namespace GearX {
 	class Component;
@@ -204,7 +202,7 @@ namespace GearX {
 				m_body->ApplyLinearImpulseToCenter(b2Impulse, true);
 			}
 		}
-
+		void updateBox();
 		static void addComponentTo(std::shared_ptr<GObject> obj);
 		template<class Archive>
 		void serialize(Archive& archive) {

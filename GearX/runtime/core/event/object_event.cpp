@@ -4,6 +4,23 @@
 #include "../framework/component/texture/texture_component.hpp"
 #include "../framework/object/object.hpp"
 #include "../framework/level/level.hpp"
+const Uint32 EVENT_GOBJECT_ONSELECTED = SDL_RegisterEvents(1);
+const Uint32 EVENT_GOBJECT_ONUNSELECTED = SDL_RegisterEvents(1);
+const Uint32 EVENT_GOBJECT_ONPRESSED = SDL_RegisterEvents(1);
+const Uint32 EVENT_GOBJECT_ONRELEASED = SDL_RegisterEvents(1);
+const Uint32 EVENT_GOBJECT_ONDRAG = SDL_RegisterEvents(1);
+const Uint32 EVENT_GOBJECT_ONSCALE = SDL_RegisterEvents(1);
+
+// 游戏模式下的鼠标事件,鼠标悬停,移动(在对象上的)，点击，按压，释放
+const Uint32 GEVENT_GOBJECT_MOUSEHOVER = SDL_RegisterEvents(1);
+const Uint32 GEVENT_GOBJECT_MOUSEENTER = SDL_RegisterEvents(1);
+const Uint32 GEVENT_GOBJECT_MOUSELEAVE = SDL_RegisterEvents(1);
+const Uint32 GEVENT_GOBJECT_MOUSEMOVE = SDL_RegisterEvents(1);
+const Uint32 GEVENT_GOBJECT_MOUSECLICK = SDL_RegisterEvents(1);
+const Uint32 GEVENT_GOBJECT_MOUSEPRESS = SDL_RegisterEvents(1);
+const Uint32 GEVENT_GOBJECT_MOUSERELEASE = SDL_RegisterEvents(1);
+const Uint32 GEVENT_GOBJECT_MOUSEWHEEL = SDL_RegisterEvents(1);
+
 
 GearX::GObjectID  GearX::SelectedObj = 0;
 static bool isSelectedObjOnPressed = false;
@@ -49,6 +66,8 @@ void GearX::GObject_Select(const SDL_Event& event) {
 					continue;
 				// 获取目标Rect
 				auto rect = textureCom->getDstRect();
+				rect[0] = transformCom->getPositionX();
+				rect[1] = transformCom->getPositionY();
 				// 判断按下位置是否与目标矩形相交
 				if (isPointInRectRotate({ b_x,b_y },
 					rect, transformCom->getOrigin(), transformCom->getRotation())) {
@@ -120,7 +139,7 @@ void GearX::GObject_Drag(const SDL_Event& event) {
 					else
 						return;
 				}
-				// 获取目标Rect
+				// 获取目标Position
 				auto pos = transformCom->getPosition();
 				pos[0] += b_x;
 				pos[1] += b_y;
@@ -288,8 +307,10 @@ bool GearX::isPointInRectRotate(std::array<float, 2> point,
 	return (rotatedX >= -width / 2.0f && rotatedX <= width / 2.0f &&
 		rotatedY >= -height / 2.0f && rotatedY <= height / 2.0f);
 }
-// 鼠标移入物体
-void GearX::GObject_MouseOver(const SDL_Event& event){
+// Hover标志
+static GearX::GObjectID Object_Hover_ID = 0;
+// 鼠标悬于物体上
+void GearX::GObject_MouseHover(const SDL_Event& event){
 	int w, h;
 	SDL_GetWindowSize(RuntimeGlobalContext::SDL_CONTEXT.window, &w, &h);
 	if (RuntimeGlobalContext::world.getCurrentLevel()) {
@@ -321,16 +342,165 @@ void GearX::GObject_MouseOver(const SDL_Event& event){
 					continue;
 				// 获取目标Rect
 				auto rect = textureCom->getDstRect();
-				// 判断按下位置是否与目标矩形相交
+				// 判断位置是否与目标矩形相交
 				if (isPointInRectRotate({ b_x,b_y },
 					rect, transformCom->getOrigin(), transformCom->getRotation())) {
-					SDL_Event u_event;
-					u_event.type = EVENT_GOBJECT_ONMOUSEOVER;
-					u_event.user.type = EVENT_GOBJECT_ONMOUSEOVER;
-					u_event.user.code = obj->getID();
-					SDL_PushEvent(&u_event);
+					Object_Hover_ID = id;
+					SDL_Event *u_event =	new SDL_Event;
+					static ObjectEvent object_event;
+					u_event->type = GEVENT_GOBJECT_MOUSEHOVER;
+					u_event->user.type = GEVENT_GOBJECT_MOUSEHOVER;
+					u_event->user.code = GEVENT_GOBJECT_MOUSEHOVER;
+					object_event.id = id;
+					object_event.x = event.motion.x;
+					object_event.y = event.motion.y;
+					object_event.xrel = event.motion.xrel;
+					object_event.yrel = event.motion.yrel;
+					object_event.button = event.motion.state;
+					object_event.timestamp = event.motion.timestamp - SDL_GetTicksNS();
+					u_event->user.data1 = reinterpret_cast<void*>(&object_event);
+					SDL_PushEvent(u_event);
+					delete u_event;
+					return;
 				}
 			}
 		}
+	}
+}
+
+// 事件Hover触发
+void GearX::GObject_MouseEnter(const SDL_Event& event){
+	static GearX::GObjectID curent_object_hover_id = 0;
+	static ObjectEvent object_event;
+	// 判断鼠标当前物体是否与上一次的物体不同
+	if (Object_Hover_ID != 0 && curent_object_hover_id != Object_Hover_ID) {
+		curent_object_hover_id = Object_Hover_ID;
+		SDL_Event *u_event = new SDL_Event;
+		u_event->type = GEVENT_GOBJECT_MOUSEENTER;
+		u_event->user.type = GEVENT_GOBJECT_MOUSEENTER;
+		u_event->user.code = GEVENT_GOBJECT_MOUSEENTER;
+		object_event = *(ObjectEvent*)event.user.data1;
+		object_event.id = Object_Hover_ID;
+		u_event->user.data1 = reinterpret_cast<void*>(&object_event);
+		SDL_PushEvent(u_event);
+		delete u_event;
+	}
+}
+// 由鼠标Hover触发
+void GearX::GObject_MouseLeave(const SDL_Event& event){
+	static GearX::GObjectID curent_object_hover_id = 0;
+	static ObjectEvent object_event;
+	// 判断鼠标当前物体是否与上一次的物体不同
+	if (Object_Hover_ID != 0 && curent_object_hover_id != Object_Hover_ID) {
+		SDL_Event *u_event = new SDL_Event;
+		u_event->type = GEVENT_GOBJECT_MOUSELEAVE;
+		u_event->user.type = GEVENT_GOBJECT_MOUSELEAVE;
+		u_event->user.code = GEVENT_GOBJECT_MOUSELEAVE;
+		object_event = *(ObjectEvent*)event.user.data1;
+		object_event.id = curent_object_hover_id;
+		curent_object_hover_id = Object_Hover_ID;
+		u_event->user.data1 = reinterpret_cast<void*>(&object_event);
+		SDL_PushEvent(u_event);
+		delete u_event;
+	}
+	
+}
+// 由鼠标移动触发SDL_EVEN	T_MOUSEMOTION
+void GearX::GObject_MouseMove(const SDL_Event& event){
+	static ObjectEvent object_event;
+	if (Object_Hover_ID != 0) {
+		SDL_Event *u_event = new SDL_Event;
+		u_event->type = GEVENT_GOBJECT_MOUSEMOVE;
+		u_event->user.type = GEVENT_GOBJECT_MOUSEMOVE;
+		u_event->user.code = GEVENT_GOBJECT_MOUSEMOVE;
+		object_event.id = Object_Hover_ID;
+		object_event.x = event.motion.x;
+		object_event.y = event.motion.y;
+		object_event.xrel = event.motion.xrel;
+		object_event.yrel = event.motion.yrel;
+		object_event.button = event.motion.state;
+		object_event.timestamp = event.motion.timestamp;
+		u_event->user.data1 = reinterpret_cast<void*>(&object_event);
+		SDL_PushEvent(u_event);
+		delete u_event;
+	}
+}
+// 鼠标点击触发
+void GearX::GObject_MouseClick(const SDL_Event& event){
+	static ObjectEvent object_event;
+	if (Object_Hover_ID != 0) {
+		SDL_Event *u_event = new SDL_Event;
+		u_event->type = GEVENT_GOBJECT_MOUSECLICK;
+		u_event->user.type = GEVENT_GOBJECT_MOUSECLICK;
+		u_event->user.code = GEVENT_GOBJECT_MOUSECLICK;
+		object_event.id = Object_Hover_ID;
+		object_event.x = event.button.x;
+		object_event.y = event.button.y;
+		object_event.button = event.button.button;
+		object_event.clicks = event.button.clicks;
+		object_event.timestamp = event.button.timestamp;
+		u_event->user.data1 = reinterpret_cast<void*>(&object_event);
+		SDL_PushEvent(u_event);
+	}
+}
+// 鼠标按下触发
+static GearX::GObjectID curent_press_object_id = 0;
+void GearX::GObject_MousePress(const SDL_Event& event){
+	static ObjectEvent object_event;
+	if (Object_Hover_ID != 0 && curent_press_object_id != Object_Hover_ID) {
+		curent_press_object_id = Object_Hover_ID;
+		SDL_Event *u_event = new SDL_Event;
+		u_event->type = GEVENT_GOBJECT_MOUSEPRESS;
+		u_event->user.code = GEVENT_GOBJECT_MOUSEPRESS;
+		u_event->user.type = GEVENT_GOBJECT_MOUSEPRESS;
+		object_event.id = Object_Hover_ID;
+		object_event.x = event.button.x;
+		object_event.y = event.button.y;
+		object_event.button = event.button.button;
+		object_event.clicks = event.button.clicks;
+		object_event.timestamp = event.button.timestamp;
+		u_event->user.data1 = reinterpret_cast<void*>(&object_event);
+		SDL_PushEvent(u_event);
+		delete u_event;
+	}
+}
+// 鼠标释放触发
+void GearX::GObject_MouseRelease(const SDL_Event& event){
+	static ObjectEvent object_event;
+	if (Object_Hover_ID != 0 && curent_press_object_id != 0) {
+		SDL_Event *u_event = new SDL_Event;
+		u_event->type = GEVENT_GOBJECT_MOUSERELEASE;
+		u_event->user.type = GEVENT_GOBJECT_MOUSERELEASE;
+		u_event->user.code = GEVENT_GOBJECT_MOUSERELEASE;
+		object_event.id = Object_Hover_ID;
+		object_event.x = event.button.x;
+		object_event.y = event.button.y;
+		object_event.button = event.button.button;
+		object_event.clicks = event.button.clicks;
+		object_event.timestamp = event.button.timestamp;
+		u_event->user.data1 = reinterpret_cast<void*>(&object_event);
+		SDL_PushEvent(u_event);
+		delete u_event;
+		curent_press_object_id = 0;
+	}
+}
+// 鼠标滚轮触发
+void GearX::GObject_MouseWheel(const SDL_Event& event){
+	static ObjectEvent event_wheel;
+	if (Object_Hover_ID != 0) {
+		SDL_Event *u_event = new SDL_Event;
+		u_event->type = GEVENT_GOBJECT_MOUSEWHEEL;
+		u_event->user.type = GEVENT_GOBJECT_MOUSEWHEEL;
+		u_event->user.code = GEVENT_GOBJECT_MOUSEWHEEL;
+		event_wheel.id = Object_Hover_ID;
+		event_wheel.x = event.wheel.mouse_x;
+		event_wheel.y = event.wheel.mouse_y;
+		event_wheel.direction = event.wheel.direction;
+		event_wheel.xrel = event.wheel.x;
+		event_wheel.yrel = event.wheel.y;
+		event_wheel.timestamp = event.wheel.timestamp;
+		u_event->user.data1 = reinterpret_cast<void*>(&event_wheel);
+		SDL_PushEvent(u_event);
+		delete u_event;
 	}
 }

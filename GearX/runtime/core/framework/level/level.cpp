@@ -20,6 +20,9 @@ namespace GearX {
 			if (!m_level_url.empty()) {
 				//之前的level文件
 				save();
+				if (fs::exists(m_level_url + ".bak")) {
+					fs::remove(m_level_url + ".bak");
+				}
 				fs::copy(m_level_url, m_level_url + ".bak");
 			}
 			if (fs::exists(url)) {
@@ -90,7 +93,7 @@ namespace GearX {
 	}
 
 	void GearX::Level::setListener(b2ContactListener* listener) {
-		world.SetContactListener(listener);
+		world->SetContactListener(listener);
 	}
 
 	// 另存为
@@ -105,11 +108,11 @@ namespace GearX {
 	}
 
 	void GearX::Level::setGravity(std::array<float, 2> gravity) {
-		world.SetGravity(b2Vec2(gravity[0], gravity[1]));
+		world->SetGravity(b2Vec2(gravity[0], gravity[1]));
 	}
 
 	std::array<float, 2> GearX::Level::getGravity(void) {
-		b2Vec2 gravity = world.GetGravity();
+		b2Vec2 gravity = world->GetGravity();
 		return { gravity.x,gravity.y };
 	}
 	void Level::setRenderRect(std::array<float, 4> rect) {
@@ -119,22 +122,22 @@ namespace GearX {
 		return render_rect_size;
 	}
 	void  Level::setWarmStarting(bool ws) {
-		world.SetWarmStarting(ws);
+		world->SetWarmStarting(ws);
 	}
 	bool Level::getWarmStarting() {
-		return world.GetWarmStarting();
+		return world->GetWarmStarting();
 	}
 	void  Level::setSubStep(bool ss) {
-		world.SetSubStepping(ss);
+		world->SetSubStepping(ss);
 	}
 	bool Level::getSubStep() {
-		return world.GetSubStepping();
+		return world->GetSubStepping();
 	}
 	void  Level::setAllowSleep(bool as) {
-		world.SetAllowSleeping(as);
+		world->SetAllowSleeping(as);
 	}
 	bool Level::getAllowSleep() {
-		return world.GetAllowSleeping();
+		return world->GetAllowSleeping();
 	}
 	void GearX::Level::initWindowSize(){
 			

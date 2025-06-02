@@ -50,8 +50,9 @@ namespace GearX {
 		SDL_FRect dstRect;
 		Asset m_texture_asset;
 		std::pair<float, float> texture_size;
-		// 当形状为多边形时，存储顶点坐标
+		// 当形状为多边形时，存储顶点坐标 -- 未使用
 		std::vector<std::array<float, 2>> vertices;
+		bool isTextureStateChanged = false;
 		friend class RenderSystem;
 	public:
 		TextureComponent() {
@@ -96,10 +97,8 @@ namespace GearX {
 		float getSrcRectH() const;
 		void setSrcRectH(float h);
 
-		// SrcRect
 		void setDstRect(std::array<float, 4>);
 		std::array<float, 4> getDstRect()const;
-
 		float getDstRectX() const;
 		void setDstRectX(float x);
 		float getDstRectY() const;
@@ -108,6 +107,12 @@ namespace GearX {
 		void setDstRectW(float w);
 		float getDstRectH() const;
 		void setDstRectH(float h);
+		void setTextureChangaed(bool _isTextureChangable) {
+			isTextureStateChanged = _isTextureChangable;
+		}
+		bool isTextureChanged() const{return isTextureStateChanged;}
+		void setDstSize(std::array<float, 2> size);
+		std::array<float, 2> getDstSize();
 		Asset getTextureAsset();
 		BlendMode getBlendMode() const;
 		void setBlendMode(BlendMode _blendMode);

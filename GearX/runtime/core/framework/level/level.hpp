@@ -8,15 +8,16 @@ namespace GearX {
 	using LayerObjectTree = std::vector<std::list<GObjectID>>;
 	class Level : public std::enable_shared_from_this<Level> {
 	public:
-		Level() :world(b2Vec2(0.0f, 9.8f)),
-			tex_size(std::array<float, 2>({ 1280.0f,960.0f })),
+		Level() :tex_size(std::array<float, 2>({ 1280.0f,960.0f })),
 			window_size(std::array<float, 2>({ 1280.0f,960.0f })),
 			render_rect_size(std::array<float, 4>({ 0.0f,0.0f,1280.0f,960.0f })),
 			m_current_layer(0), m_layers(std::vector<std::list<GObjectID>>()) {
 			m_layers.push_back(std::list<GObjectID>());
+			world = std::make_shared<b2World>(b2Vec2(0.0f, 9.8f));
 			initTextureSize();
 		};
-		~Level() {};
+		~Level(){
+		};
 		bool load(const std::string path, bool isJson = false);
 		void save();
 		void setListener(b2ContactListener*);
@@ -56,14 +57,14 @@ namespace GearX {
 		bool getLayerFromID(GObjectID id, Uint16& layer);
 		void setObjectToLayer(GObjectID id, Uint16 layer = 0);
 		void removeObjectFromLayer(GObjectID id);
-		b2World& getWorld() { return world; }
+		b2World& getWorld() { return *world; }
 		template<typename Archive>
 		void serialize(Archive& archive)
 		{
-			float gravity[2] = { world.GetGravity().x,world.GetGravity().y };
-			bool subStep = world.GetSubStepping();
-			bool warmStart = world.GetWarmStarting();
-			bool allowSleep = world.GetAllowSleeping();
+			float gravity[2] = { world->GetGravity().x,world->GetGravity().y };
+			bool subStep = world->GetSubStepping();
+			bool warmStart = world->GetWarmStarting();
+			bool allowSleep = world->GetAllowSleeping();
 			archive(
 				cereal::make_nvp("level_url", m_level_url),
 				cereal::make_nvp("level_name", m_level_name),
@@ -85,16 +86,27 @@ namespace GearX {
 				SDL_GetWindowSize(RuntimeGlobalContext::SDL_CONTEXT.window, &w, &h);
 				if(w != int(window_size[0]) || h != int(window_size[1]))
 					setWindowSize(window_size);
-				world.SetGravity(b2Vec2(gravity[0], gravity[1]));
-				world.SetWarmStarting(warmStart);
-				world.SetSubStepping(subStep);
-				world.SetAllowSleeping(allowSleep);
+				world->SetGravity(b2Vec2(gravity[0], gravity[1]));
+				world->SetWarmStarting(warmStart);
+				world->SetSubStepping(subStep);
+				world->SetAllowSleeping(allowSleep);
 				for (auto& obj : m_objects) {
 					obj.second->setLevel(shared_from_this());
 				}
 			}
 		}
-
+		void resetWorld() {
+			float gravity[2] = { world->GetGravity().x,world->GetGravity().y };
+			bool subStep = world->GetSubStepping();
+			bool warmStart = world->GetWarmStarting();
+			bool allowSleep = world->GetAllowSleeping();
+			world.reset();
+			world = std::make_shared<b2World>(b2Vec2(0.0f, 9.8f));
+			world->SetGravity(b2Vec2(gravity[0], gravity[1]));
+			world->SetWarmStarting(warmStart);
+			world->SetSubStepping(subStep);
+			world->SetAllowSleeping(allowSleep);
+		}
 		void initTextureSize() {
 			this->setTargetTextureSize(tex_size);
 		}
@@ -118,7 +130,7 @@ namespace GearX {
 		std::string m_level_url;
 		std::string m_level_name;
 		Uint16 m_current_layer;
-		b2World world;
+		std::shared_ptr<b2World> world;
 		std::array<float, 2> window_size;
 		std::array<float, 2> tex_size;
 		std::array<float, 4> render_rect_size;

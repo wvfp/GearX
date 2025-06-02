@@ -7,37 +7,43 @@ namespace GearX {
         AudioSystem();
         ~AudioSystem();
         void tick(float deltaTime);
+        static void Start();
+        static void Destory();
         //Music
-        void loadMusicFromPath(const std::string& path);
-        void unloadMusic();
-        void PlayMusic();
-        void StopMusic();
-        void PauseMusic();
-        void ResumeMusic();
-        //Chunck
-        void PlayChunk(std::string path);
-        void StopChunk(std::string path);
-        void PauseChunk(std::string path);
-        void ResumeChunk(std::string path);
+        static void loadMusicFromPath(const std::string& path);
+		static void unloadMusic();
+		static void PlayMusic();
+		static void StopMusic();
+		static void PauseMusic();
+		static void ResumeMusic();
+	   //Chunck
+	   static void PlayChunk(std::string path);
+	   static void StopChunk(std::string path);
+	   static void PauseChunk(std::string path);
+	   static void ResumeChunk(std::string path);
+	   static int getChunkState(const std::string& path);
+	   static int getChannel(const std::string& path);
+	   static void ChannelFinised(int channel);
         //setter
         //Music
-        void SetMusicVolume(float volume);
-        void SetMusicPosition(float position);
+	   static  void SetMusicVolume(float volume);
+	   static  void SetMusicPosition(float position);
 	    //Chunck
-        void SetChunkVolume(const std::string& path,float volume);
+       static  void SetChunkVolume(const std::string& path,float volume);
         //getter
         //Music
-        float GetMusicVolume();
-        float GetMusicLoopStartTime();
-        float GetMusicLoopEndTime();
-        float GetMusicLoopLengthTime();
-        float GetMusicPosition();
+	   static  float GetMusicVolume();
+	   static  float GetMusicLoopStartTime();
+	   static  float GetMusicLoopEndTime();
+	   static  float GetMusicLoopLengthTime();
+	   static  float GetMusicPosition();
         //Chunck
-        float GetChunkVolume(const std::string& path);
-        void RegisterToLua(sol::state& lua);
+	   static  float GetChunkVolume(const std::string& path);
+	   static  void RegisterToLua(sol::state& lua);
     private:
-        Asset music;
-        std::map<int,Asset> channels;
-        bool isMusicPlaying = false;
+        static Asset music;
+        static std::map<int,Asset> channels;
+		static std::map<int,Uint8> channel_state;
+        static bool isStarting;
     };
 }

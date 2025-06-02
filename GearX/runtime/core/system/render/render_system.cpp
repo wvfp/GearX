@@ -23,6 +23,7 @@ void GearX::RenderSystem::tick(float deltaTime) {
 				auto com3 = obj->getComponentByTypeName(rttr::type::get<RigidBodyComponent>().get_name());
 				auto transform_com = std::dynamic_pointer_cast<TransformComponent>(com1);
 				auto texture_com = std::dynamic_pointer_cast<TextureComponent>(com2);
+				auto rigidbody_com = std::dynamic_pointer_cast<RigidBodyComponent>(com3);
 				if (!texture_com)
 					continue;
 				SDL_FRect dstRect = { 0,0,0,0 };
@@ -46,6 +47,7 @@ void GearX::RenderSystem::tick(float deltaTime) {
 				}
 				if (obj) {
 					dstRect = texture_com->dstRect;
+
 					int S = 8;
 					dstRect.x *= S;
 					dstRect.y *= S;
@@ -77,15 +79,35 @@ void GearX::RenderSystem::tick(float deltaTime) {
 								&texture_com->srcRect, &s_dstRect, angle, &orgin, texture_com->flipMode);
 							orgin = { s_dstRect.w / 2, s_dstRect.h / 2 };
 						}
+						if (RuntimeGlobalContext::isGameMode) {
+							if (rigidbody_com) {
+								b2Fixture* fixture = rigidbody_com->getFixture();
+								if (fixture) {
+									//static int num = 0;
+									//num++;
+									//if (num % 20 == 0) {
+									//	auto aabb = fixture->GetAABB(0);
+									//	SDL_FRect rect = { aabb.lowerBound.x, aabb.lowerBound.y,
+									//		aabb.upperBound.x - aabb.lowerBound.x, aabb.upperBound.y - aabb.lowerBound.y };
+									//	SDL_Log("\nID:%d\n", obj->getID());
+									//	SDL_Log("\nX:%f,Y:%f", rect.x*PPM, rect.y*PPM);
+									//	SDL_Log("\nX:%f,Y:%f", (rect.x- rect.w)*PPM,(rect.y- rect.h)*PPM);
+									//}
+									////SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+									////SDL_RenderFillRect(renderer, &s_dstRect);
+								}
+							}
+						}
 					}
 					{// »¹Ô­ÊôÐÔ
 						SDL_SetTextureBlendMode(texture, bm);
 						SDL_SetTextureAlphaModFloat(texture, alpha);
 						SDL_SetTextureColorModFloat(texture, red, green, blue);
 						SDL_SetTextureScaleMode(texture, s_mode);
-					
+						
 						if (!RuntimeGlobalContext::isGameMode&&obj->isDrawAxis())
 							drawObjectAxes(renderer, s_dstRect, angle, orgin, 20, 10);
+					
 						SDL_SetRenderTarget(renderer, p_tex);
 					}
 				}

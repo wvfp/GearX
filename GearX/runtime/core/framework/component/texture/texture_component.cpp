@@ -41,7 +41,7 @@ rttr::registration::enumeration<TextureComponent::BlendMode>(u8"BlendMode")
 		.constructor<>() // 注册默认构造函数
 		// 注册属性（包含私有成员）
 		.property(u8"源矩形", &GearX::TextureComponent::getSrcRect, &GearX::TextureComponent::setSrcRect)
-		.property(u8"目标矩形", &GearX::TextureComponent::getDstRect, &GearX::TextureComponent::setDstRect)
+		.property(u8"大小", &GearX::TextureComponent::getDstSize, &GearX::TextureComponent::setDstSize)
 		.property(u8"纹理路径", &GearX::TextureComponent::getTextureAssetUrl, &GearX::TextureComponent::setTextureAssetUrl)
 		.property(u8"尺寸", &GearX::TextureComponent::texture_size)
 		.property(u8"颜色调制", &GearX::TextureComponent::getColorMod, &GearX::TextureComponent::setColorMod)
@@ -63,6 +63,8 @@ rttr::registration::enumeration<TextureComponent::BlendMode>(u8"BlendMode")
 			auto com = std::make_shared<TextureComponent>();
 			com->setDstRectX(transform->getPositionX());
 			com->setDstRectY(transform->getPositionY());
+			//默认设置纹理路径为空，加载默认纹理
+			com->setTextureAssetUrl(std::string());
 			obj->addComponent(com);
 		}
 	}
@@ -125,6 +127,7 @@ rttr::registration::enumeration<TextureComponent::BlendMode>(u8"BlendMode")
 			texture_size.second = 0;
 			SDL_Log("Load Error: %s", m_texture_asset.asset_url.c_str());
 		}
+		isTextureStateChanged = true;
 		m_isDirty = true;
 	}
 
@@ -201,6 +204,7 @@ rttr::registration::enumeration<TextureComponent::BlendMode>(u8"BlendMode")
 	void GearX::TextureComponent::setSrcRect(std::array<float, 4> rect) {
 		srcRect = { rect[0],rect[1],rect[2],rect[3] };
 		m_isDirty = true;
+		isTextureStateChanged = true;
 	}
 	std::array<float, 4> GearX::TextureComponent::getSrcRect() const
 	{
@@ -221,6 +225,7 @@ rttr::registration::enumeration<TextureComponent::BlendMode>(u8"BlendMode")
 			dstRect.h = rect[3] / scale[1];
 		}
 		m_isDirty = true;
+		isTextureStateChanged = true;
 	}
 	std::array<float, 4> GearX::TextureComponent::getDstRect() const {
 		auto parent = m_parentObject.lock();
@@ -248,6 +253,7 @@ rttr::registration::enumeration<TextureComponent::BlendMode>(u8"BlendMode")
 	void TextureComponent::setFlipMode(TextureComponent::FlipMode _flipMode) {
 		this->flipMode = _flipMode;
 		m_isDirty = true;
+		isTextureStateChanged = true;
 	}
 	SDL_ScaleMode TextureComponent::getScaleMode()const { return scaleMode; }
 	void TextureComponent::setScaleMode(SDL_ScaleMode _scaleMode) {
@@ -295,14 +301,6 @@ rttr::registration::enumeration<TextureComponent::BlendMode>(u8"BlendMode")
 		return dstRect.x;
 	}
 	void TextureComponent::setDstRectX(float x) {
-		auto ptr = m_parentObject.lock();
-		if (ptr) {
-			auto com = ptr->getComponentByTypeName(rttr::type::get<TransformComponent>().get_name());
-			if (com) {
-				auto t_com = std::dynamic_pointer_cast<TransformComponent>(com);
-				t_com->setPositionX(x);
-			}
-		}
 		dstRect.x = x;
 		m_isDirty = true;
 	}
@@ -326,6 +324,7 @@ rttr::registration::enumeration<TextureComponent::BlendMode>(u8"BlendMode")
 	}
 	void TextureComponent::setDstRectW(float w) {
 		dstRect.w = w;
+		isTextureStateChanged = true;
 		m_isDirty = true;
 	}
 	float TextureComponent::getDstRectH() const {
@@ -333,7 +332,19 @@ rttr::registration::enumeration<TextureComponent::BlendMode>(u8"BlendMode")
 	}
 	void TextureComponent::setDstRectH(float h) {
 		dstRect.h = h;
+		isTextureStateChanged = true;
 		m_isDirty = true;
+	}
+	void GearX::TextureComponent::setDstSize(std::array<float, 2> size){
+		auto rect = getDstRect();
+		rect[2] = size[0];
+		rect[3] = size[1];
+		isTextureStateChanged = true;
+		setDstRect(rect);
+	}
+	std::array<float, 2> GearX::TextureComponent::getDstSize(){
+		auto rect = getDstRect();
+		return {rect[2],rect[3]};
 	}
 	Asset GearX::TextureComponent::getTextureAsset()
 	{

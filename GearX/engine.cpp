@@ -3,7 +3,9 @@
 #include "runtime/core/system/render/render_system.hpp"
 #include "runtime/core/system/physics/physics_system.hpp"
 #include "runtime/core/system/script/script_system.hpp"
-#define DEFAULT_FPS 30
+#include "runtime/core/system/audio/audio_system.hpp"
+#include <chrono>
+#include <windows.h>
 namespace GearX {
 	class RuntimeGlobalContext;
 	void GearXEngine::startEngine()
@@ -12,6 +14,7 @@ namespace GearX {
 			initialize();
 		}
 		m_is_quit = false;
+		m_fps_controller.setTargetFPS(RuntimeGlobalContext::DEFAULT_FPS);
 	}
 
 	void GearXEngine::shutdownEngine() {
@@ -24,11 +27,10 @@ namespace GearX {
 	void GearXEngine::initialize() {
 		if (m_is_init == false) {
 			GearX::RuntimeGlobalContext::init();
-			SDL_initFramerate(&m_manager);
-			// 默认60帧
-			setFPS(60);
+			m_fps_controller.reset();
 			GearX::Event::init();
 			GearX::Event::registerCallback(SDL_EVENT_QUIT, [&](const SDL_Event&)->void {
+				RuntimeGlobalContext::isGameMode = false;
 				m_is_quit = true;
 				});
 			m_is_init = true;
@@ -41,11 +43,17 @@ namespace GearX {
 	void GearXEngine::run() {
 		while (m_is_quit == false) {
 			this->tick();
-			m_delta_time = SDL_framerateDelay(&m_manager) / 1000.0;
+			m_delta_time =  m_fps_controller.waitForNextFrame();
 		}
 	}
 
 	void GearXEngine::tick() {
+		if (RuntimeGlobalContext::isGameMode) {
+			AudioSystem::Start();
+		}
+		else {
+			AudioSystem::Destory();
+		}
 		GearX::Event::tick();
 		logicalTick(m_delta_time);
 		rendererTick(m_delta_time);
@@ -53,7 +61,7 @@ namespace GearX {
 	void GearXEngine::logicalTick(float delta_time) {
 		static bool cached = false;
 		static std::thread cached_thread = std::thread();
-		static std::shared_ptr<Level> cached_level;
+		static std::shared_ptr<Level> cached_level = std::make_shared<Level>();
 		if (RuntimeGlobalContext::isGameMode) {
 			if (cached == false) {
 				cached = true;
@@ -62,7 +70,6 @@ namespace GearX {
 					world.getCurrentLevel()->save();
 					}).join();
 				cached_thread = std::move(std::thread([&]()->void {
-					cached_level = std::make_shared<Level>();
 					static const std::regex jsonRegex(R"(\.(json)$)");
 					if (std::regex_search(world.getCurrentLevelUrl(), jsonRegex)) {
 						cached_level->load(world.getCurrentLevelUrl(), true);
@@ -71,6 +78,22 @@ namespace GearX {
 						cached_level->load(world.getCurrentLevelUrl(), false);
 					}
 					}));
+				std::time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+				std::tm* ptm = std::localtime(&now);
+				char time_str[100];
+				strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", ptm);
+				//设置颜色
+				HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+				std::cout << "Time: ";
+				SetConsoleTextAttribute(hConsole,FOREGROUND_GREEN);
+				//输出
+				std::cout << time_str;
+				SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE);
+				std::cout << " Game Mode : ";
+				SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN);
+				std::cout << "Start " << std::endl;
+				//恢复颜色
+				SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
 			}
 			// delta_time 更新到lua
 			RuntimeGlobalContext::lua["DeltaTime"] = delta_time;
@@ -84,7 +107,26 @@ namespace GearX {
 				cached = false;
 				// 等待缓存线程结束
 				cached_thread.join();
-				RuntimeGlobalContext::world.setCurrentLevel(cached_level);
+				auto& level  = RuntimeGlobalContext::world.getCurrentLevel();
+				RuntimeGlobalContext::world.setCurrentLevel(cached_level); 
+				cached_level = level;
+				std::time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+				std::tm* ptm = std::localtime(&now);
+				char time_str[100];
+				strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", ptm);
+				//设置颜色
+				HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+				std::cout << "Time: ";
+				SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
+				//输出
+				std::cout <<time_str;
+				SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE);
+				std::cout << " Game Mode : ";
+				SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN);
+				std::cout << "End" << std::endl;
+				//恢复颜色
+				SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+
 			}
 		}
 		RuntimeGlobalContext::physicsSystem.updateTransform();

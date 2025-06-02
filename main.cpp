@@ -5,7 +5,12 @@ using namespace GearX;
 int main(int argc, char* argv[]) {
 	GearX::GearXEngine engine;
 	engine.startEngine();
-	engine.run();
+	try {
+		engine.run();
+	}
+	catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 	engine.shutdownEngine();
 	return 0;
 }

@@ -331,8 +331,8 @@ namespace GearX {
 	static std::map < std::string, std::vector<char>> buf;
 	template<class Type>
 	void showPropEditor(rttr::property& prop, Type& com) {
+		ImGui::Text(u8"属性: %s", prop.get_name().c_str());
 		if (prop.is_readonly()) {
-			ImGui::Text(u8"属性: %s", prop.get_name().c_str());
 			ImGui::Text(u8"值: %s", prop.get_value(com).to_string().c_str());
 			return;
 		}
@@ -350,7 +350,6 @@ namespace GearX {
 			ImGui::PopID();
 		}
 		else {
-			ImGui::Text(u8"属性: %s", prop.get_name().c_str());
 			if (prop.get_type() == rttr::type::get<float>()) {
 				float f = prop.get_value(com).to_float();
 				ImGui::PushID(prop.get_name().c_str());
@@ -453,7 +452,7 @@ namespace GearX {
 		auto obj = com->getParentObject();
 		static int selectBlock = 0;
 		static std::vector<std::string> block = {
-			u8"脚本:循环调用",u8"脚本:当碰撞开始",u8"脚本:当碰撞结束"
+			u8"脚本:游戏开始",u8"脚本:循环调用",u8"脚本:当碰撞开始",u8"脚本:当碰撞结束"
 		};
 		if(ImGui::BeginCombo("##SelectBlock",block[selectBlock].c_str())) {
 			if (ImGui::Selectable(block[0].c_str())) {
@@ -465,197 +464,114 @@ namespace GearX {
 			if (ImGui::Selectable(block[2].c_str())) {
 				selectBlock = 2;
 			}
+			if (ImGui::Selectable(block[3].c_str())) {
+				selectBlock = 3;
+			}
 			ImGui::EndCombo();
 		}
-		if (selectBlock == 0) { //普通
-			auto scripts = com->getScript();
-			static bool add = false;
-			if (ImGui::Button(u8"添加脚本")) {
-				add = true;
-			}
-			if (add) {
-				ImGui::SameLine();
-				if (ImGui::Button(u8"取消")) {
+		static auto scripts = com->getScript();
+		switch (selectBlock) {
+			case 0:
+				scripts = com->getScriptDoOnce();
+				break;
+			case 1:
+				scripts = com->getScript();
+				break;
+			case 2:
+				scripts = com->getScriptBeginContact();
+				break;
+			case 3:
+				scripts = com->getScriptEndContact();
+		}
+		static bool add = false;
+		if (ImGui::Button(u8"添加脚本")) {
+			add = true;
+		}
+		if (add) {
+			ImGui::SameLine();
+			if (ImGui::Button(u8"取消")) {
 					add = false;
-				}
-				static std::array<char, 255> buf{ 0,0 };
-				ImGui::InputText("##ScriptUrlInput", buf.data(), buf.size());
-				if (ImGui::Button(u8"添加")) {
-					std::string url(buf.data());
-					static const std::regex Regex(R"(\.lua$)");
-					if (!std::regex_search(url, Regex)) {
-						url += ".lua";
-					}
-					url = fs::path(RuntimeGlobalContext::world
-						.getCurrentLevelUrl()).parent_path().generic_string() + "/" + url;
-					if (fs::exists(url)) {
-						com->addScript(url);
-					}
-					else {
-						std::ofstream ofs(url, std::ios::ate);
-						ofs.close();
-						com->addScript(url);
-					}
-				}
 			}
-			if (obj) {
-				static  Asset select;
-				namespace fs = std::filesystem;
-				if (ImGui::BeginCombo(("##Scripts" + obj->getName() +
-					std::to_string(obj->getID())).c_str(),
-					fs::path(select.asset_url).filename().generic_string().c_str())) {
-					for (auto& script : scripts) {
-						if (ImGui::Selectable(fs::path(script.asset_url).filename()
-							.generic_string().c_str())) {
-							select = script;
-						}
-					}
-					ImGui::EndCombo();
+			static std::array<char, 255> buf{ 0,0 };
+			ImGui::InputText("##ScriptUrlInput", buf.data(), buf.size());
+			if (ImGui::Button(u8"添加")) {
+				std::string url(buf.data());
+				static const std::regex Regex(R"(\.lua$)");
+				if (!std::regex_search(url, Regex)) {
+					url += ".lua";
 				}
-				if (!select.asset_url.empty()) {
-					if (ImGui::Button(u8"打开文件")) {
-						std::ifstream ifs(select.asset_url, std::ios::ate);
-						if (ifs.is_open()) {
-							filebrowserstate.editing_file = fs::path(select.asset_url);
-							InitFile(filebrowserstate, ifs);
-							filebrowserstate.show_editor = true;
-						}
-					}
-					if (ImGui::Button(u8"重新加载")) {
-						RuntimeGlobalContext::assetManager.reloadAssetScript(select.asset_url);
-					}
-					if (ImGui::Button(u8"移除")) {
-						com->removeScript(select.asset_url);
-						select = Asset();
-					}
+				if (!fs::exists(fs::path(RuntimeGlobalContext::current_path.generic_string() + "/Scripts"))) {
+					fs::create_directory(fs::path(RuntimeGlobalContext::current_path.generic_string() + "/Scripts"));
+				}
+				auto s_url = fs::path(RuntimeGlobalContext::current_path.generic_string() + "/Scripts/" + url);
+				s_url = fs::relative(s_url);
+				if (!fs::exists(s_url)) {
+					std::ofstream ofs(s_url, std::ios::ate);
+					ofs.close();
+				}
+				switch (selectBlock){
+					case 0:
+						com->addScriptToDoOnce(s_url.generic_string());
+						break;
+					case 1:
+						com->addScript(s_url.generic_string());
+						break;
+					case 2:
+						com->addScriptToBeginContact(s_url.generic_string());
+						break;
+					case 3:
+						com->addScriptToEndContact(s_url.generic_string());
+						break;
+				default:
+					break;
 				}
 			}
 		}
-		else if (selectBlock == 1) {
-			auto scripts = com->getScriptBeginContact();
-			static bool add = false;
-			if (ImGui::Button(u8"添加脚本")) {
-				add = true;
+
+		if (obj) {
+			static  Asset select;
+			namespace fs = std::filesystem;
+			if (ImGui::BeginCombo(("##Scripts_" + obj->getName() +
+				std::to_string(obj->getID())).c_str(),
+				fs::path(select.asset_url).filename().generic_string().c_str())) {
+				for (auto& script : scripts) {
+					if (ImGui::Selectable(fs::path(script.asset_url).filename()
+						.generic_string().c_str())) {
+						select = script;
+					}
+				}
+				ImGui::EndCombo();
 			}
-			if (add) {
+			if (!select.asset_url.empty()) {
+				if (ImGui::Button(u8"打开文件")) {
+					std::ifstream ifs(select.asset_url, std::ios::ate);
+					if (ifs.is_open()) {
+						filebrowserstate.editing_file = fs::path(select.asset_url);
+						InitFile(filebrowserstate, ifs);
+						filebrowserstate.show_editor = true;
+					}
+				}
 				ImGui::SameLine();
-				if (ImGui::Button(u8"取消")) {
-					add = false;
+				if (ImGui::Button(u8"重新加载")) {
+					RuntimeGlobalContext::assetManager.reloadAssetScript(select.asset_url);
 				}
-				static std::array<char, 255> buf{ 0,0 };
-				ImGui::InputText("##ScriptUrlInput", buf.data(), buf.size());
-				if (ImGui::Button(u8"添加")) {
-					std::string url(buf.data());
-					static const std::regex Regex(R"(\.lua$)");
-					if (!std::regex_search(url, Regex)) {
-						url += ".lua";
-					}
-					url = fs::path(RuntimeGlobalContext::world
-						.getCurrentLevelUrl()).parent_path().generic_string() + "/" + url;
-					if (fs::exists(url)) {
-						com->addScriptToBeginContact(url);
-					}
-					else {
-						std::ofstream ofs(url, std::ios::ate);
-						ofs.close();
-						com->addScriptToBeginContact(url);
-					}
-				}
-			}
-			if (obj) {
-				static  Asset select;
-				namespace fs = std::filesystem;
-				if (ImGui::BeginCombo(("##Scripts" + obj->getName() +
-					std::to_string(obj->getID())).c_str(),
-					fs::path(select.asset_url).filename().generic_string().c_str())) {
-					for (auto& script : scripts) {
-						if (ImGui::Selectable(fs::path(script.asset_url).filename()
-							.generic_string().c_str())) {
-							select = script;
-						}
-					}
-					ImGui::EndCombo();
-				}
-				if (!select.asset_url.empty()) {
-					if (ImGui::Button(u8"打开文件")) {
-						std::ifstream ifs(select.asset_url, std::ios::ate);
-						if (ifs.is_open()) {
-							filebrowserstate.editing_file = fs::path(select.asset_url);
-							InitFile(filebrowserstate, ifs);
-							filebrowserstate.show_editor = true;
-						}
-					}
-					if (ImGui::Button(u8"重新加载")) {
-						RuntimeGlobalContext::assetManager.reloadAssetScript(select.asset_url);
-					}
-					if (ImGui::Button(u8"移除")) {
-						com->removeScriptFromBeginContect(select.asset_url);
-						select = Asset();
-					}
-				}
-			}
-		}
-		else if (selectBlock == 2) {
-			auto scripts = com->getScriptEndContact();
-			static bool add = false;
-			if (ImGui::Button(u8"添加脚本")) {
-				add = true;
-			}
-			if (add) {
 				ImGui::SameLine();
-				if (ImGui::Button(u8"取消")) {
-					add = false;
-				}
-				static std::array<char, 255> buf{ 0,0 };
-				ImGui::InputText("##ScriptUrlInput", buf.data(), buf.size());
-				if (ImGui::Button(u8"添加")) {
-					std::string url(buf.data());
-					static const std::regex Regex(R"(\.lua$)");
-					if (!std::regex_search(url, Regex)) {
-						url += ".lua";
+				if (ImGui::Button(u8"移除")) {
+					switch (selectBlock) {
+						case 0:
+							com->removeScriptFromDoOnce(select.asset_url);
+							break;
+						case 1:
+							com->removeScript(select.asset_url);
+							break;
+						case 2:
+							com->removeScriptFromBeginContect(select.asset_url);
+							break;
+						case 3:
+							com->removeScriptFromEndContect(select.asset_url);
+							break;
 					}
-					url = fs::path(RuntimeGlobalContext::world
-						.getCurrentLevelUrl()).parent_path().generic_string() + "/" + url;
-					if (fs::exists(url)) {
-						com->addScriptToEndContact(url);
-					}
-					else {
-						std::ofstream ofs(url, std::ios::ate);
-						ofs.close();
-						com->addScriptToEndContact(url);
-					}
-				}
-			}
-			if (obj) {
-				static  Asset select;
-				namespace fs = std::filesystem;
-				if (ImGui::BeginCombo(("##Scripts" + obj->getName() +
-					std::to_string(obj->getID())).c_str(),
-					fs::path(select.asset_url).filename().generic_string().c_str())) {
-					for (auto& script : scripts) {
-						if (ImGui::Selectable(fs::path(script.asset_url).filename()
-							.generic_string().c_str())) {
-							select = script;
-						}
-					}
-					ImGui::EndCombo();
-				}
-				if (!select.asset_url.empty()) {
-					if (ImGui::Button(u8"打开文件")) {
-						std::ifstream ifs(select.asset_url, std::ios::ate);
-						if (ifs.is_open()) {
-							filebrowserstate.editing_file = fs::path(select.asset_url);
-							InitFile(filebrowserstate, ifs);
-							filebrowserstate.show_editor = true;
-						}
-					}
-					if (ImGui::Button(u8"重新加载")) {
-						RuntimeGlobalContext::assetManager.reloadAssetScript(select.asset_url);
-					}
-					if (ImGui::Button(u8"移除")) {
-						com->removeScriptFromEndContect(select.asset_url);
-						select = Asset();
-					}
+					select = Asset();
 				}
 			}
 		}
@@ -666,6 +582,18 @@ namespace GearX {
 		std::string nowUrl;
 		if (level) {
 			ImGui::Checkbox(u8"游戏模式", &RuntimeGlobalContext::isGameMode);
+			ImGui::SameLine();
+			if (ImGui::Button(u8"更新脚本")) {
+				// 脚本热更新
+				auto objs = level->getAllObject();
+				for (auto& i : objs) {
+					auto com = i.second->getComponentByTypeName(rttr::type::get<ScriptComponent>().get_name());
+					auto script = std::static_pointer_cast<ScriptComponent>(com);
+					if (script) {
+						script->reloadScripts();
+					}
+				}
+			}
 			static auto oldlevel = level;
 			levelUrl = level->getLevelURL();
 			auto  props = rttr::type::get<Level>().get_properties();
@@ -689,29 +617,27 @@ namespace GearX {
 		ImGui::Text(u8"当前世界: %s", world.getWorldUrl().c_str());
 		static char* buf = new char[256] {0, };
 		ImGui::PushID("World_Url_Edit");
-		ImGui::InputText("", buf, 256);
+		ImGui::InputText("##World_Url_Edit", buf, 256);
 		ImGui::PopID();
 		if (ImGui::Button(u8"加载世界")) {
 			std::string url(buf);
-			filebrowserstate.current_path = fs::absolute(url).parent_path();
+			filebrowserstate.current_path = fs::relative("./" + url).parent_path();
 			RuntimeGlobalContext::current_path = filebrowserstate.current_path;
-			url = fs::absolute(url).generic_string();
-			if (!fs::exists(fs::path(url).parent_path().generic_string() + "/Levels")) {
-				fs::create_directory(fs::path(url).parent_path().generic_string() + "/Levels");
+			url = fs::relative(url).generic_string();
+			if (!fs::exists(RuntimeGlobalContext::current_path.generic_string() + "/Levels")) {
+				fs::create_directory(RuntimeGlobalContext::current_path.generic_string() + "/Levels");
 			}
-			//std::thread([&]() {
-				World tmp = World();
-				tmp.loadWorld(url);
-				world.clear();
-				world = tmp;
-				//}).join();
+			World tmp = World();
+			tmp.loadWorld(url);
+			world.clear();
+			world = tmp;
 			InitFileBrowser(filebrowserstate);
 			isBroswerInit = true;
 		}
 		ImGui::SameLine();
 		if (ImGui::Button(u8"保存世界")) {
 			std::string url(buf);
-			url = fs::absolute(url).generic_string();
+			url = fs::relative(url).generic_string();
 			world.saveWorld(url);
 		}
 		std::string levelurl = u8"无";
@@ -757,13 +683,15 @@ namespace GearX {
 				SelectedObj = 0;
 			}
 			if (ImGui::Button(u8"新建对象")) {
-				currentObj = RuntimeGlobalContext::world.getCurrentLevel()->CreateObject("None");
-				SDL_Log(u8"新建成功,Object ID : %d", currentObj);
+				RuntimeGlobalContext::world.getCurrentLevel()->CreateObject("None");
 			}
 			ImGui::SameLine();
 			if (ImGui::Button(u8"删除对象")) {
+				if (SelectedObj && SelectedObj == currentObj) {
+					objs[currentObj]->setDrawAxis(false);
+					SelectedObj = 0;
+				}
 				RuntimeGlobalContext::world.getCurrentLevel()->removeObject(currentObj);
-				SDL_Log(u8"删除成功,Object ID : %d", currentObj);
 				currentObj = 0;
 			}
 			ImGui::SameLine();

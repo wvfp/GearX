@@ -65,6 +65,8 @@ namespace GearX {
 		void loadTextureFromPath(std::string path);
 		void setTextureRect(std::array<float, 4> rect);
 		std::vector<float> getTextureRect();
+		void setSize(std::array<float,2> size);
+		std::vector<float> getSize();
 		float getTextureWidth();
 		float getTextureHeight();
 		std::vector<float> getTextureSize();

@@ -245,6 +245,18 @@ namespace GearX {
 		else
 			return { 0.0f, 0.0f, 0.0f, 0.0f };
 	}
+	void GObjectWrapper::setSize(std::array<float, 2> size){
+		if (isValidTexture()) {
+			_TextureComponent.lock()->setDstSize(size);
+		}
+	}
+	std::vector<float> GObjectWrapper::getSize(){
+		if (isValidTexture()) {
+			auto size = _TextureComponent.lock()->getDstSize();
+			return { size[0],size[1] };
+		}
+		return { 0.0f,0.0f };
+	}
 	float GObjectWrapper::getTextureWidth() {
 		if (isValidTexture()) {
 			return _TextureComponent.lock()->getDstRect()[2];
@@ -542,7 +554,7 @@ namespace GearX {
 			"Vertical", TextureComponent::FlipMode::Vertical,
 			"VerticalAndHorizontal", TextureComponent::FlipMode::VerticalAndHorizontal
 		);
-		lua.new_enum("Shape",
+		lua.new_enum("ShapeType",
 			"Rect", TextureComponent::Shape::Rect,
 			"Circle", TextureComponent::Shape::Circle
 		);
@@ -604,10 +616,13 @@ namespace GearX {
 		texture_table["setTextureRect"] = [this](const sol::table& rect) {
 			this->setTextureRect(cvtArray<4>(rect));
 			};
+		texture_table["getSize"] = [this]() {return this->getSize();};
+		texture_table["setSize"] = [this](const sol::table& size) {return this->setSize(cvtArray<2>(size)); };
+		
 		texture_table["getTextureWidth"] = [this]() { return this->getTextureWidth(); };
 		texture_table["getTextureHeight"] = [this]() { return this->getTextureHeight(); };
 		texture_table["getTextureSize"] = sol::as_table([this]() { return this->getTextureSize(); });
-
+		
 		// 颜色与模式控制
 		texture_table["getColorMod"] = sol::as_table([this]() { return this->getColorMod(); });
 		texture_table["setColorMod"] = [this](const sol::table& color) {
@@ -635,7 +650,6 @@ namespace GearX {
 		rigidbody_table["getAngularVelocity"] = [this]() { return this->getAngularVelocity(); };
 		rigidbody_table["setAngularVelocity"] = [this](float vel) { this->setAngularVelocity(vel); };
 		rigidbody_table["addAngularVelocityOffset"] = [this](float offset) { this->addAngularVelocityOffset(offset); };
-
 		// 物理属性
 		rigidbody_table["getGravityScale"] = [this]() { return this->getGravityScale(); };
 		rigidbody_table["setGravityScale"] = [this](float scale) { this->setGravityScale(scale); };

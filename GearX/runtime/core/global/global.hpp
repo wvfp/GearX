@@ -38,9 +38,10 @@ namespace GearX {
 		static ScriptSystem scriptSystem;
 		static std::shared_ptr<GearX::ThreadPool> threadPool;
 		static std::filesystem::path current_path;
-		static AssetManager assetManager;
 		static AudioSystem audioSystem;
+		static AssetManager assetManager;
 		static std::shared_ptr<WindowUI> UI;
 		static bool isGameMode;
+		static Uint8 DEFAULT_FPS;
 	};
 }

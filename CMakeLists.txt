@@ -61,4 +61,3 @@ file(COPY Depencies/SDL3/lib/x64/ DESTINATION ${GEARX_BIN_DIR}
     PATTERN "*.lib" EXCLUDE
   )
 
- 

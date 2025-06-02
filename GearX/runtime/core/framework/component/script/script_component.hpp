@@ -24,6 +24,8 @@ namespace GearX {
 		void addScriptToBeginContact(std::string& url);
 		void removeScriptFromEndContect(std::string& url);
 		void addScriptToEndContact(std::string& url);
+		void addScriptToDoOnce(std::string& url);
+		void removeScriptFromDoOnce(std::string& url);
 		void reloadScripts();
 		void clear();
 		void loadScript();
@@ -57,12 +59,16 @@ namespace GearX {
 			}
 			return urls;
 		}
+		std::vector<Asset>& getScriptDoOnce() {
+			return script_do_once;
+		}
 		template<typename Archive>
 		void serialize(Archive& archive) {
 			Component::serialize(archive);
 			archive(script_assets);
 			archive(script_begin_contact);
 			archive(script_end_contact);
+			archive(script_do_once);
 			if (typeid(archive) == typeid(cereal::JSONInputArchive)
 				|| typeid(archive) == typeid(cereal::PortableBinaryInputArchive)) {
 				loadScript();
@@ -72,6 +78,7 @@ namespace GearX {
 		std::vector<Asset> script_assets;
 		std::vector<Asset> script_begin_contact;
 		std::vector<Asset> script_end_contact;
+		std::vector<Asset> script_do_once;
 	};
 }
 CEREAL_REGISTER_TYPE(GearX::ScriptComponent)

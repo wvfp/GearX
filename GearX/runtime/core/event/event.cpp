@@ -2,6 +2,7 @@
 #include "event.hpp"
 // 初始化静态成员变量
 GearX::Event::CallBackMapType GearX::Event::callbackMap = GearX::Event::CallBackMapType();
+std::vector<std::pair<sol::table,sol::function>> GearX::Event::LuaCallBackMap = std::vector<std::pair<sol::table, sol::function>>();
 // 处理窗口大小变化
 static void processWindowResized(const SDL_Event& event) {
 	SDL_Renderer* renderer = GearX::RuntimeGlobalContext::SDL_CONTEXT.renderer;
@@ -85,16 +86,27 @@ static void onKeyMapChanged(const SDL_Event& event) {
 	GearX::RuntimeGlobalContext::lua["KeyState"] = SDL_GetKeyboardState(&numkeys);
 	GearX::RuntimeGlobalContext::lua["KeyStateSize"] = numkeys;
 }
-void GearX::Event::registerEventToLua(sol::state& lua_state){
+sol::table GearX::Event::registerEventToLua(sol::environment& env,bool Register){
 	static bool is_registered = false;
-	static auto table = lua_state.create_table();
-	static auto table_mouse = lua_state.create_table();
-	static auto table_keyboard = lua_state.create_table();
-	if (!is_registered) {
+	static auto table = env.create();
+	static auto table_mouse = env.create();
+	static auto table_keyboard = env.create();
+	static auto table_object = env.create();
+	if (!is_registered || Register ) {
+		LuaCallBackMap.clear();
 		// 注册事件枚举类型，mouse, keyboard
-		auto event_type = lua_state.create_table();
-		auto mouse_type = lua_state.create_table();
-		auto keyboard_type = lua_state.create_table();
+		auto event_type = env.create();
+		auto mouse_type = env.create();
+		auto keyboard_type = env.create();
+		auto object_type = env.create();
+		object_type["MouseHover"] = GEVENT_GOBJECT_MOUSEHOVER;
+		object_type["MouseEnter"] = GEVENT_GOBJECT_MOUSEENTER;
+		object_type["MouseLeave"] = GEVENT_GOBJECT_MOUSELEAVE;
+		object_type["MouseClick"] = GEVENT_GOBJECT_MOUSECLICK;
+		object_type["MousePress"] = GEVENT_GOBJECT_MOUSEPRESS;
+		object_type["MouseRelease"] = GEVENT_GOBJECT_MOUSERELEASE;
+		object_type["MouseMove"] = GEVENT_GOBJECT_MOUSEMOVE;
+		object_type["MouseWheel"] = GEVENT_GOBJECT_MOUSEWHEEL;
 		mouse_type["ButtonDown"] = SDL_EVENT_MOUSE_BUTTON_DOWN;
 		mouse_type["ButtonUp"] = SDL_EVENT_MOUSE_BUTTON_UP;
 		mouse_type["Motion"] = SDL_EVENT_MOUSE_MOTION;
@@ -104,7 +116,8 @@ void GearX::Event::registerEventToLua(sol::state& lua_state){
 		keyboard_type["KeyUp"] = SDL_EVENT_KEY_UP;
 		event_type["Mouse"] = mouse_type;
 		event_type["Keyboard"] = keyboard_type;
-		lua_state["EventType"] = event_type;
+		event_type["Object"] = object_type;
+		env["EventType"] = event_type;
 		// 各个表中的变量初始化为nil
 		table["type"] = sol::nil;
 		table_mouse["button"] = sol::nil;
@@ -125,7 +138,16 @@ void GearX::Event::registerEventToLua(sol::state& lua_state){
 		table_keyboard["repeat"] = sol::nil;
 		table_keyboard["reserved"] = sol::nil;
 		table_keyboard["timestamp"] = sol::nil;
-		auto key_table = lua_state.create_table();
+		table_object["id"] = sol::nil;
+		table_object["button"] = sol::nil;
+		table_object["x"] = sol::nil;
+		table_object["y"] = sol::nil;
+		table_object["xrel"] = sol::nil;
+		table_object["yrel"] = sol::nil;
+		table_object["direction"] = sol::nil;
+		table_object["timestamp"] = sol::nil;
+		table_object["clicks"] = sol::nil;
+		auto key_table = env.create();
 		{
 			key_table["A"] = SDLK_A;
 			key_table["B"] = SDLK_B;
@@ -211,15 +233,61 @@ void GearX::Event::registerEventToLua(sol::state& lua_state){
 		table_keyboard["Key_"] = key_table;
 		table["mouse"] = table_mouse;
 		table["keyboard"] = table_keyboard;
+		table["object"] = table_object;
 		is_registered = true;
 	}
+	table["registerCallback"] = [&](sol::table& obj,sol::function& func) {
+			LuaCallBackMap.push_back(std::make_pair(obj, func));
+		};
+	table["unregisterCallback"] = [&](sol::table& obj,sol::function& func) {
+		LuaCallBackMap.erase(std::remove_if(LuaCallBackMap.begin(), LuaCallBackMap.end(), 
+			[obj, func](const std::pair<sol::table, sol::function>& pair) {
+				return pair.first == obj && pair.second == func;
+			}), LuaCallBackMap.end());
+		};
+	table["unregisterAllCallback"] = [&]() {
+		LuaCallBackMap.clear();
+		};
+	table["unregisterAllCallbackOfGObject"] = [&](sol::table& obj) {
+		LuaCallBackMap.erase(std::remove_if(LuaCallBackMap.begin(), LuaCallBackMap.end(),
+			[obj](const std::pair<sol::table, sol::function>& pair) {
+				return pair.first == obj;
+			}), LuaCallBackMap.end());
+		};
 	table["type"] = RuntimeGlobalContext::SDL_CONTEXT.event.type;
-	auto& event = RuntimeGlobalContext::SDL_CONTEXT.event;
-	switch (event.type){
+	SDL_Event& event = RuntimeGlobalContext::SDL_CONTEXT.event;
+	float b_x = event.motion.x, b_y = event.motion.y;
+	int w, h;
+	SDL_GetWindowSize(RuntimeGlobalContext::SDL_CONTEXT.window, &w, &h);
+	if (RuntimeGlobalContext::world.getCurrentLevel()) {
+		auto& lvl = RuntimeGlobalContext::world.getCurrentLevel();
+		//坐标映射
+		auto rect = lvl->getRenderRect();
+		switch (event.type){
+			case SDL_EventType::SDL_EVENT_MOUSE_BUTTON_DOWN:
+			case SDL_EventType::SDL_EVENT_MOUSE_BUTTON_UP:
+				b_x = event.button.x * rect[2] / (float)w;
+				b_y = event.button.y * rect[3] / (float)h;
+				break;
+			case SDL_EventType::SDL_EVENT_MOUSE_MOTION:
+				b_x = event.motion.x * rect[2] / (float)w;
+				b_y = event.motion.y * rect[3] / (float)h;
+				break;
+			case SDL_EventType::SDL_EVENT_MOUSE_WHEEL:
+				b_x = event.wheel.mouse_x * rect[2] / (float)w;
+				b_y = event.wheel.mouse_y * rect[3] / (float)h;
+				break;
+		default:
+			break;
+		}
+
+		b_x += rect[0], b_y += rect[1];
+	}
+	switch (event.type) {
 	case SDL_EventType::SDL_EVENT_MOUSE_BUTTON_DOWN:
 		table_mouse["button"] = event.button.button;
-		table_mouse["x"] = event.button.x;
-		table_mouse["y"] = event.button.y;
+		table_mouse["x"] = b_x;
+		table_mouse["y"] = b_y;
 		table_mouse["clicks"] = event.button.clicks;
 		table_mouse["padding"] = event.button.padding;
 		table_mouse["reserved"] = event.button.reserved;
@@ -228,8 +296,8 @@ void GearX::Event::registerEventToLua(sol::state& lua_state){
 		break;
 	case SDL_EventType::SDL_EVENT_MOUSE_BUTTON_UP:
 		table_mouse["button"] = event.button.button;
-		table_mouse["x"] = event.button.x;
-		table_mouse["y"] = event.button.y;
+		table_mouse["x"] = b_x;
+		table_mouse["y"] = b_y;
 		table_mouse["clicks"] = event.button.clicks;
 		table_mouse["padding"] = event.button.padding;
 		table_mouse["reserved"] = event.button.reserved;
@@ -237,8 +305,8 @@ void GearX::Event::registerEventToLua(sol::state& lua_state){
 		table["mouse"] = table_mouse;
 		break;
 	case SDL_EventType::SDL_EVENT_MOUSE_MOTION:
-		table_mouse["x"] = event.motion.x;
-		table_mouse["y"] = event.motion.y;
+		table_mouse["x"] = b_x;
+		table_mouse["y"] = b_y;
 		table_mouse["xrel"] = event.motion.xrel;
 		table_mouse["yrel"] = event.motion.yrel;
 		table_mouse["state"] = event.motion.state;
@@ -246,29 +314,57 @@ void GearX::Event::registerEventToLua(sol::state& lua_state){
 		table["mouse"] = table_mouse;
 		break;
 	case SDL_EventType::SDL_EVENT_MOUSE_WHEEL:
-		table_mouse["x"] = event.wheel.mouse_x;
-		table_mouse["y"] = event.wheel.mouse_y;
+		table_mouse["x"] = b_x;
+		table_mouse["y"] = b_y;
 		table_mouse["xrel"] = event.wheel.x;
 		table_mouse["yrel"] = event.wheel.y;
 		table_mouse["direction"] = event.wheel.direction;
 		table_mouse["timestamp"] = event.wheel.timestamp;
-		table_mouse["reserved"] =  event.wheel.reserved;
+		table_mouse["reserved"] = event.wheel.reserved;
 		table["mouse"] = table_mouse;
 		break;
 	case SDL_EventType::SDL_EVENT_KEYMAP_CHANGED:
 	case SDL_EventType::SDL_EVENT_KEY_DOWN:
 	case SDL_EventType::SDL_EVENT_KEY_UP:
-		table_keyboard["keysym"] = static_cast<Uint32>(event.key.key);
-		table_keyboard["scancode"] = static_cast<Uint32>(event.key.scancode);
+		table_keyboard["keysym"] = event.key.key;
+		table_keyboard["scancode"] = event.key.scancode;
 		table_keyboard["repeat"] = event.key.repeat;
 		table_keyboard["reserved"] = event.key.reserved;
 		table_keyboard["timestamp"] = event.key.timestamp;
 		table["keyboard"] = table_keyboard;
 		break;
 	default:
+		if (event.type == GEVENT_GOBJECT_MOUSEHOVER || event.type == GEVENT_GOBJECT_MOUSEMOVE
+			|| event.type == GEVENT_GOBJECT_MOUSEENTER || event.type == GEVENT_GOBJECT_MOUSELEAVE
+			|| event.type == GEVENT_GOBJECT_MOUSECLICK || event.type == GEVENT_GOBJECT_MOUSEPRESS
+			|| event.type == GEVENT_GOBJECT_MOUSERELEASE || event.type == GEVENT_GOBJECT_MOUSEWHEEL) {
+			ObjectEvent* obj_event = reinterpret_cast<ObjectEvent*>(event.user.data1);
+			if(obj_event && RuntimeGlobalContext::world.getCurrentLevel()) {
+				auto& lvl = RuntimeGlobalContext::world.getCurrentLevel();
+				//坐标映射
+				auto rect = lvl->getRenderRect();
+				float o_x = obj_event->x * rect[2] / (float)w;
+				float o_y = obj_event->y * rect[3] / (float)h;
+				float r_x = obj_event->xrel * rect[2] / (float)w;
+				float r_y = obj_event->yrel * rect[3] / (float)h;
+				o_x += rect[0], o_y += rect[1];
+				r_x += rect[0], r_y += rect[1];
+				table_object["id"] = obj_event->id;
+				table_object["button"] = obj_event->button;
+				table_object["x"] = o_x;
+				table_object["y"] = o_y;
+				table_object["yrel"] = obj_event->yrel;
+				table_object["xrel"] = obj_event->xrel;
+				table_object["direction"] = obj_event->direction;
+				table_object["timestamp"] = SDL_NS_TO_SECONDS(static_cast<float>(obj_event->timestamp));
+				table_object["clicks"] = obj_event->clicks;
+				table["object"] = table_object;
+			}
+		}
 		break;
 	}
-	lua_state["Event"] = table;
+	env["Event"] = table;
+	return table;
 }
 void GearX::Event::init(void) {
 	registerCallback(SDL_EVENT_WINDOW_RESIZED, processWindowResized);
@@ -279,9 +375,16 @@ void GearX::Event::init(void) {
 	registerCallback(SDL_EVENT_MOUSE_BUTTON_DOWN, GObject_Press);
 	registerCallback(SDL_EVENT_MOUSE_BUTTON_UP, GObject_Release);
 	registerCallback(SDL_EVENT_MOUSE_MOTION, GObject_Drag);
-	registerCallback(SDL_EVENT_MOUSE_MOTION, GObject_MouseOver);
 	// Callbacks for game mode
 	registerCallback(SDL_EVENT_KEYMAP_CHANGED, onKeyMapChanged);
+	registerCallback(SDL_EVENT_MOUSE_MOTION, GObject_MouseHover);
+	registerCallback(SDL_EVENT_MOUSE_MOTION, GObject_MouseMove);
+	registerCallback(GEVENT_GOBJECT_MOUSEHOVER, GObject_MouseEnter);
+	registerCallback(GEVENT_GOBJECT_MOUSEHOVER, GObject_MouseLeave);
+	registerCallback(SDL_EVENT_MOUSE_BUTTON_DOWN, GObject_MouseClick);
+	registerCallback(SDL_EVENT_MOUSE_BUTTON_DOWN, GObject_MousePress);
+	registerCallback(SDL_EVENT_MOUSE_BUTTON_UP, GObject_MouseRelease);
+	registerCallback(SDL_EVENT_MOUSE_WHEEL, GObject_MouseWheel);
 }
 
 bool GearX::eventFilter(SDL_Event* event) {

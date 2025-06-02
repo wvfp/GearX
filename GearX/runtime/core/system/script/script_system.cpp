@@ -13,7 +13,7 @@
 #include "../../utils/object_wrapper.hpp"
 #include "../../event/event.hpp"
 namespace GearX {
-	static sol::table GlobalContextTable;
+	sol::table GlobalContextTable;
 	/// Called when two fixtures begin to touch.
 	void  ContactListener::BeginContact(b2Contact* contact) {
 		auto& script_system = GearX::RuntimeGlobalContext::scriptSystem;
@@ -53,7 +53,7 @@ namespace GearX {
 		auto obj_A = getObjectbyFixture(contact->GetFixtureA());
 		auto obj_B = getObjectbyFixture(contact->GetFixtureB());
 		auto com = obj_A->getComponentByTypeName(rttr::type::get<GearX::ScriptComponent>().get_name());
-		auto& lua = script_system.getLuaState();
+		auto& lua = script_system.getLuaEnv();
 		lua["ContactedObjectA"] = obj_A->getID();
 		lua["ContactedObjectB"] = obj_B->getID();
 		if (com) {
@@ -127,10 +127,10 @@ GearX::ScriptSystem::ScriptSystem() :lua_state(RuntimeGlobalContext::lua) {
 	lua_state.open_libraries(sol::lib::base, sol::lib::package,
 		sol::lib::string, sol::lib::math,
 		sol::lib::table, sol::lib::coroutine,
-		sol::lib::debug, sol::lib::bit32);
-	GlobalContextTable = lua_state.create_table();
-	env = std::make_unique<sol::environment>();
-	lua_state["GlobalContext"] = GlobalContextTable;
+		sol::lib::debug, sol::lib::bit32,sol::lib::os,sol::lib::io);
+	env = std::make_unique<sol::environment>(lua_state,sol::create,lua_state.globals());
+	GlobalContextTable = env->create();
+	(*env)["GlobalContext"] = GlobalContextTable;
 	lua_state["getCurrentDir"] = [&]() -> std::string {
 		return RuntimeGlobalContext::current_path.generic_string();
 	};
@@ -142,7 +142,7 @@ GearX::ScriptSystem::ScriptSystem() :lua_state(RuntimeGlobalContext::lua) {
 	lua_state.set_function("getAllObject", [this](GObjectID id) -> sol::table {return sol::nil; });
 	RegisterEmptyLevelFuncToLua();
 	//注册相关事件枚举到lua中(SDL_Event)
-	GearX::Event::registerEventToLua(lua_state);
+	GearX::Event::registerEventToLua(*env);
 	RuntimeGlobalContext::audioSystem.RegisterToLua(lua_state);
 	tables[0] = GObjectWrapper::getEmptyTable(lua_state);
 	RegisterObjectAsSelf(0);
@@ -167,18 +167,36 @@ void GearX::ScriptSystem::tick(float deltaTime) {
 
 	auto level = RuntimeGlobalContext::world.getCurrentLevel();
 	if (level) {
+		auto& objs = level->getAllObject();
 		if (!isInitialize) {
-			level->getWorld().SetContactListener(&listener);
+			RegisterCurrentLevelFuncToLua();
 			RegisterTables();
+			level->getWorld().SetContactListener(&listener);
 			// 创建一个新的环境
 			*env = sol::environment(lua_state, sol::create,lua_state.globals());
+			GlobalContextTable = env->create();
+			(*env)["GlobalContext"] = GlobalContextTable;
+			GearX::Event::registerEventToLua(*env,true);
+			// 执行只执行一次的脚本
+			for (auto& obj : objs) {
+			auto& com = obj.second->getComponentByTypeName(rttr::type::get<ScriptComponent>().get_name());
+				if (com) {
+					(*env)["Self"] = tables[obj.first];
+					//遍历脚本
+					auto& script_com = std::dynamic_pointer_cast<ScriptComponent>(com);
+					auto& scripts = script_com->getScriptDoOnce();
+					for (auto& script : scripts) {
+						// 执行脚本, 传入环境
+						static_cast<ScriptHolder*>(script.data)->execute(*env);
+					}
+				}
+			}
 			isInitialize = true;
 		}
-		auto& objs = level->getAllObject();
 		for (auto& obj : objs) {
 			auto& com = obj.second->getComponentByTypeName(rttr::type::get<ScriptComponent>().get_name());
 			if (com) {
-				RegisterObjectAsSelf(obj.first);
+				(*env)["Self"] = tables[obj.first];
 				//遍历脚本
 				auto& script_com = std::dynamic_pointer_cast<ScriptComponent>(com);
 				auto& scripts = script_com->getScript();
@@ -240,7 +258,6 @@ void GearX::ScriptSystem::RegisterCurrentLevelFuncToLua() {
 }
 
 void GearX::ScriptSystem::RegisterTables(){
-	//注册Level到lua中
 	
 	//注册相关枚举
 	GObjectWrapper::RegisterEnum(lua_state);
@@ -269,5 +286,20 @@ void GearX::ScriptSystem::RegisterTables(){
 
 void GearX::ScriptSystem::RegisterObjectAsSelf(GObjectID id) {
 	// 注册self为当前对象的表,便于脚本中直接使用self来访问对象属性和方法
+	// 若对象不存在,则创建对象并注册到lua中
+	if (tables.find(id) == tables.end()) {
+		auto& Objs = RuntimeGlobalContext::world.getCurrentLevel()->getAllObject();
+		wrappers[id] = std::make_shared<GObjectWrapper>(Objs[id]);
+		tables[id] = wrappers[id]->getTable(lua_state);
+	}
 	lua_state["Self"] = tables[id];
+}
+
+void GearX::ScriptSystem::RegisterObjectAsSelf(GObjectID id, sol::environment& env){
+	if (tables.find(id) != tables.end()) {
+		auto& Objs = RuntimeGlobalContext::world.getCurrentLevel()->getAllObject();
+		wrappers[id] = std::make_shared<GObjectWrapper>(Objs[id]);
+		tables[id] = wrappers[id]->getTable(lua_state);
+	}
+	env["Self"] = tables[id];
 }

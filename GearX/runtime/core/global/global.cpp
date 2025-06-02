@@ -5,8 +5,8 @@
 #include "../system/physics/physics_system.hpp"
 #include "../system/script/script_system.hpp"
 #include "../system/audio/audio_system.hpp"
-
 namespace GearX {
+	Uint8 RuntimeGlobalContext::DEFAULT_FPS = 60.0f;
 	std::array<int, 2> DefaultWindowSize = { 2400, 1280 };
 	std::string DefaultWindowTitle = "GearXEngine";
 	std::string DefaultWindiwIcon = "./asset/default/icon_round.png";
@@ -62,16 +62,6 @@ namespace GearX {
 				exit(1);
 			}
 			SDL_SetTextureScaleMode(SDL_CONTEXT.texture, SDL_ScaleMode::SDL_SCALEMODE_LINEAR);
-			//“Ù∆µ≥ı ºªØ
-			Mix_Init(MIX_INIT_FLAC | MIX_INIT_MP3 | MIX_INIT_OGG | MIX_INIT_OPUS);
-			SDL_AudioSpec spec;
-			SDL_zero(spec);
-			/* Initialize variables */
-			spec.freq = MIX_DEFAULT_FREQUENCY;
-			spec.format = MIX_DEFAULT_FORMAT;
-			spec.channels = MIX_DEFAULT_CHANNELS;
-			spec.format = SDL_AUDIO_F32;
-			Mix_OpenAudio(0, &spec);
 			//Initialize Dear ImGUI
 			ImGui::CreateContext();
 			ImGui_ImplSDL3_InitForSDLRenderer(SDL_CONTEXT.window, SDL_CONTEXT.renderer);
@@ -81,7 +71,12 @@ namespace GearX {
 			SetImGuiWhiteStyle();
 			//Initialize Window Background Color
 			SDL_SetRenderDrawColor(SDL_CONTEXT.renderer, 0x55, 0x55, 0x55, 0x55);
+			SDL_Texture* WindowIconTexture = SDL_CreateTextureFromSurface(SDL_CONTEXT.renderer, WindowIcon);
 			SDL_RenderClear(SDL_CONTEXT.renderer);
+			SDL_FRect rect = { (float)DefaultWindowSize[0]/4, (float)DefaultWindowSize[1]/4, 
+				(float)DefaultWindowSize[0] / 2, (float)DefaultWindowSize[1] / 2};
+			SDL_RenderTexture(SDL_CONTEXT.renderer, WindowIconTexture, nullptr, &rect);
+			SDL_DestroyTexture(WindowIconTexture);
 			SDL_RenderPresent(SDL_CONTEXT.renderer);
 			isInitialize = true;
 		}
@@ -97,8 +92,6 @@ namespace GearX {
 		SDL_DestroyTexture(SDL_CONTEXT.texture);
 		SDL_DestroyWindow(SDL_CONTEXT.window);
 		SDL_memset(&SDL_CONTEXT, 0, sizeof(SDL_CONTEXT));
-		Mix_CloseAudio();
-		Mix_Quit();
 		SDL_Quit();
 		isInitialize = false;
 	}

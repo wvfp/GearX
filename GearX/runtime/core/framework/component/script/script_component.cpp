@@ -92,6 +92,24 @@ void GearX::ScriptComponent::addScriptToEndContact(std::string& url){
     script_end_contact.push_back(RuntimeGlobalContext::assetManager.loadAssetScript(url));
 }
 
+void GearX::ScriptComponent::addScriptToDoOnce(std::string& url){
+    for (auto& i : script_do_once) {
+        if (i.asset_url == url) {
+            return;
+        }
+    }
+    script_do_once.push_back(RuntimeGlobalContext::assetManager.loadAssetScript(url));
+}
+
+void GearX::ScriptComponent::removeScriptFromDoOnce(std::string& url){
+    for (int i = 0; i < script_do_once.size(); i++) {
+        if (script_do_once[i].asset_url == url) {
+            script_do_once.erase(script_do_once.begin() + i);
+            break;
+        }
+    }
+}
+
 void GearX::ScriptComponent::reloadScripts(){
     for (auto i : script_assets) {
         if (!i.asset_url.empty() || i.data) {
@@ -104,6 +122,11 @@ void GearX::ScriptComponent::reloadScripts(){
         }
     }
     for (auto& i : script_end_contact) {
+        if (!i.asset_url.empty() || i.data) {
+            static_cast<ScriptHolder*>(i.data)->reload(i.asset_url);
+        }
+    }
+    for (auto& i : script_do_once) {
         if (!i.asset_url.empty() || i.data) {
             static_cast<ScriptHolder*>(i.data)->reload(i.asset_url);
         }
@@ -122,6 +145,11 @@ void GearX::ScriptComponent::loadScript(){
         }
     }
     for (auto& script : script_end_contact) {
+        if (script.data == nullptr) {
+            script = RuntimeGlobalContext::assetManager.loadAssetScript(script.asset_url);
+        }
+    }
+    for (auto& script : script_do_once) {
         if (script.data == nullptr) {
             script = RuntimeGlobalContext::assetManager.loadAssetScript(script.asset_url);
         }

@@ -42,7 +42,6 @@ GearX::AssetManager::AssetMapType& GearX::AssetManager::getAllAsset()
 {
 	return m_AssetMap;
 }
-
 GearX::Asset GearX::AssetManager::loadAsset(const std::string& file) {
 	if (m_AssetMap.count(file) > 0 && m_AssetMap[file].data) {
 		return m_AssetMap[file];
@@ -69,17 +68,17 @@ GearX::Asset GearX::AssetManager::loadAsset(const std::string& file) {
 GearX::Asset GearX::AssetManager::loadAssetTexture(const std::string& file) {
 	if (DefaultTexture == nullptr) {
 		DefaultTexture = loadTexture("./asset/default/DefaultTexture.png");
-		SDL_Log("Loaded : DefaultTexture");
 	}
 	Asset asset{ AssetType::Texture, file,(void*)DefaultTexture };
 	if (m_AssetMap.count(file) == 0 || m_AssetMap[file].data) {
 		asset = { AssetType::Texture, file,(void*)loadTexture(file) };
 		if (asset.data == nullptr) {
 			asset.data = (void*)DefaultTexture;
+			asset.asset_url = "./asset/default/DefaultTexture.png";
 		}
 	}
-	m_AssetMap[file] = asset;
-	return m_AssetMap[file];
+	m_AssetMap[asset.asset_url] = asset;
+	return m_AssetMap[asset.asset_url];
 }
 
 GearX::Asset GearX::AssetManager::loadAssetChunk(const std::string& file)
@@ -148,7 +147,7 @@ void GearX::AssetManager::releaseAsset(const std::string& file)
 			Mix_FreeChunk(static_cast<Mix_Chunk*>(i->second.data));
 			break;
 		case AssetType::Music:
-			Mix_FreeMusic(static_cast<Mix_Music*>(i->second.data));
+			Mix_HaltMusic();
 			break;
 		case AssetType::Font:
 			TTF_CloseFont(static_cast<TTF_Font*>(i->second.data));
