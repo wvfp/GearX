@@ -51,12 +51,23 @@ GearX 是一个2D游戏引擎，使用C++编写，Cmake构建，基于SDL3 开�
 ---
 
 ### 截图
+
 - 引擎开始界面
+
+
 <img src="./Screenshots/s1.png">
+
+
 - 示例 ：编辑模式(example/world.json)
+
+
 <img src="./Screenshots/s2.png">
+
+
 - 示例 ：运行模式(example/world.json)
+
 <img src="./Screenshots/s3.png">
+
 
 ---
 ## 目录结构
@@ -64,13 +75,14 @@ GearX 是一个2D游戏引擎，使用C++编写，Cmake构建，基于SDL3 开�
 ```
 .
 ├── CMakeLists.txt           # CMake 构建脚本
-├── main.cpp                 # 示例主程序
-├── starter.cpp              # 启动入口
+├── main.cpp                 # 引擎主程序
+├── starter.cpp              # 游戏启动入口
 ├── GearX/                   # 引擎核心代码
 │   └── runtime/             # 运行时与核心模块
 ├── Depencies/               # 第三方依赖库（如 SDL3, Box2D, sol2, cereal 等）
 ├── build/                   # 构建输出目录
 ├── LICENSE.txt              # 许可证
+|── GearXLuaAPI.md           # Lua API文档
 └── README.md                # 项目说明文档
 ```
 
