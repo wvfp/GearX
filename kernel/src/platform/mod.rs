@@ -1,5 +1,5 @@
 use std::time::Duration;
-use raw_window_handle::WindowHandle;
+use raw_window_handle::{HasDisplayHandle, HasWindowHandle, WindowHandle};
 
 /// Events that the platform layer can emit to the application.
 pub enum PlatformEvent {
@@ -12,7 +12,7 @@ pub enum PlatformEvent {
 }
 
 /// A handle to a display window.
-pub trait Window: Send + 'static {
+pub trait Window: HasWindowHandle + HasDisplayHandle + Send + Sync + 'static {
     /// Returns a platform-specific raw window handle (for graphics APIs).
     fn raw_window_handle(&self) -> WindowHandle<'_>;
     /// Returns the current inner size of the window in physical pixels.

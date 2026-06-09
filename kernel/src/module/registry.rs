@@ -217,7 +217,7 @@ mod tests {
         reg.register(make_test("a"));
         reg.register(make_test("b"));
 
-        let mut kernel = Kernel;
+        let mut kernel = Kernel::test();
         reg.load_all(&mut kernel).unwrap();
         assert_eq!(reg.state("a"), Some(ModuleState::Active));
         assert_eq!(reg.state("b"), Some(ModuleState::Active));
@@ -251,7 +251,7 @@ mod tests {
         reg.register(Box::new(FailModule));
         reg.register(make_test("never_reached"));
 
-        let mut kernel = Kernel;
+        let mut kernel = Kernel::test();
         assert!(reg.load_all(&mut kernel).is_err());
         // "good" should have been rolled back to Unloaded.
         assert_eq!(reg.state("good"), Some(ModuleState::Unloaded));

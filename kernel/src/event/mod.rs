@@ -97,7 +97,7 @@ impl<E: Event, H: EventHandler<E> + 'static> AnyHandler for WrappedHandler<E, H>
 
 // ── Pre-defined Event Types ──
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum EngineMode {
     Edit,
     Play,

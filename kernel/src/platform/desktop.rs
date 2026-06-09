@@ -1,6 +1,6 @@
 use std::time::{Duration, Instant};
 
-use raw_window_handle::{HasWindowHandle, WindowHandle};
+use raw_window_handle::{HasDisplayHandle, HasWindowHandle, WindowHandle};
 use winit::dpi::LogicalSize;
 use winit::event::{Event, WindowEvent};
 use winit::event_loop::{ActiveEventLoop, EventLoop};
@@ -55,6 +55,12 @@ pub struct DesktopWindow {
 impl HasWindowHandle for DesktopWindow {
     fn window_handle(&self) -> Result<WindowHandle<'_>, raw_window_handle::HandleError> {
         self.window.window_handle()
+    }
+}
+
+impl HasDisplayHandle for DesktopWindow {
+    fn display_handle(&self) -> Result<raw_window_handle::DisplayHandle<'_>, raw_window_handle::HandleError> {
+        self.window.display_handle()
     }
 }
 
