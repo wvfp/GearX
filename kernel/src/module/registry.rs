@@ -104,7 +104,9 @@ impl ModuleRegistry {
                 // Roll back every already-active module.
                 for j in (0..loaded).rev() {
                     let prev = &mut self.entries[j];
-                    let _ = prev.module.shutdown(kernel);
+                    if let Err(e) = prev.module.shutdown(kernel) {
+                        tracing::warn!("Module '{}' shutdown error during rollback: {e:#}", prev.module.name());
+                    }
                     prev.state = ModuleState::Unloaded;
                 }
                 return Err(anyhow!("module '{module_name}' failed to init"));
@@ -136,15 +138,15 @@ impl ModuleRegistry {
     }
 
     /// Borrow a module by name.
-    pub fn get(&self, name: &str) -> Option<&Box<dyn Module>> {
+    pub fn get(&self, name: &str) -> Option<&dyn Module> {
         let idx = *self.by_name.get(name)?;
-        Some(&self.entries[idx].module)
+        Some(&*self.entries[idx].module)
     }
 
     /// Mutably borrow a module by name.
-    pub fn get_mut(&mut self, name: &str) -> Option<&mut Box<dyn Module>> {
+    pub fn get_mut(&mut self, name: &str) -> Option<&mut dyn Module> {
         let idx = *self.by_name.get(name)?;
-        Some(&mut self.entries[idx].module)
+        Some(&mut *self.entries[idx].module)
     }
 
     /// Iterate over all registered modules mutably.
@@ -153,11 +155,19 @@ impl ModuleRegistry {
     }
 
     /// Number of registered modules.
+    #[must_use]
     pub fn len(&self) -> usize {
         self.entries.len()
     }
 
+    /// Returns `true` if no modules are registered.
+    #[must_use]
+    pub fn is_empty(&self) -> bool {
+        self.entries.is_empty()
+    }
+
     /// State of a registered module (if present).
+    #[must_use]
     pub fn state(&self, name: &str) -> Option<ModuleState> {
         let idx = *self.by_name.get(name)?;
         Some(self.entries[idx].state)

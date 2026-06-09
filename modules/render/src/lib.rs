@@ -76,12 +76,18 @@ impl RenderModule {
         })
     }
 
-    /// Resize the surface (called on window resize events).
+    /// Handle a window resize event by reconfiguring the wgpu surface.
+    /// If either dimension is zero (window minimised), the resize is deferred.
     pub fn resize(&mut self, width: u32, height: u32) {
+        if width == 0 || height == 0 {
+            tracing::warn!("RenderModule: skipping resize to ({width}×{height}) — window minimised");
+            return;
+        }
         self.window_size = (width, height);
         self.surface_config.width = width;
         self.surface_config.height = height;
         self.surface.configure(&self.device, &self.surface_config);
+        tracing::info!("RenderModule: surface resized to {width}×{height}");
     }
 }
 
@@ -98,6 +104,11 @@ impl Module for RenderModule {
     }
 
     fn update(&mut self, _kernel: &mut Kernel, _dt: f32) -> Result<()> {
+        // Skip rendering while the window is minimised (zero-sized).
+        if self.window_size.0 == 0 || self.window_size.1 == 0 {
+            return Ok(());
+        }
+
         // Acquire the next swap-chain texture.
         let frame = self.surface.get_current_texture()?;
         let view = frame

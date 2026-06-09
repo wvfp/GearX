@@ -8,7 +8,6 @@ use winit::platform::pump_events::EventLoopExtPumpEvents;
 use winit::platform::run_on_demand::EventLoopExtRunOnDemand;
 
 use crate::platform::{Platform, PlatformEvent, TimeSystem, Window, WindowSystem};
-
 // ---------------------------------------------------------------------------
 // Time
 // ---------------------------------------------------------------------------
@@ -25,6 +24,12 @@ impl DesktopTime {
             start: now,
             last_frame: now,
         }
+    }
+}
+
+impl Default for DesktopTime {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
@@ -66,7 +71,7 @@ impl HasDisplayHandle for DesktopWindow {
 impl Window for DesktopWindow {
     fn raw_window_handle(&self) -> WindowHandle<'_> {
         // winit's Window always returns a valid handle in practice.
-        self.window.window_handle().unwrap()
+        self.window.window_handle().expect("winit window handle is always valid in DesktopWindow")
     }
 
     fn size(&self) -> (u32, u32) {
@@ -154,21 +159,27 @@ impl WindowSystem for DesktopWindowSystem {
             .as_mut()
             .expect("event loop not created");
 
-        // Safety: `run_on_demand` blocks until the event loop exits, so the
-        // `on_event` reference lives for the entire duration of the call.
-        let on_event: &'static mut dyn FnMut(PlatformEvent) =
-            unsafe { std::mem::transmute(on_event) };
+        // Box the reference and leak it to obtain a raw pointer that the
+        // closure can capture.  The closure recreates the box on each
+        // invocation and re-leaks it to avoid a double free.  This is
+        // sound because `run_on_demand` is *synchronous* — it blocks
+        // until the event loop exits — so the original `on_event` borrow
+        // remains alive for the entire call.
+        let on_event_ptr = Box::into_raw(Box::new(on_event));
 
-        let _ = send_event_loop.run_on_demand(
+        if let Err(e) = send_event_loop.run_on_demand(
             move |event, active_event_loop: &ActiveEventLoop| {
+                // SAFETY: on_event_ptr was allocated by Box::into_raw above
+                // and is still valid (we re-leak before returning).
+                let on_event_box = unsafe { Box::from_raw(on_event_ptr) };
                 match event {
                     Event::WindowEvent { event: we, .. } => match we {
                         WindowEvent::CloseRequested => {
-                            on_event(PlatformEvent::CloseRequested);
+                            (*on_event_box)(PlatformEvent::CloseRequested);
                             active_event_loop.exit();
                         }
                         WindowEvent::Resized(size) => {
-                            on_event(PlatformEvent::Resized(size.width, size.height));
+                            (*on_event_box)(PlatformEvent::Resized(size.width, size.height));
                         }
                         _ => {}
                     },
@@ -178,8 +189,12 @@ impl WindowSystem for DesktopWindowSystem {
                     }
                     _ => {}
                 }
+                // Re-leak to prevent dropping the borrowed reference.
+                let _ = Box::into_raw(on_event_box);
             },
-        );
+        ) {
+            tracing::warn!("Event loop exited with error: {e:#}");
+        }
     }
 }
 

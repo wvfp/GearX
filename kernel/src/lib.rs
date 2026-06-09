@@ -16,3 +16,8 @@ pub use frame_counter::FrameCounter;
 pub mod kernel;
 
 pub use kernel::Kernel;
+
+// Re-export ECS primitives so downstream crates don't need to depend on
+// bevy_ecs directly.
+pub use bevy_ecs::prelude::*;
+pub use ecs::{FrameStats, Time};

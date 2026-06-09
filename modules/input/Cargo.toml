@@ -1,12 +1,10 @@
 [package]
-name = "gearx_render"
+name = "gearx_input"
 version = "0.1.0"
 edition = "2021"
+description = "GearX input module — keyboard, mouse, gamepad handling"
 
 [dependencies]
 gearx_kernel = { path = "../../kernel" }
-wgpu = "24.0"
-pollster = "0.3"
-anyhow = "1"
 linkme = ">=0.3.32"
-tracing = "0.1"
+anyhow = "1"

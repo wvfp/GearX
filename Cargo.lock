@@ -622,11 +622,21 @@ name = "gearx"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "gearx_input",
  "gearx_kernel",
  "gearx_render",
  "pollster",
  "tracing",
  "tracing-subscriber",
+]
+
+[[package]]
+name = "gearx_input"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "gearx_kernel",
+ "linkme",
 ]
 
 [[package]]
@@ -652,6 +662,7 @@ dependencies = [
  "gearx_kernel",
  "linkme",
  "pollster",
+ "tracing",
  "wgpu",
 ]
 

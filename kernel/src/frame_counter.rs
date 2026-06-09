@@ -14,10 +14,10 @@ impl FrameCounter {
             fps: 0.0,
         }
     }
-    
+
     pub fn tick(&mut self) {
         self.frame_count += 1;
-        
+
         let elapsed = self.last_log.elapsed();
         if elapsed >= std::time::Duration::from_secs(1) {
             self.fps = self.frame_count as f32 / elapsed.as_secs_f32();
@@ -26,7 +26,20 @@ impl FrameCounter {
             self.last_log = Instant::now();
         }
     }
-    
-    pub fn frame_count(&self) -> u64 { self.frame_count }
-    pub fn fps(&self) -> f32 { self.fps }
+
+    #[must_use]
+    pub fn frame_count(&self) -> u64 {
+        self.frame_count
+    }
+
+    #[must_use]
+    pub fn fps(&self) -> f32 {
+        self.fps
+    }
+}
+
+impl Default for FrameCounter {
+    fn default() -> Self {
+        Self::new()
+    }
 }

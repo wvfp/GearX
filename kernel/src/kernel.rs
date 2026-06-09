@@ -25,9 +25,14 @@ use crate::event::{EngineEvent, EngineMode, EventBus, FrameEvent};
 use crate::frame_counter::FrameCounter;
 use crate::module::ModuleRegistry;
 use crate::platform::Platform;
+use bevy_ecs::prelude::{IntoSystem, Resource, Schedule, World};
 
 /// The central engine kernel — owns all engine subsystems.
 pub struct Kernel {
+    /// ECS world — stores all entities, components, and resources.
+    pub world: World,
+    /// ECS schedule — defines and runs systems each frame.
+    pub schedule: Schedule,
     /// Registry of all loaded engine modules.
     registry: ModuleRegistry,
     /// Platform abstraction (windowing, timing, etc.).
@@ -48,7 +53,13 @@ impl Kernel {
     /// The caller is responsible for initialising logging *before* calling
     /// this constructor (e.g. via [`crate::init::init_logging`]).
     pub fn new(platform: Box<dyn Platform>) -> Self {
+        let mut world = World::new();
+        world.insert_resource(crate::ecs::Time::default());
+        world.insert_resource(crate::ecs::FrameStats::default());
+
         Self {
+            world,
+            schedule: Schedule::default(),
             registry: ModuleRegistry::new(),
             platform,
             event_bus: EventBus::new(),
@@ -114,6 +125,9 @@ impl Kernel {
                 self.registry = reg;
             }
 
+            // Run the ECS schedule (executes all registered systems).
+            self.schedule.run(&mut self.world);
+
             self.event_bus.publish(&FrameEvent::End(dt));
             self.frame_counter.tick();
 
@@ -137,7 +151,9 @@ impl Kernel {
 
         {
             let mut reg = std::mem::take(&mut self.registry);
-            let _ = reg.unload_all(self);
+            if let Err(e) = reg.unload_all(self) {
+                tracing::warn!("Module unload error during shutdown: {e:#}");
+            }
             self.registry = reg;
         }
 
@@ -174,13 +190,38 @@ impl Kernel {
     }
 
     /// Current engine mode.
+    #[must_use]
     pub fn mode(&self) -> EngineMode {
         self.mode
     }
 
     /// Whether the kernel is still running (i.e. the main loop should continue).
+    #[must_use]
     pub fn is_running(&self) -> bool {
         self.running
+    }
+
+    // ── ECS integration ──
+
+    /// Register a system to run every frame via the ECS schedule.
+    ///
+    /// The system can access resources and components through bevy_ecs query
+    /// parameters (`Res`, `ResMut`, `Query`, etc.).
+    pub fn add_system<M>(&mut self, system: impl IntoSystem<(), (), M> + 'static) {
+        self.schedule.add_systems(system);
+    }
+
+    /// Insert a resource into the ECS world.
+    ///
+    /// Resources are globally-accessible singletons.  If a resource of the
+    /// same type already exists it will be replaced.
+    pub fn add_resource<T: Resource>(&mut self, resource: T) {
+        self.world.insert_resource(resource);
+    }
+
+    /// Mutable reference to the ECS world.
+    pub fn world(&mut self) -> &mut World {
+        &mut self.world
     }
 }
 
