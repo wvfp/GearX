@@ -80,7 +80,6 @@ impl Kernel {
         // `Default` (empty registry), so `take` is cheap.
         {
             let mut reg = std::mem::take(&mut self.registry);
-            reg.discover();
             if let Err(e) = reg.load_all(self) {
                 tracing::error!("Failed to load modules: {e:#}");
                 self.registry = reg;
@@ -91,6 +90,15 @@ impl Kernel {
 
         // --- Main loop ---
         while self.running {
+            // Poll platform events (window close, resize, etc.) non-blocking.
+            let platform_events = self.platform.window_system().poll_events();
+            if platform_events
+                .iter()
+                .any(|e| matches!(e, crate::platform::PlatformEvent::CloseRequested))
+            {
+                break;
+            }
+
             let dt = self.platform.time_system().delta_seconds();
             self.event_bus.publish(&FrameEvent::Start(dt));
 

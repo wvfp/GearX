@@ -1,0 +1,3 @@
+STEP 8: println! audit in non-test code
+RESULT: PASS — ZERO println! in non-test code
+All logging uses the `tracing` crate as required.

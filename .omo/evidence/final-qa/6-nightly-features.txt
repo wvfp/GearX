@@ -1,0 +1,5 @@
+STEP 6: Nightly features check
+RESULT: PASS — ZERO #![feature] attributes found
+COMMAND: grep -r '#!\[feature' kernel/ modules/ src/
+OUTPUT: (no matches)
+Exit code: 1 (no matches = PASS)

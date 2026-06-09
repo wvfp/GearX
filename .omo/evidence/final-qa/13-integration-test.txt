@@ -1,0 +1,6 @@
+STEP 13: Integration test existence
+RESULT: PASS
+PATH: tests/boot.rs
+SIZE: 6681 bytes
+CONTENTS: 4 test functions (test_kernel_construct, test_kernel_discover_modules,
+          test_kernel_initializes, test_kernel_boot_three_frames_then_shutdown)

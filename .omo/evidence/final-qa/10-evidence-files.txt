@@ -1,0 +1,14 @@
+STEP 10: Evidence files check
+RESULT: PASS — 11 task-*.txt evidence files found
+FILES:
+  task-1-config-files.txt
+  task-1-workspace-members.txt
+  task-2-kernel-build.txt
+  task-2-kernel-structure.txt
+  task-3-render-build.txt
+  task-4-module-trait-compile.txt
+  task-5-platform-compile.txt
+  task-6-eventbus-compile.txt
+  task-7-logging-compile.txt
+  task-9-render-compile.txt
+  task-wave2-build.txt

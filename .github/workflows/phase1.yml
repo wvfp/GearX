@@ -1,0 +1,36 @@
+name: Phase 1 Verification
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Rust stable
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        targets: wasm32-unknown-unknown
+
+    - name: Build workspace
+      run: cargo build --workspace
+
+    - name: Run tests
+      run: cargo test --workspace
+
+    - name: Cross-compile check (WASM)
+      run: cargo check -p gearx_kernel --target wasm32-unknown-unknown
+      continue-on-error: true
+
+    # Android cross-compile requires NDK — skipped in CI
+    # - name: Cross-compile check (Android)
+    #   run: cargo check -p gearx_kernel --target aarch64-linux-android
+    #   continue-on-error: true

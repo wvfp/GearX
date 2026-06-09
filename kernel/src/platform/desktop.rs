@@ -4,9 +4,8 @@ use raw_window_handle::{HasDisplayHandle, HasWindowHandle, WindowHandle};
 use winit::dpi::LogicalSize;
 use winit::event::{Event, WindowEvent};
 use winit::event_loop::{ActiveEventLoop, EventLoop};
+use winit::platform::pump_events::EventLoopExtPumpEvents;
 use winit::platform::run_on_demand::EventLoopExtRunOnDemand;
-
-
 
 use crate::platform::{Platform, PlatformEvent, TimeSystem, Window, WindowSystem};
 
@@ -125,6 +124,27 @@ impl WindowSystem for DesktopWindowSystem {
             .create_window(window_attrs)
             .expect("failed to create window");
         Box::new(DesktopWindow { window })
+    }
+
+    fn poll_events(&mut self) -> Vec<PlatformEvent> {
+        let mut events = Vec::new();
+        if let Some(el) = &mut self.event_loop {
+            #[allow(deprecated)]
+            let _ = el.pump_events(Some(std::time::Duration::ZERO), |event, _ael| {
+                if let winit::event::Event::WindowEvent { event: we, .. } = event {
+                    match we {
+                        winit::event::WindowEvent::CloseRequested => {
+                            events.push(PlatformEvent::CloseRequested);
+                        }
+                        winit::event::WindowEvent::Resized(size) => {
+                            events.push(PlatformEvent::Resized(size.width, size.height));
+                        }
+                        _ => {}
+                    }
+                }
+            });
+        }
+        events
     }
 
     #[allow(deprecated)]

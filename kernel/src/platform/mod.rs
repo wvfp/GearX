@@ -27,6 +27,14 @@ pub trait WindowSystem: Send + 'static {
     ///
     /// This call blocks until the event loop exits (e.g. on `CloseRequested`).
     fn run_event_loop(&mut self, on_event: &mut dyn FnMut(PlatformEvent));
+    /// Polls for pending platform events without blocking (non-blocking pump).
+    ///
+    /// Returns a list of [`PlatformEvent`]s that occurred since the last poll.
+    /// The default implementation returns an empty vector, meaning no events
+    /// were observed.
+    fn poll_events(&mut self) -> Vec<PlatformEvent> {
+        Vec::new()
+    }
 }
 
 /// Provides wall-clock timing and frame delta queries.

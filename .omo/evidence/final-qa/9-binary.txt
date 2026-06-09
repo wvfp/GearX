@@ -1,0 +1,4 @@
+STEP 9: Binary existence check
+RESULT: PASS
+PATH: /tmp/gearx-target/debug/gearx
+SIZE: 131,287,256 bytes (131 MB)

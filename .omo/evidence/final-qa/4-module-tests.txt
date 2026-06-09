@@ -1,0 +1,7 @@
+STEP 4: cargo test -p gearx_kernel module
+RESULT: PASS — 4/4 ModuleRegistry tests (filtered)
+TEST LIST (4 of 7 total module tests):
+  duplicate_register_panics ... ok (should_panic)
+  init_failure_rolls_back .... ok
+  load_and_unload ............ ok
+  register_and_get ........... ok

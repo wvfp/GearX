@@ -1,0 +1,9 @@
+STEP 3: cargo test -p gearx_kernel event
+RESULT: PASS — 6/6 EventBus tests
+TEST LIST:
+  test_event_trait_send ........ ok
+  test_handler_removed ......... ok
+  test_multiple_handlers ....... ok
+  test_publish_calls_handler ... ok
+  test_publish_no_handler_no_panic  ok
+  test_unrelated_event_not_called  ok

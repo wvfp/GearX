@@ -1,0 +1,8 @@
+STEP 5: cargo test -p gearx --test boot
+RESULT: PASS — 3 passed, 1 ignored
+TEST LIST:
+  test_kernel_construct ................................. ok
+  test_kernel_discover_modules ......................... ok
+  test_kernel_initializes .............................. ok
+  test_kernel_boot_three_frames_then_shutdown .......... ignored (winit needs display)
+Total: 3 passed; 0 failed; 1 ignored

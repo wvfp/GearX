@@ -1,0 +1,8 @@
+STEP 2: cargo test --workspace
+RESULT: PASS — 21 passed, 1 ignored
+BREAKDOWN:
+  gearx (main):        0 tests
+  boot.rs (integ):     3 passed, 1 ignored
+  gearx_kernel (unit): 18 passed
+  gearx_render:        0 tests
+TOTAL: 21 passed, 1 ignored, 0 failed

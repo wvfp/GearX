@@ -132,3 +132,6 @@ pub enum InputEvent {
 impl Event for EngineEvent {}
 impl Event for FrameEvent {}
 impl Event for InputEvent {}
+
+#[cfg(test)]
+mod tests;

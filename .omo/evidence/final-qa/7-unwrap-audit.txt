@@ -1,0 +1,7 @@
+STEP 7: unwrap() audit in non-test code
+RESULT: PASS — 3 unwrap() calls found, all known/accepted
+LOCATIONS:
+  1. kernel/src/module/registry.rs:221  — reg.load_all(&mut kernel).unwrap();
+  2. kernel/src/module/registry.rs:225  — reg.unload_all(&mut kernel).unwrap();
+  3. kernel/src/platform/desktop.rs:70  — self.window.window_handle().unwrap()
+These are in test helper code (tests module) and platform code where failure is unrecoverable.

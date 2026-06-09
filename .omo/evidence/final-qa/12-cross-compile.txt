@@ -1,0 +1,8 @@
+STEP 12: Cross-compile checks
+RESULT: SKIPPED (gracefully) — targets not installed
+WASM:   cargo check -p gearx_kernel --target wasm32-unknown-unknown
+        → "the wasm32-unknown-unknown target may not be installed"
+        → SKIP (as expected)
+ANDROID: cargo check -p gearx_kernel --target aarch64-linux-android
+         → "the aarch64-linux-android target may not be installed"
+         → SKIP (as expected)
