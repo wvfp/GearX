@@ -1,0 +1,13 @@
+[package]
+name = "gearx_ui"
+version = "0.1.0"
+edition = "2021"
+description = "GearX UI debug overlay module — egui integration"
+
+[dependencies]
+gearx_kernel = { path = "../../kernel" }
+gearx_render = { path = "../render" }
+egui = "0.31"
+linkme = ">=0.3.32"
+anyhow = "1"
+tracing = "0.1"

@@ -9,6 +9,7 @@ pub mod profiler;
 pub mod console;
 pub mod init;
 pub mod frame_counter;
+pub mod scene;
 
 pub use init::{init_logging, init_logging_with_default, KERNEL_VERSION};
 pub use frame_counter::FrameCounter;

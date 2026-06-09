@@ -176,6 +176,31 @@ impl WindowSystem for DesktopWindowSystem {
                                 }
                             }
                         }
+                        winit::event::WindowEvent::MouseWheel { delta, .. } => {
+                            let (dx, dy) = match delta {
+                                winit::event::MouseScrollDelta::LineDelta(x, y) => (x, y),
+                                winit::event::MouseScrollDelta::PixelDelta(pos) => (pos.x as f32, pos.y as f32),
+                            };
+                            events.push(PlatformEvent::MouseWheel(dx, dy));
+                        }
+                        winit::event::WindowEvent::Ime(winit::event::Ime::Commit(text)) => {
+                            events.push(PlatformEvent::TextInput(text));
+                        }
+                        winit::event::WindowEvent::ModifiersChanged(modifiers) => {
+                            let state = modifiers.state();
+                            events.push(PlatformEvent::ModifiersChanged {
+                                shift: state.shift_key(),
+                                ctrl: state.control_key(),
+                                alt: state.alt_key(),
+                                logo: state.super_key(),
+                            });
+                        }
+                        winit::event::WindowEvent::Focused(focused) => {
+                            events.push(PlatformEvent::Focused(focused));
+                        }
+                        winit::event::WindowEvent::ScaleFactorChanged { scale_factor, .. } => {
+                            events.push(PlatformEvent::ScaleFactorChanged(scale_factor));
+                        }
                         _ => {}
                     }
                 }

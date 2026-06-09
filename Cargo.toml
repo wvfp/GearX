@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = [".", "kernel", "modules/render", "modules/input", "modules/assets"]
+members = [".", "kernel", "modules/render", "modules/input", "modules/assets", "modules/ui"]
 
 [package]
 name = "gearx"
@@ -12,6 +12,7 @@ gearx_kernel = { path = "kernel" }
 gearx_render = { path = "modules/render" }
 gearx_input = { path = "modules/input" }
 gearx_assets = { path = "modules/assets" }
+gearx_ui = { path = "modules/ui" }
 anyhow = "1"
 pollster = "0.3"
 tracing = "0.1"

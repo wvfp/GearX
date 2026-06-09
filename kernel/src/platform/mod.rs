@@ -20,6 +20,16 @@ pub enum PlatformEvent {
     MouseButtonPressed(u8),
     /// A mouse button was released (0=left, 1=right, 2=middle).
     MouseButtonReleased(u8),
+    /// Mouse scroll wheel delta (x, y). Positive y = scroll up.
+    MouseWheel(f32, f32),
+    /// Unicode text input from IME or keyboard.
+    TextInput(String),
+    /// Keyboard modifier state changed.
+    ModifiersChanged { shift: bool, ctrl: bool, alt: bool, logo: bool },
+    /// Window gained or lost focus.
+    Focused(bool),
+    /// Monitor DPI scale factor changed.
+    ScaleFactorChanged(f64),
 }
 
 impl crate::event::Event for PlatformEvent {}
