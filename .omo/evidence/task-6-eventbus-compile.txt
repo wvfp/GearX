@@ -1,0 +1,5 @@
+$ RUSTFLAGS="--cfg x11_platform" cargo build -p gearx_kernel 2>&1
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.20s
+EXIT_CODE=0
+
+(multiple prior rebuilds also succeeded, exit code 0)

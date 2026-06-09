@@ -1,0 +1,23 @@
+ Downloading crates ...
+  Downloaded web-time v1.1.0 (registry `tuna`)
+   Compiling bitflags v2.13.0
+   Compiling rustix v1.1.4
+   Compiling rustix v0.38.44
+   Compiling linux-raw-sys v0.12.1
+   Compiling ahash v0.8.12
+   Compiling winit v0.30.13
+   Compiling web-time v1.1.0
+   Compiling hashbrown v0.14.5
+   Compiling xkbcommon-dl v0.4.2
+   Compiling bevy_utils v0.15.3
+   Compiling bevy_ecs v0.15.4
+   Compiling polling v3.11.0
+   Compiling calloop v0.13.0
+error: The platform you're compiling for is not supported by winit
+  --> /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-4dc01642fd091eda/winit-0.30.13/src/platform_impl/mod.rs:78:1
+   |
+78 | compile_error!("The platform you're compiling for is not supported by winit");
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: could not compile `winit` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

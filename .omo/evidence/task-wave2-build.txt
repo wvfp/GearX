@@ -1,0 +1,16 @@
+---TESTS---
+
+running 5 tests
+test module::registry::tests::duplicate_register_panics - should panic ... ok
+test module::registry::tests::init_failure_rolls_back ... ok
+test module::registry::tests::load_and_unload ... ok
+test platform::desktop::tests::desktop_time_monotonic ... ok
+test module::registry::tests::register_and_get ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

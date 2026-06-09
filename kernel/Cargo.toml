@@ -12,3 +12,5 @@ raw-window-handle = "0.6"
 tracing = "0.1"
 anyhow = "1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+winit = { version = "0.30", default-features = false, features = ["rwh_06", "x11"] }
+web-time = "1"
