@@ -13,5 +13,6 @@ pub mod frame_counter;
 pub use init::{init_logging, init_logging_with_default, KERNEL_VERSION};
 pub use frame_counter::FrameCounter;
 
-/// Temporary forward declaration — replaced by the real `Kernel` in Task 8.
-pub struct Kernel;
+pub mod kernel;
+
+pub use kernel::Kernel;
