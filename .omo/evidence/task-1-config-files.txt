@@ -1,0 +1,3 @@
+-rw-------. 1 root root 775  6月  9 17:05 /root/GearX/build/android/AndroidManifest.xml
+-rw-------. 1 root root 510  6月  9 17:05 /root/GearX/.cargo/config.toml
+-rw-------. 1 root root  86  6月  9 17:05 /root/GearX/rustfmt.toml

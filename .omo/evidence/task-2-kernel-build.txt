@@ -1,0 +1,104 @@
+    Updating `tuna` index
+     Locking 288 packages to latest compatible versions
+      Adding bevy_ecs v0.15.4 (available: v0.18.1)
+      Adding glam v0.29.3 (available: v0.33.1)
+      Adding wgpu v24.0.5 (available: v29.0.3)
+ Downloading crates ...
+  Downloaded bevy_macro_utils v0.15.3 (registry `tuna`)
+  Downloaded bevy_ecs_macros v0.15.3 (registry `tuna`)
+  Downloaded toml_datetime v0.6.11 (registry `tuna`)
+  Downloaded disqualified v1.0.0 (registry `tuna`)
+  Downloaded linkme-impl v0.3.36 (registry `tuna`)
+  Downloaded const-random-macro v0.1.16 (registry `tuna`)
+  Downloaded raw-window-handle v0.6.2 (registry `tuna`)
+  Downloaded bevy_utils v0.15.3 (registry `tuna`)
+  Downloaded bevy_tasks v0.15.3 (registry `tuna`)
+  Downloaded async-executor v1.14.0 (registry `tuna`)
+  Downloaded nonmax v0.5.5 (registry `tuna`)
+  Downloaded fixedbitset v0.5.7 (registry `tuna`)
+  Downloaded linkme v0.3.36 (registry `tuna`)
+  Downloaded log v0.4.32 (registry `tuna`)
+  Downloaded toml_edit v0.22.27 (registry `tuna`)
+  Downloaded futures-lite v2.6.1 (registry `tuna`)
+  Downloaded bitflags v2.13.0 (registry `tuna`)
+  Downloaded bevy_ptr v0.15.3 (registry `tuna`)
+  Downloaded bevy_utils_proc_macros v0.15.3 (registry `tuna`)
+  Downloaded async-task v4.7.1 (registry `tuna`)
+  Downloaded const-random v0.1.18 (registry `tuna`)
+  Downloaded regex-syntax v0.8.10 (registry `tuna`)
+  Downloaded bevy_ecs v0.15.4 (registry `tuna`)
+  Downloaded glam v0.29.3 (registry `tuna`)
+   Compiling proc-macro2 v1.0.106
+   Compiling unicode-ident v1.0.24
+   Compiling quote v1.0.45
+   Compiling libc v0.2.186
+   Compiling cfg-if v1.0.4
+   Compiling crunchy v0.2.4
+   Compiling tiny-keccak v2.0.2
+   Compiling once_cell v1.21.4
+   Compiling pin-project-lite v0.2.17
+   Compiling hashbrown v0.17.1
+   Compiling version_check v0.9.5
+   Compiling serde_core v1.0.228
+   Compiling getrandom v0.3.4
+   Compiling zerocopy v0.8.50
+   Compiling equivalent v1.0.2
+   Compiling crossbeam-utils v0.8.21
+   Compiling indexmap v2.14.0
+   Compiling ahash v0.8.12
+   Compiling tracing-core v0.1.36
+   Compiling getrandom v0.2.17
+   Compiling serde v1.0.228
+   Compiling parking v2.2.1
+   Compiling syn v2.0.117
+   Compiling fastrand v2.4.1
+   Compiling futures-core v0.3.32
+   Compiling futures-io v0.3.32
+   Compiling toml_datetime v0.6.11
+   Compiling const-random-macro v0.1.16
+   Compiling winnow v0.7.15
+   Compiling concurrent-queue v2.5.0
+   Compiling futures-lite v2.6.1
+   Compiling thread_local v1.1.9
+   Compiling unicode-xid v0.2.6
+   Compiling slab v0.4.12
+   Compiling linkme-impl v0.3.36
+   Compiling async-task v4.7.1
+   Compiling allocator-api2 v0.2.21
+   Compiling regex-syntax v0.8.10
+   Compiling async-executor v1.14.0
+   Compiling const-random v0.1.18
+   Compiling fixedbitset v0.4.2
+   Compiling anyhow v1.0.102
+   Compiling toml_edit v0.22.27
+   Compiling linkme v0.3.36
+   Compiling lazy_static v1.5.0
+   Compiling hashbrown v0.14.5
+   Compiling log v0.4.32
+   Compiling smallvec v1.15.1
+   Compiling regex-automata v0.4.14
+   Compiling tracing-log v0.2.0
+   Compiling sharded-slab v0.1.7
+   Compiling bevy_tasks v0.15.3
+   Compiling petgraph v0.6.5
+   Compiling bevy_macro_utils v0.15.3
+   Compiling disqualified v1.0.0
+   Compiling nonmax v0.5.5
+   Compiling fixedbitset v0.5.7
+   Compiling nu-ansi-term v0.50.3
+   Compiling bevy_ptr v0.15.3
+   Compiling matchers v0.2.0
+   Compiling bitflags v2.13.0
+   Compiling tracing-attributes v0.1.31
+   Compiling bevy_utils_proc_macros v0.15.3
+   Compiling derive_more-impl v1.0.0
+   Compiling bevy_ecs_macros v0.15.3
+   Compiling glam v0.29.3
+   Compiling raw-window-handle v0.6.2
+   Compiling tracing v0.1.44
+   Compiling bevy_utils v0.15.3
+   Compiling tracing-subscriber v0.3.23
+   Compiling derive_more v1.0.0
+   Compiling bevy_ecs v0.15.4
+   Compiling gearx_kernel v0.1.0 (/root/GearX/kernel)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 52.43s

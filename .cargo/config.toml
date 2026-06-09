@@ -1,0 +1,10 @@
+[target.wasm32-unknown-unknown]
+rustflags = ["-C", "target-feature=+bulk-memory,+mutable-globals"]
+
+[target.aarch64-linux-android]
+# NDK standalone toolchain linker — set CC and AR in environment when building
+# Example (adjust NDK_HOME to your install path):
+#   CC=$NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android26-clang \
+#   AR=$NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar \
+#   cargo build --target aarch64-linux-android
+linker = "aarch64-linux-android26-clang"

@@ -1,0 +1,16 @@
+[workspace]
+resolver = "2"
+members = [".", "kernel", "modules/render"]
+
+[package]
+name = "gearx"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gearx_kernel = { path = "kernel" }
+gearx_render = { path = "modules/render" }
+
+[[bin]]
+name = "gearx"
+path = "src/main.rs"

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gearx.engine">
+
+    <application
+        android:label="GearX"
+        android:hasCode="false">
+
+        <activity
+            android:name="android.app.NativeActivity"
+            android:label="GearX"
+            android:configChanges="orientation|keyboardHidden|screenSize">
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="gearx" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

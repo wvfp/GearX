@@ -1,0 +1,2 @@
+   Compiling gearx_render v0.1.0 (/root/GearX/modules/render)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 4.41s

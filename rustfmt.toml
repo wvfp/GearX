@@ -1,0 +1,4 @@
+tab_spaces = 4
+edition = "2021"
+imports_granularity = "Module"
+reorder_imports = true
