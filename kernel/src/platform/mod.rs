@@ -2,6 +2,7 @@ use std::time::Duration;
 use raw_window_handle::{HasDisplayHandle, HasWindowHandle, WindowHandle};
 
 /// Events that the platform layer can emit to the application.
+#[derive(Clone, Debug)]
 pub enum PlatformEvent {
     /// The user requested the window to close.
     CloseRequested,
@@ -9,7 +10,19 @@ pub enum PlatformEvent {
     Resized(u32, u32),
     /// Frame-tick with the frame delta in seconds.
     Tick(f32),
+    /// A keyboard key was pressed (winit physical keycode as u32).
+    KeyPressed(u32),
+    /// A keyboard key was released (winit physical keycode as u32).
+    KeyReleased(u32),
+    /// The mouse cursor moved to (x, y) in window coordinates.
+    CursorMoved(f32, f32),
+    /// A mouse button was pressed (0=left, 1=right, 2=middle).
+    MouseButtonPressed(u8),
+    /// A mouse button was released (0=left, 1=right, 2=middle).
+    MouseButtonReleased(u8),
 }
+
+impl crate::event::Event for PlatformEvent {}
 
 /// A handle to a display window.
 pub trait Window: HasWindowHandle + HasDisplayHandle + Send + Sync + 'static {

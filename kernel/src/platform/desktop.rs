@@ -144,6 +144,38 @@ impl WindowSystem for DesktopWindowSystem {
                         winit::event::WindowEvent::Resized(size) => {
                             events.push(PlatformEvent::Resized(size.width, size.height));
                         }
+                        winit::event::WindowEvent::KeyboardInput { event, .. } => {
+                            if let winit::keyboard::PhysicalKey::Code(code) = event.physical_key {
+                                let scancode = code as u32;
+                                match event.state {
+                                    winit::event::ElementState::Pressed => {
+                                        events.push(PlatformEvent::KeyPressed(scancode));
+                                    }
+                                    winit::event::ElementState::Released => {
+                                        events.push(PlatformEvent::KeyReleased(scancode));
+                                    }
+                                }
+                            }
+                        }
+                        winit::event::WindowEvent::CursorMoved { position, .. } => {
+                            events.push(PlatformEvent::CursorMoved(position.x as f32, position.y as f32));
+                        }
+                        winit::event::WindowEvent::MouseInput { state, button, .. } => {
+                            let btn = match button {
+                                winit::event::MouseButton::Left => 0u8,
+                                winit::event::MouseButton::Right => 1u8,
+                                winit::event::MouseButton::Middle => 2u8,
+                                _ => 255u8,
+                            };
+                            match state {
+                                winit::event::ElementState::Pressed => {
+                                    events.push(PlatformEvent::MouseButtonPressed(btn));
+                                }
+                                winit::event::ElementState::Released => {
+                                    events.push(PlatformEvent::MouseButtonReleased(btn));
+                                }
+                            }
+                        }
                         _ => {}
                     }
                 }

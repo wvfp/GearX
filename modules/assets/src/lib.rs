@@ -66,6 +66,12 @@ impl AssetModule {
         let tex = loader.white_texture()?;
         Ok(self.textures.insert(tex))
     }
+
+    /// Load a mesh from an OBJ file, cache it, and return a handle.
+    pub fn load_mesh(&mut self, path: &std::path::Path) -> anyhow::Result<cache::AssetHandle<LoadedMesh>> {
+        let mesh = MeshLoader::load_from_obj(path)?;
+        Ok(self.meshes.insert(mesh))
+    }
 }
 
 impl Default for AssetModule {

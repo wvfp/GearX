@@ -30,8 +30,8 @@ struct ModuleEntry {
 ///
 /// # Ordering
 ///
-/// Modules are loaded in the order they were registered (no topological
-/// sort).  They are unloaded in reverse order.
+/// Modules are loaded in topological order based on `dependencies()` and
+/// `priority()`.  They are unloaded in reverse order.
 pub struct ModuleRegistry {
     entries: Vec<ModuleEntry>,
     by_name: HashMap<&'static str, usize>,
@@ -90,18 +90,63 @@ impl ModuleRegistry {
         }
     }
 
-    /// Initialise every registered module in registration order.
+    /// Compute a topological load order based on module dependencies and priority.
+    ///
+    /// Uses Kahn's algorithm.  Modules with no dependencies are loaded first;
+    /// among peers, higher `priority()` modules are loaded first.
+    /// Returns an error if a circular dependency is detected.
+    fn topological_order(&self) -> Result<Vec<usize>> {
+        let n = self.entries.len();
+        let mut in_degree = vec![0usize; n];
+        let mut adj: Vec<Vec<usize>> = vec![Vec::new(); n];
+
+        for (i, entry) in self.entries.iter().enumerate() {
+            for dep_name in entry.module.dependencies() {
+                if let Some(&dep_idx) = self.by_name.get(dep_name) {
+                    adj[dep_idx].push(i);
+                    in_degree[i] += 1;
+                }
+            }
+        }
+
+        let mut queue: Vec<usize> = (0..n).filter(|&i| in_degree[i] == 0).collect();
+        // Sort by priority descending; for equal priority, stable sort preserves
+        // registration order (ascending index).
+        queue.sort_by(|a, b| {
+            self.entries[*b].module.priority().cmp(&self.entries[*a].module.priority())
+        });
+
+        let mut order = Vec::with_capacity(n);
+        while !queue.is_empty() {
+            let node = queue.remove(0);
+            order.push(node);
+            for &next in &adj[node] {
+                in_degree[next] -= 1;
+                if in_degree[next] == 0 {
+                    queue.push(next);
+                    queue.sort_by(|a, b| {
+                        self.entries[*b].module.priority().cmp(&self.entries[*a].module.priority())
+                    });
+                }
+            }
+        }
+
+        if order.len() != n {
+            return Err(anyhow!("circular dependency detected among modules"));
+        }
+
+        Ok(order)
+    }
+
+    /// Initialise every registered module in dependency-resolved order.
     ///
     /// On error the already-initialised modules are shut down before the
     /// error is propagated.
     pub fn load_all(&mut self, kernel: &mut Kernel) -> Result<()> {
-        let count = self.entries.len();
-        // Number of entries that successfully initialised (for rollback).
-        let mut loaded = 0usize;
+        let order = self.topological_order()?;
+        let mut loaded_count = 0usize;
 
-        for i in 0..count {
-            // Determine the result and capture the module name *before* the
-            // rollback borrows self.entries again.
+        for &i in &order {
             let (success, module_name) = {
                 let entry = &mut self.entries[i];
                 match entry.module.init(kernel) {
@@ -117,11 +162,11 @@ impl ModuleRegistry {
             };
 
             if success {
-                loaded = i + 1;
+                loaded_count += 1;
             } else {
                 // Roll back every already-active module.
-                for j in (0..loaded).rev() {
-                    let prev = &mut self.entries[j];
+                for &prev_idx in order.iter().take(loaded_count) {
+                    let prev = &mut self.entries[prev_idx];
                     if let Err(e) = prev.module.shutdown(kernel) {
                         tracing::warn!("Module '{}' shutdown error during rollback: {e:#}", prev.module.name());
                     }

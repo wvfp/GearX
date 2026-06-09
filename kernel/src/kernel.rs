@@ -21,10 +21,12 @@
 //! In Phase 1 this overhead is negligible; a future refactor may introduce
 //! a `KernelContext` split to eliminate it.
 
+use crate::console::Console;
 use crate::event::{EngineEvent, EngineMode, EventBus, FrameEvent};
 use crate::frame_counter::FrameCounter;
 use crate::module::ModuleRegistry;
 use crate::platform::Platform;
+use crate::profiler::FrameProfiler;
 use crate::task::TaskSystem;
 use bevy_ecs::prelude::{IntoSystem, Resource, Schedule, World};
 
@@ -44,6 +46,10 @@ pub struct Kernel {
     event_bus: EventBus,
     /// Frame-rate counter and FPS reporter.
     frame_counter: FrameCounter,
+    /// In-memory log buffer for engine diagnostics.
+    console: Console,
+    /// Per-frame performance profiler.
+    profiler: FrameProfiler,
     /// Current engine mode (Edit / Play / Pause).
     mode: EngineMode,
     /// Whether the main loop should keep running.
@@ -68,6 +74,8 @@ impl Kernel {
             platform,
             event_bus: EventBus::new(),
             frame_counter: FrameCounter::new(),
+            console: Console::new(),
+            profiler: FrameProfiler::new(),
             mode: EngineMode::Edit,
             running: true,
         }
@@ -109,7 +117,9 @@ impl Kernel {
 
         // --- Main loop ---
         while self.running {
-            // Poll platform events (window close, resize, etc.) non-blocking.
+            self.profiler.begin_frame();
+
+            // Poll platform events (window close, resize, keyboard, mouse, etc.).
             let platform_events = self.platform.window_system().poll_events();
             if platform_events
                 .iter()
@@ -118,28 +128,67 @@ impl Kernel {
                 break;
             }
 
+            // Publish platform events to the EventBus for input handling.
+            for event in &platform_events {
+                self.event_bus.publish(event);
+            }
+
             let dt = self.platform.time_system().delta_seconds();
+            self.frame_counter.tick();
+            self.console.log(
+                crate::console::LogLevel::Info,
+                format!("FPS: {:.0} | frame {}", self.frame_counter.fps(), self.frame_counter.frame_count()),
+            );
+
+            // Update ECS resources so systems see current timing data.
+            {
+                let mut time = self.world.resource_mut::<crate::ecs::Time>();
+                time.delta = dt;
+                time.elapsed += dt;
+                time.frame_count += 1;
+            }
+            {
+                let fps = self.frame_counter.fps();
+                let mut stats = self.world.resource_mut::<crate::ecs::FrameStats>();
+                stats.fps = fps;
+            }
+
             self.event_bus.publish(&FrameEvent::Start(dt));
+
+            let paused = self.mode == EngineMode::Pause;
 
             // Mutably iterate modules while still allowing them to access the
             // kernel — same take pattern as above.
+            // In Pause mode, only the render module is updated (keeps the
+            // screen alive); all other modules are skipped.
             {
                 let mut reg = std::mem::take(&mut self.registry);
                 for module in reg.iter_mut() {
-                    if let Err(e) = module.update(self, dt) {
-                        tracing::error!("Module '{}' update error: {e:#}", module.name());
+                    let name = module.name();
+                    if paused && name != "render" {
+                        continue;
                     }
+                    self.profiler.begin_module(name);
+                    if let Err(e) = module.update(self, dt) {
+                        tracing::error!("Module '{}' update error: {e:#}", name);
+                    }
+                    self.profiler.end_module(name);
                 }
                 self.registry = reg;
             }
 
-            // Run the ECS schedule (executes all registered systems).
-            self.task_system.run_schedule(&mut self.world, &mut self.schedule);
+            // Flush async events (send → dispatch) before ECS schedule runs.
+            self.event_bus.flush();
+
+            // Skip ECS schedule in Pause mode.
+            if !paused {
+                self.task_system.run_schedule(&mut self.world, &mut self.schedule);
+            }
 
             self.event_bus.publish(&FrameEvent::End(dt));
-            self.frame_counter.tick();
+            self.profiler.end_frame();
 
-            // Cap frame rate at ~60 FPS for Phase 1.
+            // Cap frame rate at ~60 FPS.
             std::thread::sleep(std::time::Duration::from_millis(16));
         }
 
@@ -195,6 +244,16 @@ impl Kernel {
     /// Mutable reference to the frame counter.
     pub fn frame_counter(&mut self) -> &mut FrameCounter {
         &mut self.frame_counter
+    }
+
+    /// Mutable reference to the console log buffer.
+    pub fn console(&mut self) -> &mut Console {
+        &mut self.console
+    }
+
+    /// Mutable reference to the frame profiler.
+    pub fn profiler(&mut self) -> &mut FrameProfiler {
+        &mut self.profiler
     }
 
     /// Current engine mode.

@@ -1,18 +1,16 @@
 //! Mesh primitives for the GearX render module.
-//!
-//! Provides [`Vertex`] and [`Mesh`] types with factory methods for common
-//! geometric primitives (triangle, quad, cube).
 
-/// A single vertex: position (vec3) + color (vec4).
+/// A single vertex: position (vec3) + uv (vec2) + color (vec4).
 ///
-/// GPU layout (WGSL @location):
-///   0 — position: vec3f  (offset 0, 12 bytes)
-///   1 — color:    vec4f  (offset 12, 16 bytes)
-///   total stride: 28 bytes
+/// GPU layout (stride = 36 bytes):
+///   0 — position: vec3f  (offset 0,  12 bytes)
+///   1 — uv:       vec2f  (offset 12,  8 bytes)
+///   2 — color:    vec4f  (offset 20, 16 bytes)
 #[derive(Debug, Clone, Copy)]
 #[repr(C)]
 pub struct Vertex {
     pub position: [f32; 3],
+    pub uv: [f32; 2],
     pub color: [f32; 4],
 }
 
@@ -28,69 +26,54 @@ pub struct Mesh {
 }
 
 impl Mesh {
-    /// A colourful triangle spanning the upper NDC viewport.
     pub fn triangle() -> Self {
         Self {
             vertices: vec![
-                Vertex { position: [0.0, 0.5, 0.0],  color: [1.0, 0.0, 0.0, 1.0] }, // top – red
-                Vertex { position: [-0.5, -0.5, 0.0], color: [0.0, 1.0, 0.0, 1.0] }, // bl – green
-                Vertex { position: [0.5, -0.5, 0.0],  color: [0.0, 0.0, 1.0, 1.0] }, // br – blue
+                Vertex { position: [0.0, 0.5, 0.0],  uv: [0.5, 0.0], color: [1.0, 0.0, 0.0, 1.0] },
+                Vertex { position: [-0.5, -0.5, 0.0], uv: [0.0, 1.0], color: [0.0, 1.0, 0.0, 1.0] },
+                Vertex { position: [0.5, -0.5, 0.0],  uv: [1.0, 1.0], color: [0.0, 0.0, 1.0, 1.0] },
             ],
             indices: vec![0, 1, 2],
         }
     }
 
-    /// A white quad covering roughly the center of the screen.
     pub fn quad() -> Self {
-        let half: f32 = 0.5;
+        let h: f32 = 0.5;
         Self {
             vertices: vec![
-                Vertex { position: [-half, -half, 0.0], color: [1.0; 4] },
-                Vertex { position: [ half, -half, 0.0], color: [1.0; 4] },
-                Vertex { position: [ half,  half, 0.0], color: [1.0; 4] },
-                Vertex { position: [-half,  half, 0.0], color: [1.0; 4] },
+                Vertex { position: [-h, -h, 0.0], uv: [0.0, 1.0], color: [1.0; 4] },
+                Vertex { position: [ h, -h, 0.0], uv: [1.0, 1.0], color: [1.0; 4] },
+                Vertex { position: [ h,  h, 0.0], uv: [1.0, 0.0], color: [1.0; 4] },
+                Vertex { position: [-h,  h, 0.0], uv: [0.0, 0.0], color: [1.0; 4] },
             ],
             indices: vec![0, 1, 2, 0, 2, 3],
         }
     }
 
-    /// A simple cube with per-face colours.
     pub fn cube() -> Self {
         let h = 0.5;
-        //      front         back          right        left         top          bottom
+        let v = |p: [f32; 3], c: [f32; 4]| Vertex { position: p, uv: [0.0, 0.0], color: c };
         let verts = vec![
-            Vertex { position: [-h, -h,  h], color: [1.0, 0.0, 0.0, 1.0] },
-            Vertex { position: [ h, -h,  h], color: [1.0, 0.0, 0.0, 1.0] },
-            Vertex { position: [ h,  h,  h], color: [1.0, 0.0, 0.0, 1.0] },
-            Vertex { position: [-h,  h,  h], color: [1.0, 0.0, 0.0, 1.0] },
-            Vertex { position: [ h, -h, -h], color: [0.0, 1.0, 0.0, 1.0] },
-            Vertex { position: [-h, -h, -h], color: [0.0, 1.0, 0.0, 1.0] },
-            Vertex { position: [-h,  h, -h], color: [0.0, 1.0, 0.0, 1.0] },
-            Vertex { position: [ h,  h, -h], color: [0.0, 1.0, 0.0, 1.0] },
-            Vertex { position: [ h, -h,  h], color: [0.0, 0.0, 1.0, 1.0] },
-            Vertex { position: [ h, -h, -h], color: [0.0, 0.0, 1.0, 1.0] },
-            Vertex { position: [ h,  h, -h], color: [0.0, 0.0, 1.0, 1.0] },
-            Vertex { position: [ h,  h,  h], color: [0.0, 0.0, 1.0, 1.0] },
-            Vertex { position: [-h, -h, -h], color: [1.0, 1.0, 0.0, 1.0] },
-            Vertex { position: [-h, -h,  h], color: [1.0, 1.0, 0.0, 1.0] },
-            Vertex { position: [-h,  h,  h], color: [1.0, 1.0, 0.0, 1.0] },
-            Vertex { position: [-h,  h, -h], color: [1.0, 1.0, 0.0, 1.0] },
-            Vertex { position: [-h,  h,  h], color: [0.0, 1.0, 1.0, 1.0] },
-            Vertex { position: [ h,  h,  h], color: [0.0, 1.0, 1.0, 1.0] },
-            Vertex { position: [ h,  h, -h], color: [0.0, 1.0, 1.0, 1.0] },
-            Vertex { position: [-h,  h, -h], color: [0.0, 1.0, 1.0, 1.0] },
-            Vertex { position: [-h, -h, -h], color: [1.0, 0.0, 1.0, 1.0] },
-            Vertex { position: [ h, -h, -h], color: [1.0, 0.0, 1.0, 1.0] },
-            Vertex { position: [ h, -h,  h], color: [1.0, 0.0, 1.0, 1.0] },
-            Vertex { position: [-h, -h,  h], color: [1.0, 0.0, 1.0, 1.0] },
+            v([-h, -h,  h], [1.0, 0.0, 0.0, 1.0]), v([ h, -h,  h], [1.0, 0.0, 0.0, 1.0]),
+            v([ h,  h,  h], [1.0, 0.0, 0.0, 1.0]), v([-h,  h,  h], [1.0, 0.0, 0.0, 1.0]),
+            v([ h, -h, -h], [0.0, 1.0, 0.0, 1.0]), v([-h, -h, -h], [0.0, 1.0, 0.0, 1.0]),
+            v([-h,  h, -h], [0.0, 1.0, 0.0, 1.0]), v([ h,  h, -h], [0.0, 1.0, 0.0, 1.0]),
+            v([ h, -h,  h], [0.0, 0.0, 1.0, 1.0]), v([ h, -h, -h], [0.0, 0.0, 1.0, 1.0]),
+            v([ h,  h, -h], [0.0, 0.0, 1.0, 1.0]), v([ h,  h,  h], [0.0, 0.0, 1.0, 1.0]),
+            v([-h, -h, -h], [1.0, 1.0, 0.0, 1.0]), v([-h, -h,  h], [1.0, 1.0, 0.0, 1.0]),
+            v([-h,  h,  h], [1.0, 1.0, 0.0, 1.0]), v([-h,  h, -h], [1.0, 1.0, 0.0, 1.0]),
+            v([-h,  h,  h], [0.0, 1.0, 1.0, 1.0]), v([ h,  h,  h], [0.0, 1.0, 1.0, 1.0]),
+            v([ h,  h, -h], [0.0, 1.0, 1.0, 1.0]), v([-h,  h, -h], [0.0, 1.0, 1.0, 1.0]),
+            v([-h, -h, -h], [1.0, 0.0, 1.0, 1.0]), v([ h, -h, -h], [1.0, 0.0, 1.0, 1.0]),
+            v([ h, -h,  h], [1.0, 0.0, 1.0, 1.0]), v([-h, -h,  h], [1.0, 0.0, 1.0, 1.0]),
         ];
         let idx: Vec<u16> = vec![
-            0, 1, 2, 0, 2, 3,     // front
-            4, 5, 6, 4, 6, 7,     // back
-            8, 9, 10, 8, 10, 11,  // right
-            12, 13, 14, 12, 14, 15, // left
-            16, 17, 18, 16, 18, 19, // top
-            20, 21, 22, 20, 22, 23, // bottom
+            0, 1, 2, 0, 2, 3,
+            4, 5, 6, 4, 6, 7,
+            8, 9, 10, 8, 10, 11,
+            12, 13, 14, 12, 14, 15,
+            16, 17, 18, 16, 18, 19,
+            20, 21, 22, 20, 22, 23,
         ];
         Self { vertices: verts, indices: idx }
     }

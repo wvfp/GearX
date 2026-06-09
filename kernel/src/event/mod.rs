@@ -19,18 +19,21 @@ pub trait AnyHandler: Send + 'static {
 
 // ── EventBus ──
 
-/// Synchronous in-process event bus.
+/// Synchronous in-process event bus with async send support.
 ///
 /// Routes events by their `TypeId` to registered handlers.
-/// All handlers are invoked synchronously during `publish()`.
+/// `publish()` dispatches synchronously; `send()` enqueues for deferred
+/// delivery via `flush()`.
 pub struct EventBus {
     handlers: HashMap<TypeId, Vec<Box<dyn AnyHandler>>>,
+    pending: Vec<(TypeId, Box<dyn Any + Send>)>,
 }
 
 impl EventBus {
     pub fn new() -> Self {
         Self {
             handlers: HashMap::new(),
+            pending: Vec::new(),
         }
     }
 
@@ -50,6 +53,23 @@ impl EventBus {
         if let Some(handlers) = self.handlers.get_mut(&type_id) {
             for handler in handlers {
                 handler.handle_as_any(event as &dyn Any);
+            }
+        }
+    }
+
+    /// Enqueue an event for deferred delivery (processed on next `flush()`).
+    pub fn send<E: Event>(&mut self, event: E) {
+        self.pending.push((TypeId::of::<E>(), Box::new(event)));
+    }
+
+    /// Drain the pending queue and dispatch all events synchronously.
+    pub fn flush(&mut self) {
+        let events: Vec<(TypeId, Box<dyn Any + Send>)> = self.pending.drain(..).collect();
+        for (type_id, event) in events {
+            if let Some(handlers) = self.handlers.get_mut(&type_id) {
+                for handler in handlers {
+                    handler.handle_as_any(&*event);
+                }
             }
         }
     }
