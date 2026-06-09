@@ -66,9 +66,27 @@ impl ModuleRegistry {
 
     /// Discover and register every module linked into the
     /// [`MODULES`](crate::MODULES) distributed slice.
+    ///
+    /// If a factory panics (e.g. `RenderModule` requires a window handle
+    /// that cannot be provided through the no-argument factory), the panic
+    /// is caught and a warning is logged — the binary can register those
+    /// modules manually.
     pub fn discover(&mut self) {
         for factory in MODULES {
-            self.register(factory());
+            let result =
+                std::panic::catch_unwind(std::panic::AssertUnwindSafe(factory));
+            match result {
+                Ok(module) => {
+                    if !self.by_name.contains_key(module.name()) {
+                        self.register(module);
+                    }
+                }
+                Err(_) => {
+                    tracing::warn!(
+                        "Module factory panicked during discovery — skipped"
+                    );
+                }
+            }
         }
     }
 

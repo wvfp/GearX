@@ -25,6 +25,7 @@ use crate::event::{EngineEvent, EngineMode, EventBus, FrameEvent};
 use crate::frame_counter::FrameCounter;
 use crate::module::ModuleRegistry;
 use crate::platform::Platform;
+use crate::task::TaskSystem;
 use bevy_ecs::prelude::{IntoSystem, Resource, Schedule, World};
 
 /// The central engine kernel — owns all engine subsystems.
@@ -33,6 +34,8 @@ pub struct Kernel {
     pub world: World,
     /// ECS schedule — defines and runs systems each frame.
     pub schedule: Schedule,
+    /// Parallel task dispatcher.
+    task_system: TaskSystem,
     /// Registry of all loaded engine modules.
     registry: ModuleRegistry,
     /// Platform abstraction (windowing, timing, etc.).
@@ -60,6 +63,7 @@ impl Kernel {
         Self {
             world,
             schedule: Schedule::default(),
+            task_system: TaskSystem::default(),
             registry: ModuleRegistry::new(),
             platform,
             event_bus: EventBus::new(),
@@ -86,11 +90,15 @@ impl Kernel {
         tracing::info!("GearX Kernel v{} starting", crate::init::KERNEL_VERSION);
 
         // --- Load modules ---
+        // First discover auto-registered modules (input, assets, etc.).
+        // Panicking factories (e.g. RenderModule) are caught and skipped —
+        // those are registered manually by the binary.
         // Temporarily detach the registry to avoid a self-borrow when
         // passing `&mut self` to `load_all`.  `ModuleRegistry` implements
         // `Default` (empty registry), so `take` is cheap.
         {
             let mut reg = std::mem::take(&mut self.registry);
+            reg.discover();
             if let Err(e) = reg.load_all(self) {
                 tracing::error!("Failed to load modules: {e:#}");
                 self.registry = reg;
@@ -126,7 +134,7 @@ impl Kernel {
             }
 
             // Run the ECS schedule (executes all registered systems).
-            self.schedule.run(&mut self.world);
+            self.task_system.run_schedule(&mut self.world, &mut self.schedule);
 
             self.event_bus.publish(&FrameEvent::End(dt));
             self.frame_counter.tick();

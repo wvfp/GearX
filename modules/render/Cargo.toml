@@ -10,3 +10,4 @@ pollster = "0.3"
 anyhow = "1"
 linkme = ">=0.3.32"
 tracing = "0.1"
+bytemuck = { version = "1", features = ["derive"] }
